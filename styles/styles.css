@@ -28,3 +28,21 @@ header {
     border: none;
     border-radius: 4px;
 }
+
+main {
+    min-height: calc(100vh - 160px);
+}
+
+footer {
+    height: 80px;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
