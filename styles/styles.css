@@ -29,6 +29,17 @@ header {
     border-radius: 4px;
 }
 
+.header_container {
+    max-width: 1440px;
+    margin-inline: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px;
+}
+
 main {
     min-height: calc(100vh - 160px);
 }
