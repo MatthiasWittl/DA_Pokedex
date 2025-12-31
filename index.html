@@ -7,11 +7,12 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="/styles/main.css">
-    <script src="scripts/script.js"></script>
+
     <script src="data/db.js"></script>
+ 
 </head>
 
-<body>
+<body onload="startrender()">
     <header>
         <div class="header_container">
             <h1>Pokedex</h1>
@@ -21,11 +22,17 @@
             </div>
         </div>
     </header>
-    <main></main>
+    <main id="main_container">
+
+
+    </main>
     <footer>
         <img src="assets/images/MW.png" alt="Publisher Logo">
     </footer>
-    </nav>
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/template.js"></script>
+
 </body>
 
 </html>

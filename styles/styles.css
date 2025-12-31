@@ -37,11 +37,24 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 8px;
 }
 
 main {
     min-height: calc(100vh - 160px);
+    display: flex;
+    gap: 8px;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemon_container {
+    height: 400px;
+    width: 200px;
+    background-color: aquamarine;
 }
 
 footer {
