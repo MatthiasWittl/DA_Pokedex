@@ -1,0 +1,3 @@
+let pokemonNames;
+
+let pokemonData;
