@@ -57,6 +57,10 @@ main {
     background-color: aquamarine;
 }
 
+.main_site_img_box {
+    width: 100px;
+}
+
 footer {
     height: 80px;
     background-color: grey;
