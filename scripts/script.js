@@ -1,6 +1,6 @@
 
 async function loadFirstPokemons() {
-    let data = await fetch ("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0");
+    let data = await fetch ("https://pokeapi.co/api/v2/pokemon?limit=12&offset=0");
     pokemonNames = await data.json();
     await loadPokemonData();
     startrender();
