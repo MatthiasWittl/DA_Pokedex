@@ -18,10 +18,10 @@ function renderPokemonBox(index) {
 function renderPokemonBox1(index) {
     return `
      <section class="pokemon_container">
-            <h1>${pokemonNames1.results[index].name}</h1>
-            <img class="main_site_img_box" src="${pokemonNames1.results[index].sprites.other['official-artwork'].front_default}" alt="">
+            <h1>${pokemonData[index].value.name}</h1>
+            <img class="main_site_img_box" src="${pokemonData[index].value.sprites.other['official-artwork'].front_default}" alt="">
             <div>
-                <p>${pokemonNames1.results[index].height}</p>
+                <p>${pokemonData[index].value.height}</p>
             </div>
 
         </section>
