@@ -4,5 +4,5 @@ let pokemonNames1;
 
 let pokemonData = {};
 
-let firstAmountOfLoadingPokemon = 12;
+let firstAmountOfLoadingPokemon = 6;
 
