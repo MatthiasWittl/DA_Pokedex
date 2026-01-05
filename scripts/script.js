@@ -2,7 +2,6 @@
 let promises = [];
 
 function getFirstPokemonData() {
-
     for (let index = 0; index < firstAmountOfLoadingPokemon; index++) {
         let promise = fetch ("https://pokeapi.co/api/v2/pokemon/" + (index+1)).then(response => {
             if (!response.ok) {
@@ -20,7 +19,7 @@ function getFirstPokemonData() {
 
 function startrender() {
     for (let index = 0; index < Object.keys(pokemonData).length; index++) {
-        document.getElementById("main_container").innerHTML += renderPokemonBox1(index);
+        document.getElementById("main_container").innerHTML += renderPokemonBox(index);
         
     }
     

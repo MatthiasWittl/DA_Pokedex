@@ -54,7 +54,11 @@ main {
 .pokemon_container {
     height: 400px;
     width: 200px;
-    background-color: aquamarine;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
 }
 
 .main_site_img_box {

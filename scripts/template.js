@@ -1,6 +1,6 @@
 
 
-function renderPokemonBox(index) {
+/* function renderPokemonBox(index) {
     return `
      <section class="pokemon_container">
             <h1>${pokemonNames[index].name}</h1>
@@ -11,11 +11,11 @@ function renderPokemonBox(index) {
 
         </section>
     `
-}
+} */
 
-/*sprites.other['official-artwork'].front_default*/
 
-function renderPokemonBox1(index) {
+
+function renderPokemonBox(index) {
     return `
      <section class="pokemon_container">
             <h1>${pokemonData[index].value.name}</h1>
