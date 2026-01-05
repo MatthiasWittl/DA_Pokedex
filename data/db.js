@@ -4,5 +4,5 @@ let pokemonNames1;
 
 let pokemonData = {};
 
-let firstAmountOfLoadingPokemon = 6;
+let firstAmountOfLoadingPokemon = 151; // max Amount Pokemon Lets Go Pickachu
 
