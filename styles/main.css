@@ -9,3 +9,10 @@
     background: linear-gradient(135deg, var(--type1), var(--type2, var(--type1))
     )
 }
+
+.pokemon_box_title_glow {
+    color: white;
+    text-shadow:
+    0 0 6px color-mix(in srgb, var(--type1) 60%, white),
+    0 0 12px color-mix(in srgb, var(--type1) 40%, transparent);
+}
