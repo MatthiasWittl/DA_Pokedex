@@ -70,12 +70,24 @@ main {
     border-radius: 15px;
 }
 
-
 .pokemon_box_img {
     width: 100px;
 }
 
+.pokemon_box_type_container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: capitalize;
+    width: 200px;;
+}
 
+.pokemon_box_type_container p {
+    padding: 3px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 60px;
+}
 
 footer {
     height: 80px;
