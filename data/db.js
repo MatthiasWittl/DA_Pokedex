@@ -4,7 +4,7 @@ let pokemonNames1;
 
 let pokemonData = {};
 
-let firstAmountOfLoadingPokemon = 10; 
+let firstAmountOfLoadingPokemon = 150; 
 
 const typeColors = {
     bug: "#A8B820",

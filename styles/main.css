@@ -11,6 +11,9 @@
 }
 
 .pokemon_box_title_glow {
+    font-size: 28px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     text-transform: capitalize;
     color: #F8f8f8;
     text-shadow:

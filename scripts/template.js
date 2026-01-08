@@ -22,7 +22,7 @@ function renderPokemonBox(index) {
         let pokemonTypeColorTwo = typeColors[pokemonTypeTwo];
         return `
      <section class="pokemon_box" style= "--type1: ${pokemonTypeColor}; --type2: ${pokemonTypeColorTwo};">
-            <h2>${pokemonData[index].value.name} #${pokemonData[index].value.id}</h2>
+            <h2 class="pokemon_box_title_glow" >${pokemonData[index].value.name} #${pokemonData[index].value.id}</h2>
             <div class="pokemon_box_img_container pkmn_box_color grid_area"> 
                 <img 
                     class="pokemon_box_img" 
