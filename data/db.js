@@ -6,6 +6,12 @@ let pokemonData = {};
 
 let firstAmountOfLoadingPokemon = 12; 
 
+let remainingPokemonDataToLoad = 139;
+
+let moreAmountOfLoadingPokemon = 12;
+
+let maxAmountofPokemon = 151; /* Anzahl Pokemon Standard Edition 151 */
+
 const typeColors = {
     bug: "#A8B820",
     dragon: "#7038F8",

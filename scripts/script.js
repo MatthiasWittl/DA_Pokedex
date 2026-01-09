@@ -11,7 +11,10 @@ function getFirstPokemonData() {
         promises.push(promise)
     }
     Promise.allSettled(promises)
-    .then(results => {console.log("Alle Daten sind geladen", pokemonData = {...results}, startrender());
+    .then(results => {console.log("Alle Daten sind geladen", pokemonData = results
+        .filter(({ status }) => status === "fulfilled")
+        .map(({ value }) => value),
+        loadAllReaminingPokemon(), startrender());
     })
     
 } 
@@ -25,5 +28,14 @@ function startrender() {
     
 }
 
-
-
+async function loadAllReaminingPokemon() {
+    for (let index = 0; index < remainingPokemonDataToLoad; index++) {
+        let promise = await fetch ("https://pokeapi.co/api/v2/pokemon/" + (index+1+firstAmountOfLoadingPokemon)).then(response => {
+            if (!response.ok) {
+                retryFetch("https://pokeapi.co/api/v2/pokemon/" + (index+1+firstAmountOfLoadingPokemon));
+            } return response.json();
+        })
+        pokemonData[(index+1+firstAmountOfLoadingPokemon)] = {...promise}
+    }
+    
+}
