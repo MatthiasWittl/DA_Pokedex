@@ -14,9 +14,10 @@ function getFirstPokemonData() {
     Promise.allSettled(promises)
     .then(results => {console.log("Alle Daten sind geladen", pokemonData = results
         .filter(({ status }) => status === "fulfilled")
-        .map(({ value }) => value),
+        .map(({ value }) => value), storageLocalFirstPokemonData(),
         loadAllReaminingPokemon(), startrender());
     })
+    
     
 } 
 
@@ -39,7 +40,7 @@ async function loadAllReaminingPokemon() {
         pokemonData[(index+firstAmountOfLoadingPokemon)] = {...promise}
     }
     buttonvisibility.add("visible");
-    /*localStorage.setItem("pokemonData", JSON.stringify(pokemonData));*/
+    
 }
 
 
@@ -56,4 +57,8 @@ function renderMorePokemon(){
         document.getElementById("main_container").innerHTML += renderPokemonBox(index);
         renderdPokemonBoxes++;
     }
+}
+
+function storageLocalFirstPokemonData() {
+    localStorage.setItem("pokemonData", JSON.stringify(pokemonData));
 }
