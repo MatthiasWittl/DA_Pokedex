@@ -1,4 +1,4 @@
-
+let renderdPokemonBoxes = 0;
 let promises = [];
 
 function getFirstPokemonData() {
@@ -23,7 +23,7 @@ function getFirstPokemonData() {
 function startrender() {
     for (let index = 0; index < Object.keys(pokemonData).length; index++) {
         document.getElementById("main_container").innerHTML += renderPokemonBox(index);
-        
+        renderdPokemonBoxes++;
     }
     
 }
@@ -35,7 +35,23 @@ async function loadAllReaminingPokemon() {
                 retryFetch("https://pokeapi.co/api/v2/pokemon/" + (index+1+firstAmountOfLoadingPokemon));
             } return response.json();
         })
-        pokemonData[(index+1+firstAmountOfLoadingPokemon)] = {...promise}
+        pokemonData[(index+firstAmountOfLoadingPokemon)] = {...promise}
     }
     
+}
+
+
+function renderMorePokemon(){
+    let endRenderIndex;
+    if (renderdPokemonBoxes >= 145) {
+        return;
+    } else if (renderdPokemonBoxes == 144) {
+        endRenderIndex = 151;
+    } else {
+        endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
+    }
+    for (let index = renderdPokemonBoxes; index < (endRenderIndex); index++) {
+        document.getElementById("main_container").innerHTML += renderPokemonBox(index);
+        renderdPokemonBoxes++;
+    }
 }

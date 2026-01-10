@@ -10,7 +10,7 @@ let remainingPokemonDataToLoad = 139;
 
 let moreAmountOfLoadingPokemon = 12;
 
-let maxAmountofPokemon = 151; /* Anzahl Pokemon Standard Edition 151 */
+let maxAmountofPokemonFromAPI = 150; /* Anzahl Pokemon Standard Edition 151, Liste startet bei 0 deshalb 150*/
 
 const typeColors = {
     bug: "#A8B820",
