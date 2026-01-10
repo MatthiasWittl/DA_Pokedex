@@ -114,6 +114,7 @@ footer {
 }
 
 .open_more_Pokemon {
+    visibility: hidden;
     position: sticky;
     left: 50%;
     transform: translateX(-50%);

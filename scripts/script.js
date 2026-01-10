@@ -1,3 +1,4 @@
+const buttonvisibility = document.getElementById("open_more_Pokemon_id").classList;
 let renderdPokemonBoxes = 0;
 let promises = [];
 
@@ -37,7 +38,8 @@ async function loadAllReaminingPokemon() {
         })
         pokemonData[(index+firstAmountOfLoadingPokemon)] = {...promise}
     }
-    
+    buttonvisibility.add("visible");
+    /*localStorage.setItem("pokemonData", JSON.stringify(pokemonData));*/
 }
 
 
