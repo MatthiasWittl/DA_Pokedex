@@ -1,4 +1,5 @@
 const buttonvisibility = document.getElementById("open_more_Pokemon_id").classList;
+const searchbarvisibility = document.getElementById("header_input_search_id").classList;
 let renderdPokemonBoxes = 0;
 let promises = [];
 
@@ -40,6 +41,7 @@ async function loadAllReaminingPokemon() {
         pokemonData[(index+firstAmountOfLoadingPokemon)] = {...promise}
     }
     buttonvisibility.add("visible");
+    searchbarvisibility.add("visible");
     
 }
 
