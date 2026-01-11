@@ -1,0 +1,3 @@
+ersten 12 pokemon sind im local storage. Diese bei start der seite abfragen und vergleichen mit Pokemon API.
+Bereits geladene Bilder in den Cache und auslesen bei bedarf.
+Loading Spinner integrieren falls etwas länger dauert.

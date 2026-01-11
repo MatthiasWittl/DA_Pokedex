@@ -3,6 +3,29 @@ const searchbarvisibility = document.getElementById("header_input_search_id").cl
 let renderdPokemonBoxes = 0;
 let promises = [];
 
+
+function checkForLocalStorageData() {
+    if (localStorage.getItem("pokemonData") == null) {
+        getFirstPokemonData();
+    } else if (localStorage.getItem("lastFetch") > 0) {
+        differenceLastToNewFetch();
+        if (differenceLastToNewFetch() >= 24) {
+            getFirstPokemonData();
+        } else {
+            pokemonData = JSON.parse(localStorage.getItem("pokemonData"));
+            loadAllReaminingPokemon();
+            startrender();
+        }
+}}
+
+function differenceLastToNewFetch() {
+    let lastFetch = localStorage.getItem("lastFetch");
+    let timeNow = new Date();
+    let difference = timeNow.getTime() - lastFetch;
+    let differenceInHours = difference / (1000 * 60 * 60);
+    return differenceInHours;
+}
+
 function getFirstPokemonData() {
     for (let index = 0; index < firstAmountOfLoadingPokemon; index++) {
         let promise = fetch ("https://pokeapi.co/api/v2/pokemon/" + (index+1)).then(response => {
@@ -18,9 +41,14 @@ function getFirstPokemonData() {
         .map(({ value }) => value), storageLocalFirstPokemonData(),
         loadAllReaminingPokemon(), startrender());
     })
-    
-    
 } 
+
+function storageLocalFirstPokemonData() {
+    let dateOfFetch = new Date();
+    localStorage.setItem("lastFetch", dateOfFetch.getTime());
+    localStorage.setItem("pokemonData", JSON.stringify(pokemonData));
+}
+
 
 
 function startrender() {
@@ -61,6 +89,6 @@ function renderMorePokemon(){
     }
 }
 
-function storageLocalFirstPokemonData() {
-    localStorage.setItem("pokemonData", JSON.stringify(pokemonData));
-}
+
+
+
