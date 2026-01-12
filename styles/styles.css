@@ -138,6 +138,17 @@ footer {
 
 }
 
+.scroll_to_top {
+    position: fixed;
+    top: 50%vh;
+    right: 8px;
+    bottom: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 5px;
+    visibility: hidden;
+}
+
 footer img {
     height: 40px;
     width: 40px;

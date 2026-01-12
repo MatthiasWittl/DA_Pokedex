@@ -1,5 +1,6 @@
 const buttonvisibility = document.getElementById("open_more_Pokemon_id").classList;
 const searchbarvisibility = document.getElementById("header_input_search_id").classList;
+const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").classList;
 let renderdPokemonBoxes = 0;
 let promises = [];
 
@@ -89,8 +90,12 @@ function renderMorePokemon(){
     }
     let viewpoint = document.querySelector(".pokemon_box:last-child");
         viewpoint.scrollIntoView({behavior: "smooth"});
+        scrollToTopButtonvisibility.add("visible");
 }
 
-
+function scrollToTop() {
+    document.documentElement.scrollTo({top: 0, behavior: "smooth"});
+    document.body.scrollTo({top: 0, behavior: "smooth"});
+}
 
 
