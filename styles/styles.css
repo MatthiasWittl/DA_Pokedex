@@ -124,6 +124,10 @@ footer {
     background-color: transparent;
 }
 
+.open_more_Pokemon:hover {
+    background-color: white;
+}
+
 .open_more_Pokemon img {
     width: 100%;
     height: 100%;
