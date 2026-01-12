@@ -4,6 +4,14 @@ const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").
 let renderdPokemonBoxes = 0;
 let promises = [];
 
+window.addEventListener("scroll", () => {
+    if (window.scrollY < 10) {
+        scrollToTopButtonvisibility.remove("visible");
+    } else if (window.scrollY > 80) {
+        scrollToTopButtonvisibility.add("visible");
+    }
+});
+
 
 function checkForLocalStorageData() {
     if (localStorage.getItem("pokemonData") == null) {

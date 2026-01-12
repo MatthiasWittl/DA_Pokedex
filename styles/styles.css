@@ -147,6 +147,15 @@ footer {
     height: 44px;
     border-radius: 5px;
     visibility: hidden;
+    background-color: transparent;
+    border: 2px white solid;
+    color: white;
+    font-size: 20px;
+}
+
+.scroll_to_top:hover {
+    background-color: #334155;
+    cursor: pointer;
 }
 
 footer img {
