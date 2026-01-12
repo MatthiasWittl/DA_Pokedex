@@ -87,6 +87,9 @@ main {
 
 .pokemon_box_img {
     width: 150px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+
 }
 
 .pokemon_box_type_container {

@@ -87,6 +87,8 @@ function renderMorePokemon(){
         document.getElementById("main_container").innerHTML += renderPokemonBox(index);
         renderdPokemonBoxes++;
     }
+    let viewpoint = document.querySelector(".pokemon_box:last-child");
+        viewpoint.scrollIntoView({behavior: "smooth"});
 }
 
 
