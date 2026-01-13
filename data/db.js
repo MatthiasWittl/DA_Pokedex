@@ -6,7 +6,7 @@ let pokemonData = {};
 
 let firstAmountOfLoadingPokemon = 12; 
 
-let remainingPokemonDataToLoad = 139;
+let remainingPokemonDataToLoad = 1;
 
 let moreAmountOfLoadingPokemon = 12;
 

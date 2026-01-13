@@ -1,7 +1,7 @@
 const buttonvisibility = document.getElementById("open_more_Pokemon_id").classList;
 const searchbarvisibility = document.getElementById("header_input_search_id").classList;
 const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").classList;
-const inputButton = document.getElementById("header_input_search_button");
+const inputSearch = document.querySelector("form");
 let renderdPokemonBoxes = 0;
 let promises = [];
 
@@ -13,7 +13,10 @@ window.addEventListener("scroll", () => {
     }
 });
 
-inputButton.addEventListener("click", event => {
+inputSearch.addEventListener("submit", event => {
+    if(!inputSearch.checkValidity()) {
+        return;
+    }
     event.preventDefault();
     searchPokemonFromInputField();
 });
@@ -114,8 +117,7 @@ function scrollToTop() {
 function searchPokemonFromInputField() {
     let input = document.getElementById("header_input_search_field").value.toLowerCase();
     console.log(input);
-    document.getElementById("header_input_search_field").value = "";
-    
+    document.getElementById("header_input_search_field").value = ""; 
 }
 
 
