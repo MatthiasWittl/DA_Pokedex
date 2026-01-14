@@ -116,8 +116,21 @@ function scrollToTop() {
 
 function searchPokemonFromInputField() {
     let input = document.getElementById("header_input_search_field").value.toLowerCase();
-    console.log(input);
+   
+    for (let index = 0; index < Object.keys(pokemonData).length; index++) {
+        if (input === pokemonData[index].name) {
+            document.getElementById("main_container").innerHTML = "";
+            document.getElementById("main_container").innerHTML += renderPokemonBox(index);
+            /* main Container nur eine Karte und diese im center der Seite anzeigen */
+            break;
+        } else if (index === Object.keys(pokemonData).length -1) {
+            alert("Pokémon nicht gefunden. Bitte überprüfe die Eingabe.");
+
+        }
+    } 
     document.getElementById("header_input_search_field").value = ""; 
+    
+    
 }
 
 
