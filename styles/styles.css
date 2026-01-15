@@ -10,6 +10,14 @@ header {
     height: 80px;
 }
 
+.site_header {
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 28px;
+    cursor: pointer;
+}
+
 .header_input {
     visibility: hidden;
     position: relative;

@@ -86,6 +86,10 @@ async function loadAllReaminingPokemon() {
             } return response.json();
         })
         pokemonData[(index+firstAmountOfLoadingPokemon)] = {...promise}
+        const db = window.indexedDB.open("pokedexDB", 1);
+        const tx = db.transaction("pokemon", "readwrite");
+        const store = tx.objectStore("pokemon");
+        store.put(pokemonData[(index+firstAmountOfLoadingPokemon)]);
     }
     buttonvisibility.add("visible");
     searchbarvisibility.add("visible");
@@ -139,3 +143,8 @@ function changeViewForOneBox() {
     pokedexMainContainer.add("justify_center");
     buttonvisibility.remove("visible");
 }
+
+function reloadSite() {
+    window.location.reload();
+}
+
