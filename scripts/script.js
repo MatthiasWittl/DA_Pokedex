@@ -2,6 +2,7 @@ const buttonvisibility = document.getElementById("open_more_Pokemon_id").classLi
 const searchbarvisibility = document.getElementById("header_input_search_id").classList;
 const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").classList;
 const inputSearch = document.querySelector("form");
+const pokedexMainContainer = document.getElementById("main_container").classList;
 let renderdPokemonBoxes = 0;
 let promises = [];
 
@@ -121,7 +122,7 @@ function searchPokemonFromInputField() {
         if (input === pokemonData[index].name) {
             document.getElementById("main_container").innerHTML = "";
             document.getElementById("main_container").innerHTML += renderPokemonBox(index);
-            /* main Container nur eine Karte und diese im center der Seite anzeigen */
+            changeViewForOneBox();
             break;
         } else if (index === Object.keys(pokemonData).length -1) {
             alert("Pokémon nicht gefunden. Bitte überprüfe die Eingabe.");
@@ -129,8 +130,12 @@ function searchPokemonFromInputField() {
         }
     } 
     document.getElementById("header_input_search_field").value = ""; 
+
     
     
 }
 
-
+function changeViewForOneBox() {
+    pokedexMainContainer.add("justify_center");
+    buttonvisibility.remove("visible");
+}
