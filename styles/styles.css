@@ -148,7 +148,7 @@ footer {
 
 .scroll_to_top {
     position: fixed;
-    top: 50%vh;
+    top: 50vh;
     right: 8px;
     bottom: 24px;
     width: 44px;

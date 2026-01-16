@@ -6,7 +6,7 @@ let pokemonData = {};
 
 let firstAmountOfLoadingPokemon = 12; 
 
-let remainingPokemonDataToLoad = 139; /* 139 max Loading Pokemon 151 - firstAmountOfLoadingPokemon 12 */
+let remainingPokemonDataToLoad = 12; /* 139 max Loading Pokemon 151 - firstAmountOfLoadingPokemon 12 */
 
 let moreAmountOfLoadingPokemon = 12;
 

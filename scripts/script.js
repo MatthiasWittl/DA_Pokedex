@@ -71,6 +71,7 @@ function storageLocalFirstPokemonData() {
 
 
 function startrender() {
+    document.getElementById("main_container").innerHTML = "";
     for (let index = 0; index < Object.keys(pokemonData).length; index++) {
         document.getElementById("main_container").innerHTML += renderPokemonBox(index);
         renderdPokemonBoxes++;
@@ -86,14 +87,10 @@ async function loadAllReaminingPokemon() {
             } return response.json();
         })
         pokemonData[(index+firstAmountOfLoadingPokemon)] = {...promise}
-        const db = window.indexedDB.open("pokedexDB", 1);
-        const tx = db.transaction("pokemon", "readwrite");
-        const store = tx.objectStore("pokemon");
-        store.put(pokemonData[(index+firstAmountOfLoadingPokemon)]);
+        
     }
     buttonvisibility.add("visible");
     searchbarvisibility.add("visible");
-    
 }
 
 
@@ -106,7 +103,7 @@ function renderMorePokemon(){
     } else {
         endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
     }
-    for (let index = renderdPokemonBoxes; index < (endRenderIndex); index++) {
+    for (let index = renderdPokemonBoxes; index < endRenderIndex; index++) {
         document.getElementById("main_container").innerHTML += renderPokemonBox(index);
         renderdPokemonBoxes++;
     }
@@ -133,10 +130,7 @@ function searchPokemonFromInputField() {
 
         }
     } 
-    document.getElementById("header_input_search_field").value = ""; 
-
-    
-    
+    document.getElementById("header_input_search_field").value = "";    
 }
 
 function changeViewForOneBox() {
@@ -144,7 +138,14 @@ function changeViewForOneBox() {
     buttonvisibility.remove("visible");
 }
 
-function reloadSite() {
-    window.location.reload();
+function backToMainSite() {
+    document.getElementById("main_container").innerHTML = "";
+    for (let index = 0; index < renderdPokemonBoxes; index++) {
+        document.getElementById("main_container").innerHTML += renderPokemonBox(index);
+    }
+    pokedexMainContainer.remove("justify_center");
+    buttonvisibility.add("visible");
+
 }
+
 
