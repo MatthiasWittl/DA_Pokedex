@@ -68,15 +68,12 @@ function storageLocalFirstPokemonData() {
     localStorage.setItem("pokemonData", JSON.stringify(pokemonData));
 }
 
-
-
 function startrender() {
     document.getElementById("main_container").innerHTML = "";
     for (let index = 0; index < Object.keys(pokemonData).length; index++) {
         document.getElementById("main_container").innerHTML += renderPokemonBox(index);
         renderdPokemonBoxes++;
-    }
-    
+    }   
 }
 
 async function loadAllReaminingPokemon() {
@@ -92,7 +89,6 @@ async function loadAllReaminingPokemon() {
     buttonvisibility.add("visible");
     searchbarvisibility.add("visible");
 }
-
 
 function renderMorePokemon(){
     let endRenderIndex;
