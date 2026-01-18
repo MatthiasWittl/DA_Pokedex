@@ -13,6 +13,8 @@ function renderPokemonBox(index) {
             <div class="pokemon_box_type_container">
                 <p class="pokemon_box_type_container background_color_by_type_one">${pokemonData[index].types[0].type.name}</p>
             </div>
+                   
+        </section> 
 
         </section>
     ` } else {
@@ -32,11 +34,45 @@ function renderPokemonBox(index) {
                 <p class="pokemon_box_type_container background_color_by_type_one">${pokemonData[index].types[0].type.name}</p>
                 <p class="pokemon_box_type_container background_color_by_type_two">${pokemonData[index].types[1].type.name}</p>                
             </div>
-            
-
         </section>
         `
     }
 
 }
 
+
+/* Dialog Window Base States:
+        <div>${pokemonData[index].stats[0].stat.name} <div>${pokemonData[index].stats[0].base_stat}</div></div>
+        <div>${pokemonData[index].stats[1].stat.name} <div>${pokemonData[index].stats[1].base_stat}</div></div>
+        <div>${pokemonData[index].stats[2].stat.name} <div>${pokemonData[index].stats[2].base_stat}</div></div>
+        <div>${pokemonData[index].stats[3].stat.name} <div>${pokemonData[index].stats[3].base_stat}</div></div>
+        <div>${pokemonData[index].stats[4].stat.name} <div>${pokemonData[index].stats[4].base_stat}</div></div>
+        <div>${pokemonData[index].stats[5].stat.name} <div>${pokemonData[index].stats[5].base_stat}</div></div>
+*/
+
+/* Dialog Window Base Attacks:
+                  <section>
+        <!--Moves // pokemonData[0].moves[0].move.name-->
+        <p>${pokemonData[index].moves[0].move.name}</p>
+        <p>${pokemonData[index].moves[1].move.name}</p>
+        <p>${pokemonData[index].moves[2].move.name}</p>
+        <p>${pokemonData[index].moves[3].move.name}</p>
+        </section>
+
+*/
+
+/* Evolution Chain:
+         <section>
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    </section>
+    neue Anfrage an PokeAPI nach https://pokeapi.co/api/v2/evolution-chain/[z.B. 1 für Bisasam zu Bisaknosp zu Bisaflor]/
+    Die namen aus der Chain holen und mit search in Pokemon Data die Bilder holen.
+
+*/
+
+/* Sound beim öffnen und für Sound und Shiny Seite:
+        cries: pokemonData[0].cries.legacy
+        shiny: pokemonData[0].sprites.front_shiny
+*/
