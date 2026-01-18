@@ -4,6 +4,7 @@ function renderPokemonBox(index) {
         let pokemonTypeColor = typeColors[pokemonType];
         
     return `
+    <button onclick="openDialogBox()">
      <section class="pokemon_box" style= "--type1: ${pokemonTypeColor};">
             <h2 class="pokemon_box_title_glow" >${pokemonData[index].name} #${pokemonData[index].id}</h2>
             <div class="pokemon_box_img_container pkmn_box_color">
@@ -17,6 +18,7 @@ function renderPokemonBox(index) {
         </section> 
 
         </section>
+        </button>
     ` } else {
         let pokemonTypeOne = pokemonData[index].types[0].type.name
         let pokemonTypeColor = typeColors[pokemonTypeOne];
@@ -40,6 +42,26 @@ function renderPokemonBox(index) {
 
 }
 
+function renderSingleViewPokemonBox(index) {
+    return `
+    <section class="pokemon_box" />
+    <h2 class="pokemon_box_title_glow" >${pokemonData[index].name} #${pokemonData[index].id}</h2>
+    <div class="pokemon_box_img_container pkmn_box_color">
+        <img class="pokemon_box_img" 
+        src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="">
+    </div>
+    section class="pokemon_base_stats_container">
+        <div>${pokemonData[index].stats[0].stat.name} <div>${pokemonData[index].stats[0].base_stat}</div></div>
+        <div>${pokemonData[index].stats[1].stat.name} <div>${pokemonData[index].stats[1].base_stat}</div></div>
+        <div>${pokemonData[index].stats[2].stat.name} <div>${pokemonData[index].stats[2].base_stat}</div></div>
+        <div>${pokemonData[index].stats[3].stat.name} <div>${pokemonData[index].stats[3].base_stat}</div></div>
+        <div>${pokemonData[index].stats[4].stat.name} <div>${pokemonData[index].stats[4].base_stat}</div></div>
+        <div>${pokemonData[index].stats[5].stat.name} <div>${pokemonData[index].stats[5].base_stat}</div></div>
+    </section> 
+
+</section>
+`}
+
 
 /* Dialog Window Base States:
         <div>${pokemonData[index].stats[0].stat.name} <div>${pokemonData[index].stats[0].base_stat}</div></div>
@@ -48,6 +70,7 @@ function renderPokemonBox(index) {
         <div>${pokemonData[index].stats[3].stat.name} <div>${pokemonData[index].stats[3].base_stat}</div></div>
         <div>${pokemonData[index].stats[4].stat.name} <div>${pokemonData[index].stats[4].base_stat}</div></div>
         <div>${pokemonData[index].stats[5].stat.name} <div>${pokemonData[index].stats[5].base_stat}</div></div>
+        Zeile 47 /*style= "--type1: ${pokemonTypeColor};"*
 */
 
 /* Dialog Window Base Attacks:
