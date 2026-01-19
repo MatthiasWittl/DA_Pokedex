@@ -85,6 +85,7 @@ main {
 
 .pokedex_container button:hover {
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 .pokemon_box {
@@ -176,6 +177,29 @@ footer {
 .scroll_to_top:hover {
     background-color: #334155;
     cursor: pointer;
+}
+
+.single_view_Pokemon_Dialog_Box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 312px;
+    border: 0.5px solid white;
+    border-radius: 15px;
+}
+
+.single_view_Pokemon_Dialog_Box::backdrop {
+    background-color: rgba(2, 6, 23, 0.75);
+    backdrop-filter: blur(5px);
+}
+
+.single_view_Pokemon_Box {
+    background-color: #1E293B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 footer img {

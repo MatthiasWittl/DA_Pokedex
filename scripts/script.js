@@ -3,7 +3,7 @@ const searchbarvisibility = document.getElementById("header_input_search_id").cl
 const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").classList;
 const inputSearch = document.querySelector("form");
 const pokedexMainContainer = document.getElementById("main_container").classList;
-const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box");
+const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 let renderdPokemonBoxes = 0;
 let promises = [];
 
