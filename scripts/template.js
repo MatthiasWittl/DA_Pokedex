@@ -51,25 +51,52 @@ function renderSingleViewPokemonBox(index) {
         src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="">
     </div>
     <section class="pokemon_base_stats_container">
-        <div>
-            <div>${pokemonData[index].stats[0].stat.name} </div>
-            <div>${pokemonData[index].stats[1].stat.name} </div>
-            <div>${pokemonData[index].stats[2].stat.name} </div>
-            <div>${pokemonData[index].stats[3].stat.name} </div>
-            <div>${pokemonData[index].stats[4].stat.name} </div>
-            <div>${pokemonData[index].stats[5].stat.name} </div>
-        </div>
-        <div>
-            <div>${pokemonData[index].stats[0].base_stat}</div>
-            <div>${pokemonData[index].stats[1].base_stat}</div>
-            <div>${pokemonData[index].stats[2].base_stat}</div>
-            <div>${pokemonData[index].stats[3].base_stat}</div>
-            <div>${pokemonData[index].stats[4].base_stat}</div>
-            <div>${pokemonData[index].stats[5].base_stat}</div>
-        </div>
-    </section> 
+        <dl>
+            <div class="pokemon_base_stats">
+                <dt>${pokemonData[index].stats[0].stat.name}: </dt>
+                <dd class="status_bar_container"> 
+                <div class="status_bar"><span>${pokemonData[index].stats[0].base_stat}</span></div>
+                </dd>
+            </div>
 
-</section>
+            <div class="pokemon_base_stats">
+                <dt>${pokemonData[index].stats[1].stat.name}: </dt>
+                <dd class="status_bar_container"> 
+                <div class="status_bar"><span>${pokemonData[index].stats[1].base_stat}</span></div>
+                </dd>
+            </div>
+
+            <div class="pokemon_base_stats">
+                <dt>${pokemonData[index].stats[2].stat.name}: </dt>
+                <dd class="status_bar_container"> 
+                <div class="status_bar"><span>${pokemonData[index].stats[2].base_stat}</span></div>
+                </dd>
+            </div>
+
+            <div class="pokemon_base_stats">
+                <dt>${pokemonData[index].stats[3].stat.name}: </dt>
+                <dd class="status_bar_container"> 
+                <div class="status_bar"><span>${pokemonData[index].stats[3].base_stat}</span></div>
+                </dd>
+            </div>
+
+            <div class="pokemon_base_stats">
+                <dt>${pokemonData[index].stats[4].stat.name}: </dt>
+                <dd class="status_bar_container"> 
+                <div class="status_bar"><span>${pokemonData[index].stats[4].base_stat}</span></div>
+                </dd>
+            </div>
+
+            <div class="pokemon_base_stats">
+                <dt>${pokemonData[index].stats[5].stat.name}: </dt>
+                <dd class="status_bar_container"> 
+                <div class="status_bar"><span>${pokemonData[index].stats[5].base_stat}</span></div>
+                </dd>
+            </div>
+
+        </dl>
+    </section>
+
 `}
 
 
