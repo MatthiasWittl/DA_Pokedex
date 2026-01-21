@@ -215,6 +215,9 @@ footer {
     border: 2px solid white;
     border-radius: 10px;
 }
+.pokemon_base_stats_container {
+    text-transform: capitalize;
+}
 
 .status_bar {
     width: 45%;
@@ -224,6 +227,7 @@ footer {
 
 .status_bar span {
     margin-left: 5px;
+    color: white;
 }
 
 footer img {
