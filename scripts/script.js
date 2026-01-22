@@ -15,6 +15,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
+
 inputSearch.addEventListener("submit", event => {
     if(!inputSearch.checkValidity()) {
         return;
@@ -145,7 +146,7 @@ function backToMainSite() {
 
 }
 
-function openDialogBox() {
+function openDialogBox(index, colorOne, colorTwo) {
     pokemonBoxDialog.showModal();
-    pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(0);
+    pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
 }
