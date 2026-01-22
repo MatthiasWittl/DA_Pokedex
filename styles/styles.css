@@ -199,7 +199,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 320px;
+
 }
 
 .pokemon_base_stats {
@@ -217,10 +217,11 @@ footer {
 }
 .pokemon_base_stats_container {
     text-transform: capitalize;
+    margin-bottom: 5px;
 }
 
 .status_bar {
-    width: 45%;
+    width: var(--type3, 30%);
     background-color: green;
     border-radius: 10px;
 }
