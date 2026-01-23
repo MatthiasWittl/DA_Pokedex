@@ -44,82 +44,87 @@ function renderPokemonBox(index) {
 
 function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
     return `
-    <section class="single_view_Pokemon_Box" style= "--type1: ${colorOne}; --type2: ${colorTwo};">
-    <h2 class="pokemon_box_title_glow" >${pokemonData[index].name} #${pokemonData[index].id}</h2>
+<section class="single_view_Pokemon_Box" style="--type1: ${colorOne}; --type2: ${colorTwo};">
+    <h2 class="pokemon_box_title_glow">${pokemonData[index].name} #${pokemonData[index].id}</h2>
     <div class="pokemon_box_img_container pkmn_box_color">
-        <img class="pokemon_box_img" 
-        src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="">
+        <img class="pokemon_box_img" src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="">
     </div>
-    <section class="pokemon_base_stats_container">
-        <dl>
-            <div class="pokemon_base_stats">
-                <dt>${pokemonData[index].stats[0].stat.name}: </dt>
-                <dd class="status_bar_container"> 
-                <div class="status_bar" style= "--type3: ${pokemonData[index].stats[0].base_stat}px;"><span>${pokemonData[index].stats[0].base_stat}</span></div>
-                </dd>
-            </div>
-
-            <div class="pokemon_base_stats">
-                <dt>${pokemonData[index].stats[1].stat.name}: </dt>
-                <dd class="status_bar_container"> 
-                <div class="status_bar" style= "--type3: ${pokemonData[index].stats[1].base_stat}px;"><span>${pokemonData[index].stats[1].base_stat}</span></div>
-                </dd>
-            </div>
-
-            <div class="pokemon_base_stats">
-                <dt>${pokemonData[index].stats[2].stat.name}: </dt>
-                <dd class="status_bar_container"> 
-                <div class="status_bar" style= "--type3: ${pokemonData[index].stats[2].base_stat}px;"><span>${pokemonData[index].stats[2].base_stat}</span></div>
-                </dd>
-            </div>
-
-            <div class="pokemon_base_stats">
-                <dt>${pokemonData[index].stats[3].stat.name}: </dt>
-                <dd class="status_bar_container"> 
-                <div class="status_bar" style= "--type3: ${pokemonData[index].stats[3].base_stat}px;"><span>${pokemonData[index].stats[3].base_stat}</span></div>
-                </dd>
-            </div>
-
-            <div class="pokemon_base_stats">
-                <dt>${pokemonData[index].stats[4].stat.name}: </dt>
-                <dd class="status_bar_container"> 
-                <div class="status_bar" style= "--type3: ${pokemonData[index].stats[4].base_stat}px;"><span>${pokemonData[index].stats[4].base_stat}</span></div>
-                </dd>
-            </div>
-
-            <div class="pokemon_base_stats">
-                <dt>${pokemonData[index].stats[5].stat.name}: </dt>
-                <dd class="status_bar_container"> 
-                <div class="status_bar"style= "--type3: ${pokemonData[index].stats[5].base_stat}px;"><span>${pokemonData[index].stats[5].base_stat}</span></div>
-                </dd>
-            </div>
-
-        </dl>
+    <section class="pokemon_single_view_data">
+        <button>&#8592</button> 
+        <section>
+        <h3> Base Attacks </h3>
+        <ul>
+            <li>${pokemonData[index].moves[0].move.name}</li>
+            <li>${pokemonData[index].moves[1].move.name}</li>
+            <li>${pokemonData[index].moves[2].move.name}</li>
+            <li>${pokemonData[index].moves[3].move.name}</li>
+        </ul>
+        </section>
+        <button>&#8594</button>
     </section>
+</section>
 
 `}
 
+/*
+<dl>
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].stats[0].stat.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[0].base_stat}px;">
+            <span>${pokemonData[index].stats[0].base_stat}</span>
+        </div>
+    </dd>
+</div>
 
-/* Dialog Window Base States:
-        <div>${pokemonData[index].stats[0].stat.name} <div>${pokemonData[index].stats[0].base_stat}</div></div>
-        <div>${pokemonData[index].stats[1].stat.name} <div>${pokemonData[index].stats[1].base_stat}</div></div>
-        <div>${pokemonData[index].stats[2].stat.name} <div>${pokemonData[index].stats[2].base_stat}</div></div>
-        <div>${pokemonData[index].stats[3].stat.name} <div>${pokemonData[index].stats[3].base_stat}</div></div>
-        <div>${pokemonData[index].stats[4].stat.name} <div>${pokemonData[index].stats[4].base_stat}</div></div>
-        <div>${pokemonData[index].stats[5].stat.name} <div>${pokemonData[index].stats[5].base_stat}</div></div>
-        Zeile 47 /*style= "--type1: ${pokemonTypeColor};"*
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].stats[1].stat.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[1].base_stat}px;">
+            <span>${pokemonData[index].stats[1].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].stats[2].stat.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[2].base_stat}px;">
+            <span>${pokemonData[index].stats[2].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].stats[3].stat.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[3].base_stat}px;">
+            <span>${pokemonData[index].stats[3].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].stats[4].stat.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[4].base_stat}px;">
+            <span>${pokemonData[index].stats[4].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].stats[5].stat.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[5].base_stat}px;">
+            <span>${pokemonData[index].stats[5].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+</dl>
 */
 
-/* Dialog Window Base Attacks:
-                  <section>
-        <!--Moves // pokemonData[0].moves[0].move.name-->
-        <p>${pokemonData[index].moves[0].move.name}</p>
-        <p>${pokemonData[index].moves[1].move.name}</p>
-        <p>${pokemonData[index].moves[2].move.name}</p>
-        <p>${pokemonData[index].moves[3].move.name}</p>
-        </section>
-
-*/
 
 /* Evolution Chain:
          <section>

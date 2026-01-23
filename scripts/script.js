@@ -6,6 +6,7 @@ const pokedexMainContainer = document.getElementById("main_container").classList
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 let renderdPokemonBoxes = 0;
 let promises = [];
+let promisesMoves = [];
 
 window.addEventListener("scroll", () => {
     if (window.scrollY < 10) {
@@ -149,4 +150,30 @@ function backToMainSite() {
 function openDialogBox(index, colorOne, colorTwo) {
     pokemonBoxDialog.showModal();
     pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
+    getPokemonMoves(index);
 }
+
+function singleViewChangeData() {
+
+}
+
+let movesURL = {};
+function getPokemonMoves(index) {
+    
+    for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
+        let moveName = pokemonData[index].moves[moveIndex].move.url
+        let promise = fetch (moveName).then(response => {
+            if (!response.ok) {
+                retryFetch(moveName);
+            } return response.json();
+        })
+        promisesMoves.push(promise)
+    }
+        Promise.allSettled(promisesMoves)
+        .then(results => {console.log("Alle Move Daten sind geladen", movesURL = results)
+        })
+        /* Erst überprüfen ob der Move schon vorhanden ist wenn nicht laden */
+        /* Darstellung im Dialogfenster Name - Power + Background Color je nach Type */
+}
+        
+    

@@ -215,9 +215,24 @@ footer {
     border: 2px solid white;
     border-radius: 10px;
 }
-.pokemon_base_stats_container {
+.pokemon_single_view_data {
+    display: flex;
+    justify-content: space-between;
+    width: 310px;
     text-transform: capitalize;
-    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.pokemon_single_view_data button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.pokemon_single_view_data ul {
+    list-style-position: inside;
 }
 
 .status_bar {

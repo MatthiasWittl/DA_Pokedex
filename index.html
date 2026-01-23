@@ -7,10 +7,10 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="/styles/main.css">
-    
+
 
     <script src="data/db.js"></script>
- 
+
 </head>
 
 <body onload="checkForLocalStorageData()">
@@ -19,16 +19,9 @@
             <button class="site_header" onclick="backToMainSite()">Pokedex</button>
             <div class="header_input" id="header_input_search_id">
                 <form role="search">
-                    <label for="header_input_search_field" class="sr_only" >Search Pokemon</label>
-                    <input id="header_input_search_field" 
-                    placeholder="Search Pokemon" 
-                    type="text" 
-                    maxlength="12"
-                    inputmode="search" 
-                    minlength="3" 
-                    pattern="[A-Za-z]+" 
-                    title="Min three Letters" 
-                    required/>
+                    <label for="header_input_search_field" class="sr_only">Search Pokemon</label>
+                    <input id="header_input_search_field" placeholder="Search Pokemon" type="text" maxlength="12"
+                        inputmode="search" minlength="3" pattern="[A-Za-z]+" title="Min three Letters" required />
                     <button type="submit" id="header_input_search_button" aria-label="Suchen">&#128269</button>
                 </form>
             </div>
@@ -38,21 +31,26 @@
         <section id="main_container" class="pokedex_container">
 
         </section>
-        <button onclick="renderMorePokemon()" class="open_more_Pokemon" id="open_more_Pokemon_id"><img src="/assets/images/open_pokeball.png" alt=""></button>
+        <button onclick="renderMorePokemon()" class="open_more_Pokemon" id="open_more_Pokemon_id"><img
+                src="/assets/images/open_pokeball.png" alt=""></button>
     </main>
-    <button id="scroll_to_top_id" class="scroll_to_top" aria-label="Scroll to Top" onclick="scrollToTop()" >&#8593;</button>
+    <button id="scroll_to_top_id" class="scroll_to_top" aria-label="Scroll to Top"
+        onclick="scrollToTop()">&#8593;</button>
     <footer>
         <img src="assets/images/MW.png" alt="Publisher Logo">
     </footer>
-    <dialog id="single_view_Pokemon_Dialog_Box_id" class="single_view_Pokemon_Dialog_Box"> <!--Beim öffnen den jeweiligen cries legacy abspielen-->
-    
+    <dialog id="single_view_Pokemon_Dialog_Box_id" class="single_view_Pokemon_Dialog_Box">
+        <!--Beim öffnen den jeweiligen cries legacy abspielen-->
+
     </dialog>
     <script src="scripts/fetchRetry.js"></script>
     <script src="scripts/script.js"></script>
     <script src="scripts/template.js"></script>
 
 </body>
-        
+
+
+
 
 
 </html>
