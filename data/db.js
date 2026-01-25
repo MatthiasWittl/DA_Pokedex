@@ -4,6 +4,8 @@ let pokemonNames1;
 
 let pokemonData = {};
 
+let movesData = {};
+
 let firstAmountOfLoadingPokemon = 12; 
 
 let remainingPokemonDataToLoad = 12; /* 139 max Loading Pokemon 151 - firstAmountOfLoadingPokemon 12 */

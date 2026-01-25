@@ -156,36 +156,29 @@ function openDialogBox(index, colorOne, colorTwo) {
   getPokemonMoves(index);
 }
 
-function singleViewChangeData() {}
-
-let movesURL = {};
 async function getPokemonMoves(index) {
-  if (!movesURL.length == 0) {
+  if (!movesData.length == 0) {
     for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
       let moveURL = pokemonData[index].moves[moveIndex].move.url;
       let moveName = pokemonData[index].moves[moveIndex].move.name;
-      for (let index = 0; index < Object.keys(movesURL).length; index++) {
-        if (moveName === movesURL[index].name) {
-          console.log("Move schon vorhanden", movesURL[index]);
+      for (let index = 0; index < Object.keys(movesData).length; index++) {
+        if (moveName === movesData[index].name) {
+          console.log("Move schon vorhanden", movesData[index]);
           break;
-        } else if (index === Object.keys(movesURL).length - 1) {
+        } else if (index === Object.keys(movesData).length - 1) {
           let promise = await fetch(moveURL).then((response) => {
             if (!response.ok) {
               retryFetch(moveURL);
             }
             return response.json();
           });
-          movesURL[Object.keys(movesURL).length] = {...promise};
+          movesData[Object.keys(movesData).length] = {...promise};
         }
       }
-
-      /* Erst überprüfen ob der Move schon vorhanden ist wenn nicht laden */
-      /* Darstellung im Dialogfenster Name - Power + Background Color je nach Type */
     }
   } else {
     for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
       let moveURL = pokemonData[index].moves[moveIndex].move.url;
-      let moveName = pokemonData[index].moves[moveIndex].move.name;
       let promise = fetch(moveURL).then((response) => {
         if (!response.ok) {
           retryFetch(moveURL);
@@ -197,8 +190,9 @@ async function getPokemonMoves(index) {
     Promise.allSettled(promisesMoves).then((results) => {
       console.log(
         "Alle Move Daten sind geladen",
-        (movesURL = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value))
+        (movesData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value))
       );
     });
   }
 }
+

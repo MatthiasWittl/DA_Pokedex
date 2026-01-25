@@ -53,12 +53,44 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
         <button>&#8592</button> 
         <section>
         <h3> Base Attacks </h3>
-        <ul>
-            <li>${pokemonData[index].moves[0].move.name}</li>
-            <li>${pokemonData[index].moves[1].move.name}</li>
-            <li>${pokemonData[index].moves[2].move.name}</li>
-            <li>${pokemonData[index].moves[3].move.name}</li>
-        </ul>
+<dl>
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].moves[0].move.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[0].base_stat}px;">
+            <span>${pokemonData[index].stats[0].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].moves[1].move.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[1].base_stat}px;">
+            <span>${pokemonData[index].stats[1].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].moves[2].move.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[2].base_stat}px;">
+            <span>${pokemonData[index].stats[2].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+<div class="pokemon_base_stats">
+    <dt>${pokemonData[index].moves[3].move.name}: </dt>
+    <dd class="status_bar_container">
+        <div class="status_bar" style="--type3: ${pokemonData[index].stats[3].base_stat}px;">
+            <span>${pokemonData[index].stats[3].base_stat}</span>
+        </div>
+    </dd>
+</div>
+
+</dl>
         </section>
         <button>&#8594</button>
     </section>
