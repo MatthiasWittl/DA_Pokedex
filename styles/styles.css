@@ -246,6 +246,10 @@ footer {
     color: white;
 }
 
+.pokemon_single_view_moves_section li {
+    background-color: var(--type4, white);
+}
+
 footer img {
     height: 40px;
     width: 40px;

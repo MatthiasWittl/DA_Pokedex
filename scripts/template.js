@@ -51,52 +51,20 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
     </div>
     <section class="pokemon_single_view_data">
         <button>&#8592</button> 
-        <section>
+        <section class="pokemon_single_view_moves_section">
         <h3> Base Attacks </h3>
-<dl>
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].moves[0].move.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[0].base_stat}px;">
-            <span>${pokemonData[index].stats[0].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].moves[1].move.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[1].base_stat}px;">
-            <span>${pokemonData[index].stats[1].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].moves[2].move.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[2].base_stat}px;">
-            <span>${pokemonData[index].stats[2].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].moves[3].move.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[3].base_stat}px;">
-            <span>${pokemonData[index].stats[3].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-</dl>
+        <ul>
+            <li style="--type4: ${typeColors[movesData[0].type.name]}" >${pokemonData[0].moves[0].move.name}</li>
+            <li style="--type4: ${typeColors[movesData[1].type.name]}" >${pokemonData[0].moves[1].move.name}</li>
+            <li style="--type4: ${typeColors[movesData[2].type.name]}" >${pokemonData[0].moves[2].move.name}</li>
+            <li style="--type4: ${typeColors[movesData[3].type.name]}" >${pokemonData[0].moves[3].move.name}</li>
+        </ul>
         </section>
         <button>&#8594</button>
     </section>
 </section>
-
-`}
+`
+}
 
 /*
 <dl>
@@ -173,3 +141,17 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
         cries: pokemonData[0].cries.legacy
         shiny: pokemonData[0].sprites.front_shiny
 */
+
+
+/*
+style="--type4: ${typeColors[movesData[0].type.name]}
+style="--type4: ${typeColors[movesData[1].type.name]}
+style="--type4: ${typeColors[movesData[2].type.name]}
+style="--type4: ${typeColors[movesData[3].type.name]}
+*/
+
+/*
+    <li  >${movesData[0].name}</li>
+            <li  >${movesData[1].name}</li>
+            <li  >${movesData[2].name}</li>
+            <li  >${movesData[3].name}</li>*/

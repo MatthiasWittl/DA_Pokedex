@@ -150,11 +150,14 @@ function backToMainSite() {
   buttonvisibility.add("visible");
 }
 
-function openDialogBox(index, colorOne, colorTwo) {
-  pokemonBoxDialog.showModal();
-  pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
-  getPokemonMoves(index);
+async function openDialogBox(index, colorOne, colorTwo) {
+    await getPokemonMoves(index);
+    pokemonBoxDialog.showModal();
+    pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
+    /* filter function einfügen um die 4 Moves mit den richtigen Farben zu bekommen */
+  
 }
+
 
 async function getPokemonMoves(index) {
   if (!movesData.length == 0) {
@@ -173,9 +176,10 @@ async function getPokemonMoves(index) {
             return response.json();
           });
           movesData[Object.keys(movesData).length] = {...promise};
+          return true;  
         }
       }
-    }
+    };
   } else {
     for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
       let moveURL = pokemonData[index].moves[moveIndex].move.url;
@@ -187,12 +191,13 @@ async function getPokemonMoves(index) {
       });
       promisesMoves.push(promise);
     }
-    Promise.allSettled(promisesMoves).then((results) => {
-      console.log(
-        "Alle Move Daten sind geladen",
-        (movesData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value))
-      );
-    });
+    let results = await Promise.allSettled(promisesMoves)
+    movesData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value)
+    }; return true;
+    
+    
   }
-}
 
+
+/* bei erstellen der Moves von PokemonData nehmen. Die Farben der Moves im nachgang anpassen da mit filter
+der index von movesData nicht mehr mit dem index von PokemonData übereinstimmt.  */
