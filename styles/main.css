@@ -54,4 +54,6 @@
     justify-content: center;
 }
 
-
+.move_backgr_color li{
+    background-color: var(--move_type_color, white);
+}
