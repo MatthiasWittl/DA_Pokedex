@@ -54,10 +54,10 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
         <section class="pokemon_single_view_moves_section">
         <h3> Base Attacks </h3>
         <ul class="move_backgr_color">
-            <li  >${pokemonData[0].moves[0].move.name}</li>
-            <li  >${pokemonData[0].moves[1].move.name}</li>
-            <li  >${pokemonData[0].moves[2].move.name}</li>
-            <li  >${pokemonData[0].moves[3].move.name}</li>
+            <li  >${pokemonData[index].moves[0].move.name}</li>
+            <li  >${pokemonData[index].moves[1].move.name}</li>
+            <li  >${pokemonData[index].moves[2].move.name}</li>
+            <li  >${pokemonData[index].moves[3].move.name}</li>
         </ul>
         </section>
         <button>&#8594</button>

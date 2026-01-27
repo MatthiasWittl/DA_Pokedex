@@ -200,17 +200,15 @@ async function getPokemonMoves(index) {
 function movesTypeColorFilter() {
     const moveList = document.querySelectorAll(".move_backgr_color li");
     moveList.forEach((item) => {
-        console.log("Das ist " + item.innerHTML);
-        
-        /*let movesHtmlName = item.innerHTML
+        let movesHtmlName = item.innerHTML
         for (let i = 0; i < Object.keys(movesData).length;i++) {
             if (movesHtmlName === movesData[i].name) {
                 let colorTypeMove = movesData[i].type.name
                 let movesColor = typeColors[colorTypeMove]
                 console.log(movesColor);
-                item.style.setProperty("--move_type_color", movesColor)   
+                item.style.setProperty("--move_type_color", movesColor)
             } 
-        }*/
+        }
        
     });
    };
