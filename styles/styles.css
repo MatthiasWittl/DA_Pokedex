@@ -250,6 +250,12 @@ footer {
     background-color: var(--type4, white);
 }
 
+.move_icon {
+    width: 25px;
+    object-fit: cover;
+
+}
+
 footer img {
     height: 40px;
     width: 40px;

@@ -56,4 +56,10 @@
 
 .move_backgr_color li{
     background-color: var(--move_type_color, white);
+    list-style: none;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px;
+    border-radius: 10px;
 }
