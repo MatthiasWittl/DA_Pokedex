@@ -167,7 +167,6 @@ async function getPokemonMoves(index) {
       let moveName = pokemonData[index].moves[moveIndex].move.name;
       for (let index = 0; index < Object.keys(movesData).length; index++) {
         if (moveName === movesData[index].name) {
-          console.log("Move schon vorhanden", movesData[index]);
           break;
         } else if (index === Object.keys(movesData).length - 1) {
           let promise = await fetch(moveURL).then((response) => {
@@ -177,10 +176,10 @@ async function getPokemonMoves(index) {
             return response.json();
           });
           movesData[Object.keys(movesData).length] = {...promise};
-          return true;  
+            
         }
       }
-    };
+    }return true;
   } else {
     for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
       let moveURL = pokemonData[index].moves[moveIndex].move.url;
@@ -205,7 +204,6 @@ function movesTypeColorFilter() {
             if (movesHtmlName === movesData[i].name) {
                 let colorTypeMove = movesData[i].type.name
                 let movesColor = typeColors[colorTypeMove]
-                console.log(movesColor);
                 item.style.setProperty("--move_type_color", movesColor)
             } 
         }
