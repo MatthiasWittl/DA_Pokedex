@@ -33,4 +33,3 @@ const typeColors = {
     steel: "#B8B8D0",
     water: "#6890F0"
   };
-
