@@ -152,6 +152,7 @@ function backToMainSite() {
 
 async function openDialogBox(index, colorOne, colorTwo) {
     await getPokemonMoves(index);
+    await getPokemonEvolutionChain(index);
     pokemonBoxDialog.showModal();
     pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
     movesTypeColorFilter();
@@ -213,6 +214,24 @@ function movesTypeColorFilter() {
        
     });
    };
+
+   async function getPokemonEvolutionChain(index) {
+        await getPokemonSpecies(index);
+   }
+
+   async function getPokemonSpecies(index) {
+        let pokemonSpeciesURL = pokemonData[index].species.url;
+        let promise = await fetch(pokemonSpeciesURL).then((response) => {
+            if (!response.ok) {
+              retryFetch(pokemonSpeciesURL);
+            }
+            return response.json();
+          });
+          pokemonSpecies = {...promise}; 
+          console.log(pokemonSpecies.evolution_chain);
+           
+          return pokemonSpecies.evolution_chain
+        }  
 
 
 /* bei erstellen der Moves von PokemonData nehmen. Die Farben der Moves im nachgang anpassen da mit filter

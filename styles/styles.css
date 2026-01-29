@@ -248,6 +248,17 @@ footer {
 
 .pokemon_single_view_moves_section li {
     background-color: var(--type4, white);
+    font-size: 18px;
+}
+
+.pokemon_single_view_moves_section h3 {
+    font-size: 24px;
+    text-align: center;
+    color: #F8f8f8;
+    text-shadow: 0 0 6px 
+    color-mix(in srgb, var(--type1) 80%, white), 0 0 12px 
+    color-mix(in srgb, var(--type1) 80%, transparent);
+
 }
 
 .move_icon {

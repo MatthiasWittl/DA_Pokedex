@@ -51,21 +51,22 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
     </div>
     <section class="pokemon_single_view_data">
         <button>&#8592</button> 
-        <section class="pokemon_single_view_moves_section">
-        <h3> Base Attacks </h3>
-        <ul class="move_backgr_color">
-            <li  ><img src="" class="move_icon">${pokemonData[index].moves[0].move.name}</li>
-            <li  ><img src="" class="move_icon">${pokemonData[index].moves[1].move.name}</li>
-            <li  ><img src="" class="move_icon">${pokemonData[index].moves[2].move.name}</li>
-            <li  ><img src="" class="move_icon">${pokemonData[index].moves[3].move.name}</li>
-        </ul>
-        </section>
-        <button>&#8594</button>
-    </section>
+       /* Evolution Chain:
+         <section>
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    </section>
+    neue Anfrage an PokeAPI nach https://pokeapi.co/api/v2/evolution-chain/[z.B. 1 für Bisasam zu Bisaknosp zu Bisaflor]/
+    Die namen aus der Chain holen und mit search in Pokemon Data die Bilder holen.
+
+*/
 </section>
 `
 }
 
+
+/*Stats Section */
 /*
 <dl>
 <div class="pokemon_base_stats">
@@ -126,16 +127,22 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
 */
 
 
-/* Evolution Chain:
-         <section>
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    </section>
-    neue Anfrage an PokeAPI nach https://pokeapi.co/api/v2/evolution-chain/[z.B. 1 für Bisasam zu Bisaknosp zu Bisaflor]/
-    Die namen aus der Chain holen und mit search in Pokemon Data die Bilder holen.
+/*move Section */
+/* <section class="pokemon_single_view_moves_section">
+        <h3> Base Attacks </h3>
+        <ul class="move_backgr_color">
+            <li  ><img src="" class="move_icon">${pokemonData[index].moves[0].move.name}</li>
+            <li  ><img src="" class="move_icon">${pokemonData[index].moves[1].move.name}</li>
+            <li  ><img src="" class="move_icon">${pokemonData[index].moves[2].move.name}</li>
+            <li  ><img src="" class="move_icon">${pokemonData[index].moves[3].move.name}</li>
+        </ul>
+        </section>
+        <button>&#8594</button>
+    </section>
+    /*
 
-*/
+
+
 
 /* Sound beim öffnen und für Sound und Shiny Seite:
         cries: pokemonData[0].cries.legacy
@@ -143,15 +150,3 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
 */
 
 
-/*
-style="--type4: ${typeColors[movesData[0].type.name]}
-style="--type4: ${typeColors[movesData[1].type.name]}
-style="--type4: ${typeColors[movesData[2].type.name]}
-style="--type4: ${typeColors[movesData[3].type.name]}
-*/
-
-/*
-    <li  >${movesData[0].name}</li>
-            <li  >${movesData[1].name}</li>
-            <li  >${movesData[2].name}</li>
-            <li  >${movesData[3].name}</li>*/
