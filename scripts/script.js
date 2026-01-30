@@ -217,7 +217,16 @@ function movesTypeColorFilter() {
 
    async function getPokemonEvolutionChain(index) {
         await getPokemonSpecies(index);
-   }
+        let promise = await fetch(pokemonSpecies.evolution_chain.url).then((response) => {
+            if (!response.ok) {
+              retryFetch(pokemonSpecies.evolution_chain.url);
+            }
+            return response.json();
+          });
+          pokemonEvolutionChain = {...promise}; 
+          console.log(pokemonEvolutionChain);
+          countEvolutions(pokemonEvolutionChain);
+        }  
 
    async function getPokemonSpecies(index) {
         let pokemonSpeciesURL = pokemonData[index].species.url;
@@ -228,11 +237,28 @@ function movesTypeColorFilter() {
             return response.json();
           });
           pokemonSpecies = {...promise}; 
-          console.log(pokemonSpecies.evolution_chain);
+          console.log(pokemonSpecies.evolution_chain.url);
            
-          return pokemonSpecies.evolution_chain
+          return pokemonSpecies.evolution_chain.url
         }  
 
+    function countEvolutions(evolutionNode) {
+        let count = 0;
+        if (evolutionNode.chain.evolves_to && evolutionNode.chain.evolves_to.length >0) {
+            count += evolutionNode.chain.evolves_to.length;
+/* Fehler in der wiederholung */
+            evolutionNode.chain.evolves_to.forEach(child => {
+                count += countEvolutions(child)
+            })
+        }
+        console.log(count);
+        
+        
+    }
+
+        /* pokemonEvolutionChain.chain.species - erstes Pokemon in der Chain Bulbasaur */
+        /* pokemonEvolutionChain.chain.evolves_to[0].species.name - zweites Pokemon Ivysaur */
+        /* pokemonEvolutionChain.chain.evolves_to[0].evolves_to[0].species.name */
 
 /* bei erstellen der Moves von PokemonData nehmen. Die Farben der Moves im nachgang anpassen da mit filter
 der index von movesData nicht mehr mit dem index von PokemonData übereinstimmt.  */
