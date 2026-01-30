@@ -8,7 +8,7 @@ let movesData = {};
 
 let pokemonSpecies = {};
 
-let pokemonEvolutionChain = {};
+let pokemonEvolutionChain;
 
 let firstAmountOfLoadingPokemon = 12; 
 

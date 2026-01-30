@@ -225,7 +225,11 @@ function movesTypeColorFilter() {
           });
           pokemonEvolutionChain = {...promise}; 
           console.log(pokemonEvolutionChain);
-          countEvolutions(pokemonEvolutionChain);
+          pokemonEvolutionChain = parseEvolutionTree(pokemonEvolutionChain.chain);
+          console.log(pokemonEvolutionChain);
+          
+          
+          
         }  
 
    async function getPokemonSpecies(index) {
@@ -242,19 +246,31 @@ function movesTypeColorFilter() {
           return pokemonSpecies.evolution_chain.url
         }  
 
-    function countEvolutions(evolutionNode) {
+
+        function parseEvolutionTree(chain, list = []) {
+
+          list.push(chain.species.name);
+        
+          chain.evolves_to.forEach(child => {
+            parseEvolutionTree(child, list);
+          });
+        
+          return (list);
+        
+        }
+    /*function countEvolutions(evolutionNode) {
         let count = 0;
-        if (evolutionNode.chain.evolves_to && evolutionNode.chain.evolves_to.length >0) {
-            count += evolutionNode.chain.evolves_to.length;
-/* Fehler in der wiederholung */
-            evolutionNode.chain.evolves_to.forEach(child => {
+        if (evolutionNode.evolves_to && evolutionNode.evolves_to.length >0) {
+            count += evolutionNode.evolves_to.length;
+/* Fehler in der wiederholung 
+            evolutionNode.evolves_to.forEach(child => {
                 count += countEvolutions(child)
             })
         }
         console.log(count);
         
         
-    }
+    }*/
 
         /* pokemonEvolutionChain.chain.species - erstes Pokemon in der Chain Bulbasaur */
         /* pokemonEvolutionChain.chain.evolves_to[0].species.name - zweites Pokemon Ivysaur */
