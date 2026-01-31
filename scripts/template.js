@@ -1,15 +1,15 @@
 function renderPokemonBox(index) {
-    if (pokemonData[index].types.length == 1) {
-        let pokemonType = pokemonData[index].types[0].type.name
-        let pokemonTypeColor = typeColors[pokemonType];
-        
+  if (pokemonData[index].types.length == 1) {
+    let pokemonType = pokemonData[index].types[0].type.name;
+    let pokemonTypeColor = typeColors[pokemonType];
+
     return `
     <button onclick="openDialogBox(${index}, '${pokemonTypeColor}', '${pokemonTypeColor}')">
      <section class="pokemon_box" style= "--type1: ${pokemonTypeColor};">
             <h2 class="pokemon_box_title_glow" id="pokemon_name" >${pokemonData[index].name} #${pokemonData[index].id}</h2>
             <div class="pokemon_box_img_container pkmn_box_color">
                 <img class="pokemon_box_img" 
-                src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="">
+                src="${pokemonData[index].sprites.other["official-artwork"].front_default}" alt="">
             </div>
             <div class="pokemon_box_type_container">
                 <p class="pokemon_box_type_container background_color_by_type_one">${pokemonData[index].types[0].type.name}</p>
@@ -17,19 +17,20 @@ function renderPokemonBox(index) {
                    
         </section>
     </button>
-    ` } else {
-        let pokemonTypeOne = pokemonData[index].types[0].type.name
-        let pokemonTypeColor = typeColors[pokemonTypeOne];
-        let pokemonTypeTwo = pokemonData[index].types[1].type.name
-        let pokemonTypeColorTwo = typeColors[pokemonTypeTwo];
-        return `
+    `;
+  } else {
+    let pokemonTypeOne = pokemonData[index].types[0].type.name;
+    let pokemonTypeColor = typeColors[pokemonTypeOne];
+    let pokemonTypeTwo = pokemonData[index].types[1].type.name;
+    let pokemonTypeColorTwo = typeColors[pokemonTypeTwo];
+    return `
     <button onclick="openDialogBox(${index}, '${pokemonTypeColor}', '${pokemonTypeColorTwo}')">
         <section class="pokemon_box" style= "--type1: ${pokemonTypeColor}; --type2: ${pokemonTypeColorTwo};">
             <h2 class="pokemon_box_title_glow" >${pokemonData[index].name} #${pokemonData[index].id}</h2>
             <div class="pokemon_box_img_container pkmn_box_color grid_area"> 
                 <img 
                     class="pokemon_box_img" 
-                    src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="">
+                    src="${pokemonData[index].sprites.other["official-artwork"].front_default}" alt="">
             </div>
             <div class="pokemon_box_type_container">
                 <p class="pokemon_box_type_container background_color_by_type_one">${pokemonData[index].types[0].type.name}</p>
@@ -37,35 +38,32 @@ function renderPokemonBox(index) {
             </div>
         </section>
     </button>
-        `
-    }
-
+        `;
+  }
 }
 
 function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
-    return `
+  return `
 <section class="single_view_Pokemon_Box" style="--type1: ${colorOne}; --type2: ${colorTwo};">
     <h2 class="pokemon_box_title_glow">${pokemonData[index].name} #${pokemonData[index].id}</h2>
     <div class="pokemon_box_img_container pkmn_box_color">
-        <img class="pokemon_box_img" src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="">
+        <img class="pokemon_box_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}" alt="">
     </div>
+     <h3 class="pkmn_box_details">Evolution-Chain<h3> 
     <section class="pokemon_single_view_data">
-        <button>&#8592</button> 
-        <section id="evolution_chain_img_container">
+        <button>&#8592</button>
+        <section class="evolution_chain_img_container pkmn_box_color" id="evolution_chain_img_container_id">
         </section>
          <button>&#8594</button>
     </section>
-`
+`;
 }
 
 function renderEvolutionChainImg(index) {
-    return `
-    <img class="evolution_img" src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="${pokemonData[index].name}">
-`
+  return `
+    <img class="evolution_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}" alt="${pokemonData[index].name}">
+`;
 }
-
-
-
 
 /*Stats Section */
 /*
@@ -127,7 +125,6 @@ function renderEvolutionChainImg(index) {
 </dl>
 */
 
-
 /*move Section */
 /* <section class="pokemon_single_view_moves_section">
         <h3> Base Attacks </h3>
@@ -149,5 +146,3 @@ function renderEvolutionChainImg(index) {
         cries: pokemonData[0].cries.legacy
         shiny: pokemonData[0].sprites.front_shiny
 */
-
-

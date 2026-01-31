@@ -157,7 +157,6 @@ async function openDialogBox(index, colorOne, colorTwo) {
   pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
   movesTypeColorFilter();
   evoChainImgSet();
-
 }
 
 async function getPokemonMoves(index) {
@@ -251,17 +250,16 @@ function parseEvolutionTree(chain, list = []) {
 }
 
 function evoChainImgSet() {
-  document.getElementById("evolution_chain_img_container").innerHTML = "";
+  document.getElementById("evolution_chain_img_container_id").innerHTML = "";
   for (let i = 0; i < pokemonEvolutionChain.length; i++) {
     let nrPkmnImg = indexFinder(pokemonEvolutionChain[i]);
-    document.getElementById("evolution_chain_img_container").innerHTML += renderEvolutionChainImg(nrPkmnImg);
-}
+    document.getElementById("evolution_chain_img_container_id").innerHTML += renderEvolutionChainImg(nrPkmnImg);
+  }
 }
 
 function indexFinder(evolutionName) {
   for (let indexEvoToData = 0; indexEvoToData < Object.keys(pokemonData).length; indexEvoToData++) {
-    if (evolutionName == pokemonData[indexEvoToData].name)
-      return indexEvoToData;
+    if (evolutionName == pokemonData[indexEvoToData].name) return indexEvoToData;
   }
 }
 
