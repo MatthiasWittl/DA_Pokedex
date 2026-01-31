@@ -155,6 +155,7 @@ async function openDialogBox(index, colorOne, colorTwo) {
   await getPokemonEvolutionChain(index);
   pokemonBoxDialog.showModal();
   pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
+  soundsByOpening(index)
   movesTypeColorFilter();
   evoChainImgSet();
 }
@@ -264,3 +265,13 @@ function indexFinder(evolutionName) {
 }
 
 /* Evolution Cahin Functions End */
+
+/* Sounds by opening Dialog */
+
+function soundsByOpening(index) {
+   let audio = new Audio(pokemonData[index].cries.legacy)
+   audio.volume = 0.1;
+   audio.play();
+}
+
+/* End Sounds by opening */
