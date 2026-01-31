@@ -151,15 +151,14 @@ function backToMainSite() {
 }
 
 async function openDialogBox(index, colorOne, colorTwo) {
-    await getPokemonMoves(index);
-    await getPokemonEvolutionChain(index);
-    pokemonBoxDialog.showModal();
-    pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
-    movesTypeColorFilter();
-    /* filter function einfügen um die 4 Moves mit den richtigen Farben zu bekommen */
-  
-}
+  await getPokemonMoves(index);
+  await getPokemonEvolutionChain(index);
+  pokemonBoxDialog.showModal();
+  pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
+  movesTypeColorFilter();
+  evoChainImgSet();
 
+}
 
 async function getPokemonMoves(index) {
   if (!movesData.length == 0) {
@@ -176,11 +175,11 @@ async function getPokemonMoves(index) {
             }
             return response.json();
           });
-          movesData[Object.keys(movesData).length] = {...promise};
-            
+          movesData[Object.keys(movesData).length] = { ...promise };
         }
       }
-    }return true;
+    }
+    return true;
   } else {
     for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
       let moveURL = pokemonData[index].moves[moveIndex].move.url;
@@ -192,89 +191,78 @@ async function getPokemonMoves(index) {
       });
       promisesMoves.push(promise);
     }
-    let results = await Promise.allSettled(promisesMoves)
-    movesData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value)
-    }; return true;
+    let results = await Promise.allSettled(promisesMoves);
+    movesData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value);
   }
+  return true;
+}
 
 function movesTypeColorFilter() {
-    const moveList = document.querySelectorAll(".move_backgr_color li");
-    moveList.forEach((item) => {
-        let movesHtmlName = item.lastChild.data;
-        let imgSource = item.querySelector("img");
-        for (let i = 0; i < Object.keys(movesData).length;i++) {
-            if (movesHtmlName === movesData[i].name) {
-                let colorTypeMove = movesData[i].type.name;
-                let movesColor = typeColors[colorTypeMove];
-                item.style.setProperty("--move_type_color", movesColor);
-                console.log("assets/moves_images/" + movesData[i].type.name + ".png");
-                imgSource.src = ("assets/moves_images/" + movesData[i].type.name + ".png");
-            } 
-        }
-       
-    });
-   };
+  const moveList = document.querySelectorAll(".move_backgr_color li");
+  moveList.forEach((item) => {
+    let movesHtmlName = item.lastChild.data;
+    let imgSource = item.querySelector("img");
+    for (let i = 0; i < Object.keys(movesData).length; i++) {
+      if (movesHtmlName === movesData[i].name) {
+        let colorTypeMove = movesData[i].type.name;
+        let movesColor = typeColors[colorTypeMove];
+        item.style.setProperty("--move_type_color", movesColor);
+        console.log("assets/moves_images/" + movesData[i].type.name + ".png");
+        imgSource.src = "assets/moves_images/" + movesData[i].type.name + ".png";
+      }
+    }
+  });
+}
 
-   async function getPokemonEvolutionChain(index) {
-        await getPokemonSpecies(index);
-        let promise = await fetch(pokemonSpecies.evolution_chain.url).then((response) => {
-            if (!response.ok) {
-              retryFetch(pokemonSpecies.evolution_chain.url);
-            }
-            return response.json();
-          });
-          pokemonEvolutionChain = {...promise}; 
-          console.log(pokemonEvolutionChain);
-          pokemonEvolutionChain = parseEvolutionTree(pokemonEvolutionChain.chain);
-          console.log(pokemonEvolutionChain);
-          
-          
-          
-        }  
+/* Evolution Chain Functions Start */
 
-   async function getPokemonSpecies(index) {
-        let pokemonSpeciesURL = pokemonData[index].species.url;
-        let promise = await fetch(pokemonSpeciesURL).then((response) => {
-            if (!response.ok) {
-              retryFetch(pokemonSpeciesURL);
-            }
-            return response.json();
-          });
-          pokemonSpecies = {...promise}; 
-          console.log(pokemonSpecies.evolution_chain.url);
-           
-          return pokemonSpecies.evolution_chain.url
-        }  
+async function getPokemonEvolutionChain(index) {
+  await getPokemonSpecies(index);
+  let promise = await fetch(pokemonSpecies.evolution_chain.url).then((response) => {
+    if (!response.ok) {
+      retryFetch(pokemonSpecies.evolution_chain.url);
+    }
+    return response.json();
+  });
+  pokemonEvolutionChain = { ...promise };
+  pokemonEvolutionChain = parseEvolutionTree(pokemonEvolutionChain.chain);
+}
 
+async function getPokemonSpecies(index) {
+  let pokemonSpeciesURL = pokemonData[index].species.url;
+  let promise = await fetch(pokemonSpeciesURL).then((response) => {
+    if (!response.ok) {
+      retryFetch(pokemonSpeciesURL);
+    }
+    return response.json();
+  });
+  pokemonSpecies = { ...promise };
+  return pokemonSpecies.evolution_chain.url;
+}
 
-        function parseEvolutionTree(chain, list = []) {
+function parseEvolutionTree(chain, list = []) {
+  list.push(chain.species.name);
 
-          list.push(chain.species.name);
-        
-          chain.evolves_to.forEach(child => {
-            parseEvolutionTree(child, list);
-          });
-        
-          return (list);
-        
-        }
-    /*function countEvolutions(evolutionNode) {
-        let count = 0;
-        if (evolutionNode.evolves_to && evolutionNode.evolves_to.length >0) {
-            count += evolutionNode.evolves_to.length;
-/* Fehler in der wiederholung 
-            evolutionNode.evolves_to.forEach(child => {
-                count += countEvolutions(child)
-            })
-        }
-        console.log(count);
-        
-        
-    }*/
+  chain.evolves_to.forEach((child) => {
+    parseEvolutionTree(child, list);
+  });
 
-        /* pokemonEvolutionChain.chain.species - erstes Pokemon in der Chain Bulbasaur */
-        /* pokemonEvolutionChain.chain.evolves_to[0].species.name - zweites Pokemon Ivysaur */
-        /* pokemonEvolutionChain.chain.evolves_to[0].evolves_to[0].species.name */
+  return list;
+}
 
-/* bei erstellen der Moves von PokemonData nehmen. Die Farben der Moves im nachgang anpassen da mit filter
-der index von movesData nicht mehr mit dem index von PokemonData übereinstimmt.  */
+function evoChainImgSet() {
+  document.getElementById("evolution_chain_img_container").innerHTML = "";
+  for (let i = 0; i < pokemonEvolutionChain.length; i++) {
+    let nrPkmnImg = indexFinder(pokemonEvolutionChain[i]);
+    document.getElementById("evolution_chain_img_container").innerHTML += renderEvolutionChainImg(nrPkmnImg);
+}
+}
+
+function indexFinder(evolutionName) {
+  for (let indexEvoToData = 0; indexEvoToData < Object.keys(pokemonData).length; indexEvoToData++) {
+    if (evolutionName == pokemonData[indexEvoToData].name)
+      return indexEvoToData;
+  }
+}
+
+/* Evolution Cahin Functions End */

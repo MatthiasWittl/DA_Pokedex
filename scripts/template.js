@@ -51,19 +51,20 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
     </div>
     <section class="pokemon_single_view_data">
         <button>&#8592</button> 
-       /* Evolution Chain:
-         <section>
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    </section>
-    neue Anfrage an PokeAPI nach https://pokeapi.co/api/v2/evolution-chain/[z.B. 1 für Bisasam zu Bisaknosp zu Bisaflor]/
-    Die namen aus der Chain holen und mit search in Pokemon Data die Bilder holen.
-
-*/
-</section>
+        <section id="evolution_chain_img_container">
+        </section>
+         <button>&#8594</button>
+    </section>
 `
 }
+
+function renderEvolutionChainImg(index) {
+    return `
+    <img class="evolution_img" src="${pokemonData[index].sprites.other['official-artwork'].front_default}" alt="${pokemonData[index].name}">
+`
+}
+
+
 
 
 /*Stats Section */
