@@ -1,5 +1,4 @@
 Loading Spinner integrieren falls etwas länger dauert.
-sound des pokemon abspielen bei öffnen der dialog box
 verheiraten der einzelnen Dialog Box detail -base stats -moves -evo chain
 function für buttons für details switch bauen
 Test der funktionen bei allen Pokemon

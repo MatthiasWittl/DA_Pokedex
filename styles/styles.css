@@ -285,3 +285,47 @@ footer img {
     width: 40px;
     border-radius: 50%;
 }
+
+/* Pokedex loading screen start */
+
+#pokedex_loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #080808; 
+    z-index: 9999;
+  }
+
+  #pokedex_loader::before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgb(97, 214, 246) 0%, rgba(255,255,255,0.0) 80%);
+    animation: pulseWhite 4s ease-in-out infinite;
+    z-index: 5; 
+  }
+
+  @keyframes pulseWhite {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.10);
+      opacity: 0.9;
+    }
+  }
+  
+.pokedex_image {
+    width: 280px;
+    max-width: 70vw;
+    z-index: 10;
+    position: relative;
+  }
+  
+
+/* Pokedex Loading screen End */
