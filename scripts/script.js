@@ -4,6 +4,7 @@ const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").
 const inputSearch = document.querySelector("form");
 const pokedexMainContainer = document.getElementById("main_container").classList;
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
+const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
@@ -80,6 +81,7 @@ function startrender() {
     document.getElementById("main_container").innerHTML += renderPokemonBox(index);
     renderdPokemonBoxes++;
   }
+  pokedexLoading.add("display_none");
 }
 
 async function loadAllReaminingPokemon() {
