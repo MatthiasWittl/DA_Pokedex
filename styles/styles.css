@@ -215,6 +215,10 @@ footer {
     gap: 0.75px;
 }
 
+.pokemon_base_stats dt {
+    color: white;
+}
+
 .status_bar_container {
     width: 120px;
     border: 2px solid white;

@@ -157,9 +157,10 @@ async function openDialogBox(index, colorOne, colorTwo) {
   await getPokemonEvolutionChain(index);
   pokemonBoxDialog.showModal();
   pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
+  showBattleStats(index);
   soundsByOpening(index)
   movesTypeColorFilter();
-  evoChainImgSet();
+  /*evoChainImgSet();*/
 }
 
 async function getPokemonMoves(index) {
@@ -197,6 +198,12 @@ async function getPokemonMoves(index) {
     movesData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value);
   }
   return true;
+}
+
+function showBattleStats(index) {
+  for (let iStats = 0; iStats < pokemonData[index].stats.length; iStats++) {
+    document.getElementById("battle_stats_datalist").innerHTML += renderBattleStats(index, iStats);
+  }
 }
 
 function movesTypeColorFilter() {

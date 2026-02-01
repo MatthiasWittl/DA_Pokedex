@@ -47,16 +47,34 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
 <section class="single_view_Pokemon_Box" style="--type1: ${colorOne}; --type2: ${colorTwo};">
     <h2 class="pokemon_box_title_glow">${pokemonData[index].name} #${pokemonData[index].id}</h2>
     <div class="pokemon_box_img_container pkmn_box_color">
-        <img class="pokemon_box_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}" alt="">
+        <img class="pokemon_box_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}"
+            alt="">
     </div>
-     <h3 class="pkmn_box_details">Evolution-Chain<h3> 
+    <h3 class="pkmn_box_details">Battle Stats</h3>
     <section class="pokemon_single_view_data">
         <button>&#8592</button>
-        <section class="evolution_chain_img_container pkmn_box_color" id="evolution_chain_img_container_id">
+        <section id="swap_container">
+            <dl id="battle_stats_datalist">
+
+
+            </dl>
         </section>
-         <button>&#8594</button>
+        <button>&#8594</button>
     </section>
-`;
+    `;
+}
+
+function renderBattleStats(index, iStats) {
+    return `
+    <div class="pokemon_base_stats">
+        <dt>${pokemonData[index].stats[iStats].stat.name}: </dt>
+        <dd class="status_bar_container">
+            <div class="status_bar" style="--type3: ${pokemonData[index].stats[iStats].base_stat}px;">
+                <span>${pokemonData[index].stats[iStats].base_stat}</span>
+            </div>
+        </dd>
+    </div>
+`            
 }
 
 function renderEvolutionChainImg(index) {
@@ -67,62 +85,7 @@ function renderEvolutionChainImg(index) {
 
 /*Stats Section */
 /*
-<dl>
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].stats[0].stat.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[0].base_stat}px;">
-            <span>${pokemonData[index].stats[0].base_stat}</span>
-        </div>
-    </dd>
-</div>
 
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].stats[1].stat.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[1].base_stat}px;">
-            <span>${pokemonData[index].stats[1].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].stats[2].stat.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[2].base_stat}px;">
-            <span>${pokemonData[index].stats[2].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].stats[3].stat.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[3].base_stat}px;">
-            <span>${pokemonData[index].stats[3].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].stats[4].stat.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[4].base_stat}px;">
-            <span>${pokemonData[index].stats[4].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-<div class="pokemon_base_stats">
-    <dt>${pokemonData[index].stats[5].stat.name}: </dt>
-    <dd class="status_bar_container">
-        <div class="status_bar" style="--type3: ${pokemonData[index].stats[5].base_stat}px;">
-            <span>${pokemonData[index].stats[5].base_stat}</span>
-        </div>
-    </dd>
-</div>
-
-</dl>
 */
 
 /*move Section */
@@ -139,10 +102,71 @@ function renderEvolutionChainImg(index) {
     </section>
     /*
 
+    /* Evolution Chain container
+    <section class="evolution_chain_img_container pkmn_box_color" id="evolution_chain_img_container_id">
+        </section>
+
+    /*
 
 
 
 /* Sound beim öffnen und für Sound und Shiny Seite:
         cries: pokemonData[0].cries.legacy
         shiny: pokemonData[0].sprites.front_shiny
+*/
+
+/*
+<div class="pokemon_base_stats">
+<dt>${pokemonData[index].stats[0].stat.name}: </dt>
+<dd class="status_bar_container">
+    <div class="status_bar" style="--type3: ${pokemonData[index].stats[0].base_stat}px;">
+        <span>${pokemonData[index].stats[0].base_stat}</span>
+    </div>
+</dd>
+</div>
+
+<div class="pokemon_base_stats">
+<dt>${pokemonData[index].stats[1].stat.name}: </dt>
+<dd class="status_bar_container">
+    <div class="status_bar" style="--type3: ${pokemonData[index].stats[1].base_stat}px;">
+        <span>${pokemonData[index].stats[1].base_stat}</span>
+    </div>
+</dd>
+</div>
+
+<div class="pokemon_base_stats">
+<dt>${pokemonData[index].stats[2].stat.name}: </dt>
+<dd class="status_bar_container">
+    <div class="status_bar" style="--type3: ${pokemonData[index].stats[2].base_stat}px;">
+        <span>${pokemonData[index].stats[2].base_stat}</span>
+    </div>
+</dd>
+</div>
+
+<div class="pokemon_base_stats">
+<dt>${pokemonData[index].stats[3].stat.name}: </dt>
+<dd class="status_bar_container">
+    <div class="status_bar" style="--type3: ${pokemonData[index].stats[3].base_stat}px;">
+        <span>${pokemonData[index].stats[3].base_stat}</span>
+    </div>
+</dd>
+</div>
+
+<div class="pokemon_base_stats">
+<dt>${pokemonData[index].stats[4].stat.name}: </dt>
+<dd class="status_bar_container">
+    <div class="status_bar" style="--type3: ${pokemonData[index].stats[4].base_stat}px;">
+        <span>${pokemonData[index].stats[4].base_stat}</span>
+    </div>
+</dd>
+</div>
+
+<div class="pokemon_base_stats">
+<dt>${pokemonData[index].stats[5].stat.name}: </dt>
+<dd class="status_bar_container">
+    <div class="status_bar" style="--type3: ${pokemonData[index].stats[5].base_stat}px;">
+        <span>${pokemonData[index].stats[5].base_stat}</span>
+    </div>
+</dd>
+</div>
 */

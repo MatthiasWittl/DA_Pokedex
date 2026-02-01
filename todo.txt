@@ -1,6 +1,8 @@
-Loading Spinner integrieren falls etwas länger dauert.
+Loading Spinner integrieren falls etwas länger dauert. -half solved -
 verheiraten der einzelnen Dialog Box detail -base stats -moves -evo chain
 function für buttons für details switch bauen
 Test der funktionen bei allen Pokemon
+
+--render Pokemon Stats alle 4 mit for schleife--
 
 responsiv styling
