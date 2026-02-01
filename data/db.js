@@ -37,3 +37,20 @@ const typeColors = {
     steel: "#B8B8D0",
     water: "#6890F0"
   };
+
+  let singleViewCount = 0;
+
+  const singleViewSections = {
+    0: {
+      header: "Battle Stats",
+      render: showBattleStats
+    },
+    1: {
+      header: "Moves",
+      render: "unknown"
+    },
+    2: {
+      header: "Evolution Chain",
+      render: evoChainImgSet
+    }
+  };

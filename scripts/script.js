@@ -5,6 +5,7 @@ const inputSearch = document.querySelector("form");
 const pokedexMainContainer = document.getElementById("main_container").classList;
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
+let swapContainerClasses;
 let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
@@ -160,7 +161,8 @@ async function openDialogBox(index, colorOne, colorTwo) {
   showBattleStats(index);
   soundsByOpening(index)
   movesTypeColorFilter();
-  /*evoChainImgSet();*/
+  swapContainerClasses = document.getElementById("swap_container").classList;
+
 }
 
 async function getPokemonMoves(index) {
@@ -260,11 +262,12 @@ function parseEvolutionTree(chain, list = []) {
 }
 
 function evoChainImgSet() {
-  document.getElementById("evolution_chain_img_container_id").innerHTML = "";
+  document.getElementById("swap_container").innerHTML = "";
   for (let i = 0; i < pokemonEvolutionChain.length; i++) {
     let nrPkmnImg = indexFinder(pokemonEvolutionChain[i]);
-    document.getElementById("evolution_chain_img_container_id").innerHTML += renderEvolutionChainImg(nrPkmnImg);
+    document.getElementById("swap_container").innerHTML += renderEvolutionChainImg(nrPkmnImg);
   }
+  swapContainerClasses.add("evolution_chain_img_container", "pkmn_box_color")
 }
 
 function indexFinder(evolutionName) {
@@ -273,7 +276,7 @@ function indexFinder(evolutionName) {
   }
 }
 
-/* Evolution Cahin Functions End */
+/* Evolution Chain Functions End */
 
 /* Sounds by opening Dialog */
 
@@ -284,3 +287,19 @@ function soundsByOpening(index) {
 }
 
 /* End Sounds by opening */
+
+/* Switch between Sections */
+
+function sectionSwitch(way, pkmnIndex) {
+    if (way == "previous") {
+      if (singleViewCount == 0)
+        singleViewCount = singleViewSections.length;
+        singleViewSections[2].render();
+      
+    } else {
+      console.log(way);
+      
+    }
+}
+
+/* Switch between Sections End */

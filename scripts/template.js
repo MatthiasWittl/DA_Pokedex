@@ -50,16 +50,14 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
         <img class="pokemon_box_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}"
             alt="">
     </div>
-    <h3 class="pkmn_box_details">Battle Stats</h3>
+    <h3 class="pkmn_box_details" id="">Battle Stats</h3>
     <section class="pokemon_single_view_data">
-        <button>&#8592</button>
+        <button onclick="sectionSwitch('previous', ${index})" >&#8592</button>
         <section id="swap_container">
             <dl id="battle_stats_datalist">
-
-
             </dl>
         </section>
-        <button>&#8594</button>
+        <button onclick="sectionSwitch('next', ${index})">&#8594</button>
     </section>
     `;
 }
@@ -108,12 +106,6 @@ function renderEvolutionChainImg(index) {
 
     /*
 
-
-
-/* Sound beim öffnen und für Sound und Shiny Seite:
-        cries: pokemonData[0].cries.legacy
-        shiny: pokemonData[0].sprites.front_shiny
-*/
 
 /*
 <div class="pokemon_base_stats">
