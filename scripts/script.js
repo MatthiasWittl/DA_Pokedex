@@ -6,6 +6,7 @@ const pokedexMainContainer = document.getElementById("main_container").classList
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 let swapContainerClasses;
+let swapContainerHeader;
 let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
@@ -162,7 +163,6 @@ async function openDialogBox(index, colorOne, colorTwo) {
   soundsByOpening(index)
   movesTypeColorFilter();
   swapContainerClasses = document.getElementById("swap_container").classList;
-
 }
 
 async function getPokemonMoves(index) {
@@ -206,6 +206,10 @@ function showBattleStats(index) {
   for (let iStats = 0; iStats < pokemonData[index].stats.length; iStats++) {
     document.getElementById("battle_stats_datalist").innerHTML += renderBattleStats(index, iStats);
   }
+}
+
+function showPkmnMoves(index) {
+  document.getElementById("swap_container").innerHTML += renderMoves(index);
 }
 
 function movesTypeColorFilter() {
@@ -278,6 +282,7 @@ function indexFinder(evolutionName) {
 
 /* Evolution Chain Functions End */
 
+
 /* Sounds by opening Dialog */
 
 function soundsByOpening(index) {
@@ -291,15 +296,24 @@ function soundsByOpening(index) {
 /* Switch between Sections */
 
 function sectionSwitch(way, pkmnIndex) {
-    if (way == "previous") {
-      if (singleViewCount == 0)
-        singleViewCount = singleViewSections.length;
-        singleViewSections[2].render();
+    document.getElementById("swap_container").innerHTML = "";
+    if (way == "previous" && singleViewCount == 0) {
+        singleViewCount = maxModulesSingleView;
+        singleViewSections[maxModulesSingleView].render();
       
+    } else if (way == next && singleViewCount == maxModulesSingleView) {
+      singleViewCount = 0;
+      singleViewSection[0].render(pkmnIndex);
     } else {
-      console.log(way);
-      
+      if (way == next) {
+        singleViewCount ++;
+      } else {
+        singleViewCount --;
+      }
+      singleViewSection[singleViewCount].render(pkmnIndex);
     }
+
+    document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
 }
 
 /* Switch between Sections End */

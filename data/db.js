@@ -18,6 +18,10 @@ let moreAmountOfLoadingPokemon = 12;
 
 let maxAmountofPokemonFromAPI = 150; /* Anzahl Pokemon Standard Edition 151, Liste startet bei 0 deshalb 150*/
 
+let singleViewCount = 0;
+
+const maxModulesSingleView = Object.keys(singleViewSections).length -1;
+
 const typeColors = {
     bug: "#A8B820",
     dragon: "#7038F8",
@@ -38,7 +42,7 @@ const typeColors = {
     water: "#6890F0"
   };
 
-  let singleViewCount = 0;
+  
 
   const singleViewSections = {
     0: {

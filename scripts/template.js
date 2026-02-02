@@ -50,7 +50,7 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
         <img class="pokemon_box_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}"
             alt="">
     </div>
-    <h3 class="pkmn_box_details" id="">Battle Stats</h3>
+    <h3 class="pkmn_box_details" id="swap_container_header">Battle Stats</h3>
     <section class="pokemon_single_view_data">
         <button onclick="sectionSwitch('previous', ${index})" >&#8592</button>
         <section id="swap_container">

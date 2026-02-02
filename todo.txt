@@ -6,3 +6,7 @@ Test der funktionen bei allen Pokemon
 --render Pokemon Stats alle 4 mit for schleife--
 
 responsiv styling
+
+stand:
+-wechsel auf Evo Chain funktioniert 
+-h3 als section überschrift id definieren und changen für evo chain
