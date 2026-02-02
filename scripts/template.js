@@ -81,6 +81,18 @@ function renderEvolutionChainImg(index) {
 `;
 }
 
+function renderMoves(index) {
+    return `
+    <section class="pokemon_single_view_moves_section">
+        <ul class="move_backgr_color">
+            <li  ><img src="" class="move_icon">${pokemonData[index].moves[0].move.name}</li>
+            <li  ><img src="" class="move_icon">${pokemonData[index].moves[1].move.name}</li>
+            <li  ><img src="" class="move_icon">${pokemonData[index].moves[2].move.name}</li>
+            <li  ><img src="" class="move_icon">${pokemonData[index].moves[3].move.name}</li>
+        </ul>
+        </section>
+`;
+}
 /*Stats Section */
 /*
 
@@ -88,7 +100,6 @@ function renderEvolutionChainImg(index) {
 
 /*move Section */
 /* <section class="pokemon_single_view_moves_section">
-        <h3> Base Attacks </h3>
         <ul class="move_backgr_color">
             <li  ><img src="" class="move_icon">${pokemonData[index].moves[0].move.name}</li>
             <li  ><img src="" class="move_icon">${pokemonData[index].moves[1].move.name}</li>

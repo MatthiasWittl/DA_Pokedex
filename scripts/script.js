@@ -10,6 +10,22 @@ let swapContainerHeader;
 let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
+const singleViewSections = {
+  0: {
+    header: "Battle Stats",
+    render: showBattleStats
+  },
+  1: {
+    header: "Moves",
+    render: showPkmnMoves
+  },
+  2: {
+    header: "Evolution Chain",
+    render: evoChainImgSet
+  }
+};
+
+const maxModulesSingleView = Object.keys(singleViewSections).length -1;
 
 window.addEventListener("scroll", () => {
   if (window.scrollY < 10) {
@@ -161,7 +177,6 @@ async function openDialogBox(index, colorOne, colorTwo) {
   pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
   showBattleStats(index);
   soundsByOpening(index)
-  movesTypeColorFilter();
   swapContainerClasses = document.getElementById("swap_container").classList;
 }
 
@@ -210,6 +225,7 @@ function showBattleStats(index) {
 
 function showPkmnMoves(index) {
   document.getElementById("swap_container").innerHTML += renderMoves(index);
+  movesTypeColorFilter();
 }
 
 function movesTypeColorFilter() {
@@ -301,16 +317,16 @@ function sectionSwitch(way, pkmnIndex) {
         singleViewCount = maxModulesSingleView;
         singleViewSections[maxModulesSingleView].render();
       
-    } else if (way == next && singleViewCount == maxModulesSingleView) {
+    } else if (way == "next" && singleViewCount == maxModulesSingleView) {
       singleViewCount = 0;
       singleViewSection[0].render(pkmnIndex);
     } else {
-      if (way == next) {
+      if (way == "next") {
         singleViewCount ++;
       } else {
         singleViewCount --;
       }
-      singleViewSection[singleViewCount].render(pkmnIndex);
+      singleViewSections[singleViewCount].render(pkmnIndex);
     }
 
     document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;

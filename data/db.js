@@ -20,7 +20,7 @@ let maxAmountofPokemonFromAPI = 150; /* Anzahl Pokemon Standard Edition 151, Lis
 
 let singleViewCount = 0;
 
-const maxModulesSingleView = Object.keys(singleViewSections).length -1;
+
 
 const typeColors = {
     bug: "#A8B820",
@@ -44,17 +44,3 @@ const typeColors = {
 
   
 
-  const singleViewSections = {
-    0: {
-      header: "Battle Stats",
-      render: showBattleStats
-    },
-    1: {
-      header: "Moves",
-      render: "unknown"
-    },
-    2: {
-      header: "Evolution Chain",
-      render: evoChainImgSet
-    }
-  };
