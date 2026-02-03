@@ -62,6 +62,13 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
     `;
 }
 
+function renderBattleStatsContainer() {
+    return `
+    <dl id="battle_stats_datalist">
+    </dl>
+    `
+}
+
 function renderBattleStats(index, iStats) {
     return `
     <div class="pokemon_base_stats">

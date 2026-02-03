@@ -218,6 +218,7 @@ async function getPokemonMoves(index) {
 }
 
 function showBattleStats(index) {
+  document.getElementById("swap_container").innerHTML += renderBattleStatsContainer();
   for (let iStats = 0; iStats < pokemonData[index].stats.length; iStats++) {
     document.getElementById("battle_stats_datalist").innerHTML += renderBattleStats(index, iStats);
   }
@@ -313,23 +314,24 @@ function soundsByOpening(index) {
 
 function sectionSwitch(way, pkmnIndex) {
     document.getElementById("swap_container").innerHTML = "";
+    swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color")
+    console.log("Anfang" + singleViewCount);
+    
     if (way == "previous" && singleViewCount == 0) {
         singleViewCount = maxModulesSingleView;
-        singleViewSections[maxModulesSingleView].render();
-      
     } else if (way == "next" && singleViewCount == maxModulesSingleView) {
       singleViewCount = 0;
-      singleViewSection[0].render(pkmnIndex);
     } else {
       if (way == "next") {
         singleViewCount ++;
       } else {
         singleViewCount --;
       }
-      singleViewSections[singleViewCount].render(pkmnIndex);
     }
-
+    singleViewSections[singleViewCount].render(pkmnIndex);
     document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
+    console.log("Ende" + singleViewCount);
+    
 }
 
 /* Switch between Sections End */
