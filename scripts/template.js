@@ -4,7 +4,7 @@ function renderPokemonBox(index) {
     let pokemonTypeColor = typeColors[pokemonType];
 
     return `
-    <button onclick="openDialogBox(${index}, '${pokemonTypeColor}', '${pokemonTypeColor}')">
+    <button class="only_view" onclick="openDialogBox(${index}, '${pokemonTypeColor}', '${pokemonTypeColor}')">
      <section class="pokemon_box" style= "--type1: ${pokemonTypeColor};">
             <h2 class="pokemon_box_title_glow" id="pokemon_name" >${pokemonData[index].name} #${pokemonData[index].id}</h2>
             <div class="pokemon_box_img_container pkmn_box_color">
@@ -24,7 +24,7 @@ function renderPokemonBox(index) {
     let pokemonTypeTwo = pokemonData[index].types[1].type.name;
     let pokemonTypeColorTwo = typeColors[pokemonTypeTwo];
     return `
-    <button onclick="openDialogBox(${index}, '${pokemonTypeColor}', '${pokemonTypeColorTwo}')">
+    <button class="only_view" onclick="openDialogBox(${index}, '${pokemonTypeColor}', '${pokemonTypeColorTwo}')">
         <section class="pokemon_box" style= "--type1: ${pokemonTypeColor}; --type2: ${pokemonTypeColorTwo};">
             <h2 class="pokemon_box_title_glow" >${pokemonData[index].name} #${pokemonData[index].id}</h2>
             <div class="pokemon_box_img_container pkmn_box_color grid_area"> 
