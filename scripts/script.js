@@ -13,19 +13,19 @@ let promisesMoves = [];
 const singleViewSections = {
   0: {
     header: "Battle Stats",
-    render: showBattleStats
+    render: showBattleStats,
   },
   1: {
     header: "Moves",
-    render: showPkmnMoves
+    render: showPkmnMoves,
   },
   2: {
     header: "Evolution Chain",
-    render: evoChainImgSet
-  }
+    render: evoChainImgSet,
+  },
 };
 
-const maxModulesSingleView = Object.keys(singleViewSections).length -1;
+const maxModulesSingleView = Object.keys(singleViewSections).length - 1;
 
 window.addEventListener("scroll", () => {
   if (window.scrollY < 10) {
@@ -176,7 +176,7 @@ async function openDialogBox(index, colorOne, colorTwo) {
   pokemonBoxDialog.showModal();
   pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
   showBattleStats(index);
-  soundsByOpening(index)
+  soundsByOpening(index);
   swapContainerClasses = document.getElementById("swap_container").classList;
 }
 
@@ -239,7 +239,6 @@ function movesTypeColorFilter() {
         let colorTypeMove = movesData[i].type.name;
         let movesColor = typeColors[colorTypeMove];
         item.style.setProperty("--move_type_color", movesColor);
-        console.log("assets/moves_images/" + movesData[i].type.name + ".png");
         imgSource.src = "assets/moves_images/" + movesData[i].type.name + ".png";
       }
     }
@@ -288,7 +287,7 @@ function evoChainImgSet() {
     let nrPkmnImg = indexFinder(pokemonEvolutionChain[i]);
     document.getElementById("swap_container").innerHTML += renderEvolutionChainImg(nrPkmnImg);
   }
-  swapContainerClasses.add("evolution_chain_img_container", "pkmn_box_color")
+  swapContainerClasses.add("evolution_chain_img_container", "pkmn_box_color");
 }
 
 function indexFinder(evolutionName) {
@@ -299,13 +298,12 @@ function indexFinder(evolutionName) {
 
 /* Evolution Chain Functions End */
 
-
 /* Sounds by opening Dialog */
 
 function soundsByOpening(index) {
-   let audio = new Audio(pokemonData[index].cries.legacy)
-   audio.volume = 0.1;
-   audio.play();
+  let audio = new Audio(pokemonData[index].cries.legacy);
+  audio.volume = 0.1;
+  audio.play();
 }
 
 /* End Sounds by opening */
@@ -313,25 +311,22 @@ function soundsByOpening(index) {
 /* Switch between Sections */
 
 function sectionSwitch(way, pkmnIndex) {
-    document.getElementById("swap_container").innerHTML = "";
-    swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color")
-    console.log("Anfang" + singleViewCount);
-    
-    if (way == "previous" && singleViewCount == 0) {
-        singleViewCount = maxModulesSingleView;
-    } else if (way == "next" && singleViewCount == maxModulesSingleView) {
-      singleViewCount = 0;
+  document.getElementById("swap_container").innerHTML = "";
+  swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
+
+  if (way == "previous" && singleViewCount == 0) {
+    singleViewCount = maxModulesSingleView;
+  } else if (way == "next" && singleViewCount == maxModulesSingleView) {
+    singleViewCount = 0;
+  } else {
+    if (way == "next") {
+      singleViewCount++;
     } else {
-      if (way == "next") {
-        singleViewCount ++;
-      } else {
-        singleViewCount --;
-      }
+      singleViewCount--;
     }
-    singleViewSections[singleViewCount].render(pkmnIndex);
-    document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
-    console.log("Ende" + singleViewCount);
-    
+  }
+  singleViewSections[singleViewCount].render(pkmnIndex);
+  document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
 }
 
 /* Switch between Sections End */

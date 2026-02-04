@@ -276,8 +276,11 @@ footer {
 }
 
 .evolution_chain_img_container {
+    width: 100%;
     padding: 8px;
     border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .evolution_img {
@@ -298,38 +301,41 @@ footer img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #080808; 
+    background-color: #080808;
     z-index: 9999;
-  }
+}
 
-  .pokedex_loader_container::before {
+.pokedex_loader_container::before {
     content: "";
     position: absolute;
     width: 320px;
     height: 320px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, rgb(97, 214, 246) 0%, rgba(255,255,255,0.0) 80%);
+    background: radial-gradient(circle at center, rgb(97, 214, 246) 0%, rgba(255, 255, 255, 0.0) 80%);
     animation: pulseWhite 4s ease-in-out infinite;
-    z-index: 5; 
-  }
+    z-index: 5;
+}
 
-  @keyframes pulseWhite {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
+@keyframes pulseWhite {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
     }
+
     50% {
-      transform: scale(1.10);
-      opacity: 0.9;
+        transform: scale(1.10);
+        opacity: 0.9;
     }
-  }
-  
+}
+
 .pokedex_image {
     width: 280px;
     max-width: 70vw;
     z-index: 10;
     position: relative;
-  }
-  
+}
+
 
 /* Pokedex Loading screen End */

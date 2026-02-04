@@ -6,8 +6,7 @@
 
 
 .pkmn_box_color {
-    background: linear-gradient(135deg, var(--type1), var(--type2, var(--type1))
-    );
+    background: linear-gradient(135deg, var(--type1), var(--type2, var(--type1)));
 }
 
 .pokemon_box_title_glow {
@@ -17,8 +16,8 @@
     text-transform: capitalize;
     color: #F8f8f8;
     text-shadow:
-    0 0 6px color-mix(in srgb, var(--type1) 80%, white),
-    0 0 12px color-mix(in srgb, var(--type1) 80%, transparent);
+        0 0 6px color-mix(in srgb, var(--type1) 80%, white),
+        0 0 12px color-mix(in srgb, var(--type1) 80%, transparent);
 
 }
 
@@ -54,7 +53,7 @@
     justify-content: center;
 }
 
-.move_backgr_color li{
+.move_backgr_color li {
     background-color: var(--move_type_color, white);
     list-style: none;
     align-items: center;
