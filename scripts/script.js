@@ -274,29 +274,11 @@ async function getPokemonSpecies(index) {
 function parseEvolutionTree(chain, list = []) {
   if (chain.is_baby == false) {
     console.log("kein Baby");
-
     list.push(chain.species.name);
-
-    chain.evolves_to.forEach((child) => {
-      parseEvolutionTree(child, list);
-    });
-  } else {
-    console.log("ja baby");
-    chain.evolves_to.forEach((child) => {
-      parseEvolutionTree(child, list);
-    });
-    
-    
   }
-  /*
-  console.log(chain.is_baby);
-  
-  list.push(chain.species.name);
-
-  chain.evolves_to.forEach((child) => {
-    parseEvolutionTree(child, list);
-  }); */
-
+    chain.evolves_to.forEach((child) => {
+      parseEvolutionTree(child, list);
+    });8
   return list;
 }
 
