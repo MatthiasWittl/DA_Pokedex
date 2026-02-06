@@ -340,5 +340,11 @@ pokemonBoxDialog.addEventListener("keydown", (e) => {
   }
 })
 
+pokemonBoxDialog.addEventListener("click", (e) => {
+  if (e.target == pokemonBoxDialog) {
+    pokemonBoxDialog.close();
+  }
+})
+
 
 /* Switch between Sections End */
