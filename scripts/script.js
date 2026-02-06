@@ -5,6 +5,7 @@ const inputSearch = document.querySelector("form");
 const pokedexMainContainer = document.getElementById("main_container").classList;
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
+let singleViewPkmnIndex;
 let swapContainerClasses;
 let swapContainerHeader;
 let renderdPokemonBoxes = 0;
@@ -171,6 +172,7 @@ function backToMainSite() {
 }
 
 async function openDialogBox(index, colorOne, colorTwo) {
+  singleViewPkmnIndex = index;
   await getPokemonMoves(index);
   await getPokemonEvolutionChain(index);
   pokemonBoxDialog.showModal();
@@ -329,5 +331,14 @@ function sectionSwitch(way, pkmnIndex) {
   singleViewSections[singleViewCount].render(pkmnIndex);
   document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
 }
+
+pokemonBoxDialog.addEventListener("keydown", (e) => {
+  if (e.key == "ArrowLeft") {
+    sectionSwitch("previous", singleViewPkmnIndex);
+  } else if (e.key == "ArrowRight") {
+    sectionSwitch("next", singleViewPkmnIndex); 
+  }
+})
+
 
 /* Switch between Sections End */
