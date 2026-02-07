@@ -199,6 +199,24 @@ footer {
 
 }
 
+.closing_Button_dialog_Box {
+    position: absolute;
+    left: 271px;
+    border: 0.5px solid white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 30px;
+    color: var(--type1, red);
+    background-color: transparent;
+    top: 4px;
+
+}
+
+.closing_Button_dialog_Box:hover {
+    cursor: pointer;
+}
+
 .pkmn_box_details {
     font-size: 20px;
     color: #F8f8f8;

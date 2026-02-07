@@ -44,6 +44,7 @@ function renderPokemonBox(index) {
 
 function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
   return `
+  <button onclick="closeDialog()" style="--type1: ${colorOne}" class="closing_Button_dialog_Box">X</button>
 <section class="single_view_Pokemon_Box" style="--type1: ${colorOne}; --type2: ${colorTwo};">
     <h2 class="pokemon_box_title_glow">${pokemonData[index].name} #${pokemonData[index].id}</h2>
     <div class="pokemon_box_img_container pkmn_box_color">

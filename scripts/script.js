@@ -183,6 +183,10 @@ async function openDialogBox(index, colorOne, colorTwo) {
   pokemonBoxDialog.focus();
 }
 
+function closeDialog() {
+  pokemonBoxDialog.close();
+}
+
 async function getPokemonMoves(index) {
   if (!movesData.length == 0) {
     for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
@@ -348,7 +352,7 @@ pokemonBoxDialog.addEventListener("keydown", (e) => {
 
 pokemonBoxDialog.addEventListener("click", (e) => {
   if (e.target == pokemonBoxDialog) {
-    pokemonBoxDialog.close();
+    closeDialog();
   }
 })
 

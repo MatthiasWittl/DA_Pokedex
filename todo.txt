@@ -5,6 +5,3 @@ Test der funktionen bei allen Pokemon
 
 responsiv styling
 
-technik:
--Raichu / Pixie / Duflor sprites können nicht gelesen werden?? 
-         --Zubat Probleme Evo Chain // dritte Entwicklung????
