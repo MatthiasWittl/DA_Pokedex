@@ -180,6 +180,7 @@ async function openDialogBox(index, colorOne, colorTwo) {
   showBattleStats(index);
   soundsByOpening(index);
   swapContainerClasses = document.getElementById("swap_container").classList;
+  pokemonBoxDialog.focus();
 }
 
 async function getPokemonMoves(index) {
@@ -274,13 +275,14 @@ async function getPokemonSpecies(index) {
 }
 
 function parseEvolutionTree(chain, list = []) {
-  if (chain.is_baby == false) {
-    console.log("kein Baby");
+  let pkmnNumberURL = chain.species.url.split("/").filter(Boolean);
+  pkmnNumberURL = Number(pkmnNumberURL[pkmnNumberURL.length -1])  
+  if (pkmnNumberURL <= maxEvoChainShow) {
     list.push(chain.species.name);
   }
     chain.evolves_to.forEach((child) => {
       parseEvolutionTree(child, list);
-    });8
+    });
   return list;
 }
 
@@ -331,6 +333,10 @@ function sectionSwitch(way, pkmnIndex) {
   singleViewSections[singleViewCount].render(pkmnIndex);
   document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
 }
+
+
+
+
 
 pokemonBoxDialog.addEventListener("keydown", (e) => {
   if (e.key == "ArrowLeft") {

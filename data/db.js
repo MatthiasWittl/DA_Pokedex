@@ -18,6 +18,8 @@ let moreAmountOfLoadingPokemon = 12;
 
 let maxAmountofPokemonFromAPI = 150; /* Anzahl Pokemon Standard Edition 151, Liste startet bei 0 deshalb 150*/
 
+let maxEvoChainShow = 151; /* max Amount of Pokemon who are related for standard Version */
+
 let singleViewCount = 0;
 
 
