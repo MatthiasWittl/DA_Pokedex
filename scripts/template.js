@@ -64,14 +64,14 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
 }
 
 function renderBattleStatsContainer() {
-    return `
+  return `
     <dl id="battle_stats_datalist">
     </dl>
-    `
+    `;
 }
 
 function renderBattleStats(index, iStats, statusBarFill) {
-    return `
+  return `
     <div class="pokemon_base_stats">
         <dt>${pokemonData[index].stats[iStats].stat.name}: </dt>
         <dd class="status_bar_container">
@@ -80,7 +80,7 @@ function renderBattleStats(index, iStats, statusBarFill) {
             </div>
         </dd>
     </div>
-`            
+`;
 }
 
 function renderEvolutionChainImg(index) {
@@ -90,7 +90,7 @@ function renderEvolutionChainImg(index) {
 }
 
 function renderMoves(index) {
-    return `
+  return `
     <section class="pokemon_single_view_moves_section">
         <ul class="move_backgr_color">
             <li  ><img src="" class="move_icon">${pokemonData[index].moves[0].move.name}</li>
@@ -103,14 +103,14 @@ function renderMoves(index) {
 }
 
 function renderSearchField() {
-    return `
+  return `
     <form role="search">
     <label for="header_input_search_field" class="sr_only">Search Pokemon</label>
     <input id="header_input_search_field" placeholder="Search Pokemon" type="text" maxlength="12"
         inputmode="search" minlength="3" pattern="[A-Za-z]+" title="Min three Letters" required />
     <button type="submit" id="header_input_search_button" aria-label="Suchen">&#128269</button>
     </form>
-`
+`;
 }
 /*Stats Section */
 /*

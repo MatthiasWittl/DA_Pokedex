@@ -389,13 +389,15 @@ footer img {
 @media (min-width: 1538px) {
     .scroll_to_top {
         right: calc((100vw - 1532px) / 2);
-}
     }
+}
 
 @media (max-width: 475px) {
     .pokedex_container {
         justify-content: center;
     }
-}   .header_input {
-    width: 180px;    
+}
+
+.header_input {
+    width: 180px;
 }

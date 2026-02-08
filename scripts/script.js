@@ -106,8 +106,8 @@ async function loadAllReaminingPokemon() {
       }
     );
     pokemonData[index + firstAmountOfLoadingPokemon] = { ...promise };
-    loadedPkmn ++;
-    loadingBarAnimation();    
+    loadedPkmn++;
+    loadingBarAnimation();
   }
   buttonvisibility.add("visible");
   changeLoaderForSearch();
@@ -115,9 +115,8 @@ async function loadAllReaminingPokemon() {
 
 function loadingBarAnimation() {
   document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + maxEvoChainShow;
-  let loadingBarfiller = maxpercentage/maxEvoChainShow*loadedPkmn
-  document.documentElement.style.setProperty('--type5', loadingBarfiller + "%");
-
+  let loadingBarfiller = (maxpercentage / maxEvoChainShow) * loadedPkmn;
+  document.documentElement.style.setProperty("--type5", loadingBarfiller + "%");
 }
 
 function changeLoaderForSearch() {
@@ -126,19 +125,17 @@ function changeLoaderForSearch() {
 }
 
 function checkInputSearchField() {
-const inputSearch = document.querySelector("form");
+  const inputSearch = document.querySelector("form");
 
-inputSearch.addEventListener("submit", (event) => {
-  if (!inputSearch.checkValidity()) {
-    return;
-  }
-  userscreenView = window.scrollY  
-  event.preventDefault();
-  searchPokemonFromInputField();
-});
-
+  inputSearch.addEventListener("submit", (event) => {
+    if (!inputSearch.checkValidity()) {
+      return;
+    }
+    userscreenView = window.scrollY;
+    event.preventDefault();
+    searchPokemonFromInputField();
+  });
 }
-
 
 function renderMorePokemon() {
   let endRenderIndex;
@@ -182,7 +179,6 @@ function changeViewForOneBox() {
   pokedexMainContainer.add("justify_center");
   buttonvisibility.remove("visible");
   backToMainBtn.add("button_highlight");
-
 }
 
 function backToMainSite() {
@@ -192,7 +188,7 @@ function backToMainSite() {
   }
   pokedexMainContainer.remove("justify_center");
   buttonvisibility.add("visible");
-  window.scroll({top: userscreenView, behavior: "smooth"});
+  window.scroll({ top: userscreenView, behavior: "smooth" });
   backToMainBtn.remove("button_highlight");
 }
 
@@ -211,7 +207,7 @@ async function openDialogBox(index, colorOne, colorTwo) {
 
 function closeDialog() {
   pokemonBoxDialog.close();
-  document.body.classList.remove("overflow_hidden")
+  document.body.classList.remove("overflow_hidden");
 }
 
 async function getPokemonMoves(index) {
@@ -254,7 +250,7 @@ async function getPokemonMoves(index) {
 function showBattleStats(index) {
   document.getElementById("swap_container").innerHTML += renderBattleStatsContainer();
   for (let iStats = 0; iStats < pokemonData[index].stats.length; iStats++) {
-    let statusBarFill = maxpercentage/highestPkmnStat*pokemonData[index].stats[iStats].base_stat
+    let statusBarFill = (maxpercentage / highestPkmnStat) * pokemonData[index].stats[iStats].base_stat;
     document.getElementById("battle_stats_datalist").innerHTML += renderBattleStats(index, iStats, statusBarFill);
   }
 }
@@ -308,13 +304,13 @@ async function getPokemonSpecies(index) {
 
 function parseEvolutionTree(chain, list = []) {
   let pkmnNumberURL = chain.species.url.split("/").filter(Boolean);
-  pkmnNumberURL = Number(pkmnNumberURL[pkmnNumberURL.length -1])  
+  pkmnNumberURL = Number(pkmnNumberURL[pkmnNumberURL.length - 1]);
   if (pkmnNumberURL <= maxEvoChainShow) {
     list.push(chain.species.name);
   }
-    chain.evolves_to.forEach((child) => {
-      parseEvolutionTree(child, list);
-    });
+  chain.evolves_to.forEach((child) => {
+    parseEvolutionTree(child, list);
+  });
   return list;
 }
 
@@ -366,23 +362,18 @@ function sectionSwitch(way, pkmnIndex) {
   document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
 }
 
-
-
-
-
 pokemonBoxDialog.addEventListener("keydown", (e) => {
   if (e.key == "ArrowLeft") {
     sectionSwitch("previous", singleViewPkmnIndex);
   } else if (e.key == "ArrowRight") {
-    sectionSwitch("next", singleViewPkmnIndex); 
+    sectionSwitch("next", singleViewPkmnIndex);
   }
-})
+});
 
 pokemonBoxDialog.addEventListener("click", (e) => {
   if (e.target == pokemonBoxDialog) {
     closeDialog();
   }
-})
-
+});
 
 /* Switch between Sections End */
