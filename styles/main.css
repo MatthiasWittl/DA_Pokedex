@@ -65,3 +65,10 @@
 .display_none {
     display: none;
 }
+
+.button_highlight {
+    border: 2px solid transparent;
+    padding: 8px;
+    border-radius: 12px;
+    background-color: #0EA5E9;
+}

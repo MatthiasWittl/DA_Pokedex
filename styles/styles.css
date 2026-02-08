@@ -82,7 +82,7 @@ main {
 }
 
 .pokedex_container {
-    min-height: calc(100vh - 202px);
+    min-height: calc(100vh - 182px);
     display: flex;
     gap: 20px;
     max-width: 1440px;
@@ -379,3 +379,11 @@ footer img {
 
 
 /* Pokedex Loading screen End */
+
+@media (min-width: 1538px) {
+    .scroll_to_top {
+        right: calc((100vw - 1532px) / 2);
+}
+    }
+
+    

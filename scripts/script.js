@@ -3,6 +3,7 @@ const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").
 const pokedexMainContainer = document.getElementById("main_container").classList;
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
+const backToMainBtn = document.getElementById("back_to_main_btn").classList;
 let userscreenView;
 let singleViewPkmnIndex;
 let swapContainerClasses;
@@ -180,6 +181,8 @@ function searchPokemonFromInputField() {
 function changeViewForOneBox() {
   pokedexMainContainer.add("justify_center");
   buttonvisibility.remove("visible");
+  backToMainBtn.add("button_highlight");
+
 }
 
 function backToMainSite() {
@@ -190,6 +193,7 @@ function backToMainSite() {
   pokedexMainContainer.remove("justify_center");
   buttonvisibility.add("visible");
   window.scroll({top: userscreenView, behavior: "smooth"});
+  backToMainBtn.remove("button_highlight");
 }
 
 async function openDialogBox(index, colorOne, colorTwo) {
