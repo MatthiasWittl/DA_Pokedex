@@ -36,6 +36,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
+/*
 inputSearch.addEventListener("submit", (event) => {
   if (!inputSearch.checkValidity()) {
     return;
@@ -43,6 +44,8 @@ inputSearch.addEventListener("submit", (event) => {
   event.preventDefault();
   searchPokemonFromInputField();
 });
+
+*/
 
 function checkForLocalStorageData() {
   if (localStorage.getItem("pokemonData") == null) {
@@ -114,9 +117,21 @@ async function loadAllReaminingPokemon() {
       }
     );
     pokemonData[index + firstAmountOfLoadingPokemon] = { ...promise };
+    loadedPkmn ++;
+    loadingBarAnimation();
+    console.log("Counter");
+    
+    
   }
   buttonvisibility.add("visible");
   searchbarvisibility.add("visible");
+}
+
+function loadingBarAnimation() {
+  document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + maxEvoChainShow;
+  let loadingBarfiller = maxpercentage/maxEvoChainShow*loadedPkmn
+  document.documentElement.style.setProperty('--type5', loadingBarfiller + "%");
+
 }
 
 function renderMorePokemon() {

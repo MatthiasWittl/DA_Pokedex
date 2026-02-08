@@ -22,6 +22,8 @@ let maxEvoChainShow = 151; /* max Amount of Pokemon who are related for standard
 
 let singleViewCount = 0;
 
+let loadedPkmn = firstAmountOfLoadingPokemon;
+
 
 
 const typeColors = {

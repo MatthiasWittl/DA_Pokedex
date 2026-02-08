@@ -23,12 +23,17 @@
         <div class="header_container">
             <button class="site_header" onclick="backToMainSite()">Pokedex</button>
             <div class="header_input" id="header_input_search_id">
-                <form role="search">
+                <div class="loading_container">
+                    <div class="loading_status_bar">
+                        <span id="loading_counter"></span>
+                    </div>
+                </div>
+                <!--<form role="search">
                     <label for="header_input_search_field" class="sr_only">Search Pokemon</label>
                     <input id="header_input_search_field" placeholder="Search Pokemon" type="text" maxlength="12"
                         inputmode="search" minlength="3" pattern="[A-Za-z]+" title="Min three Letters" required />
                     <button type="submit" id="header_input_search_button" aria-label="Suchen">&#128269</button>
-                </form>
+                </form> -->
             </div>
         </div>
     </header>

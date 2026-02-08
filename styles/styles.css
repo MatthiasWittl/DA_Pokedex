@@ -18,9 +18,29 @@ header {
 }
 
 .header_input {
-    visibility: hidden;
+    /*visibility: hidden;*/
     position: relative;
     width: 250px;
+}
+
+.loading_container {
+    border: 1px solid white;
+    border-radius: 10px;
+    align-content: center;
+}
+
+.loading_status_bar {
+    background-color: green;
+    width: var(--type5, 5%);
+    align-content: center;
+    border-radius: 10px;
+    height: 25px;
+}
+
+.loading_container span {
+    margin-left: 5px;
+    color: white;
+    white-space: nowrap;
 }
 
 .header_input button {
