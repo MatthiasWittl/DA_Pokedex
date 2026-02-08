@@ -60,6 +60,7 @@ header {
     padding: 6px 12px;
     border: none;
     border-radius: 4px;
+    font-size: 18px;
 }
 
 .header_container {
@@ -89,7 +90,7 @@ main {
     margin-left: auto;
     margin-right: auto;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding: 8px;
 }
@@ -146,7 +147,7 @@ main {
     padding: 3px;
     border: 2px solid transparent;
     border-radius: 10px;
-    width: 60px;
+    font-size: 18px;
 }
 
 footer {
@@ -203,7 +204,7 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 312px;
+    max-width: 312px;
     border: 0.5px solid white;
     border-radius: 15px;
 }
@@ -240,7 +241,8 @@ footer {
 }
 
 .pkmn_box_details {
-    font-size: 20px;
+    font-size: 24px;
+    margin-top: 4px;
     color: #F8f8f8;
     text-shadow:
         0 0 6px color-mix(in srgb, var(--type1) 80%, white),
@@ -249,7 +251,7 @@ footer {
 
 .pokemon_base_stats {
     display: grid;
-    grid-template-columns: 115px 1fr;
+    grid-template-columns: 126px 1fr;
     grid-template-rows: 27px;
     align-items: center;
     gap: 0.75px;
@@ -257,6 +259,7 @@ footer {
 
 .pokemon_base_stats dt {
     color: white;
+    font-size: 18px;
 }
 
 .status_bar_container {
@@ -270,7 +273,7 @@ footer {
     justify-content: space-between;
     width: 310px;
     text-transform: capitalize;
-    padding: 5px;
+    padding: 4px;
 }
 
 .pokemon_single_view_data button {
@@ -294,6 +297,7 @@ footer {
 .status_bar span {
     margin-left: 5px;
     color: white;
+    font-size: 18px;
 }
 
 .pokemon_single_view_moves_section li {
@@ -317,10 +321,12 @@ footer {
 
 .evolution_chain_img_container {
     width: 100%;
-    padding: 8px;
+    padding: 4px;
     border-radius: 15px;
     display: flex;
     justify-content: space-around;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .evolution_img {
@@ -386,4 +392,10 @@ footer img {
 }
     }
 
-    
+@media (max-width: 475px) {
+    .pokedex_container {
+        justify-content: center;
+    }
+}   .header_input {
+    width: 180px;    
+}

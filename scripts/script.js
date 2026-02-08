@@ -205,11 +205,13 @@ async function openDialogBox(index, colorOne, colorTwo) {
   showBattleStats(index);
   soundsByOpening(index);
   swapContainerClasses = document.getElementById("swap_container").classList;
+  document.body.classList.add("overflow_hidden");
   pokemonBoxDialog.focus();
 }
 
 function closeDialog() {
   pokemonBoxDialog.close();
+  document.body.classList.remove("overflow_hidden")
 }
 
 async function getPokemonMoves(index) {
