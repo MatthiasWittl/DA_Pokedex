@@ -1,7 +1,5 @@
 const buttonvisibility = document.getElementById("open_more_Pokemon_id").classList;
-const searchbarvisibility = document.getElementById("header_input_search_id").classList;
 const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").classList;
-const inputSearch = document.querySelector("form");
 const pokedexMainContainer = document.getElementById("main_container").classList;
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
@@ -35,17 +33,6 @@ window.addEventListener("scroll", () => {
     scrollToTopButtonvisibility.add("visible");
   }
 });
-
-/*
-inputSearch.addEventListener("submit", (event) => {
-  if (!inputSearch.checkValidity()) {
-    return;
-  }
-  event.preventDefault();
-  searchPokemonFromInputField();
-});
-
-*/
 
 function checkForLocalStorageData() {
   if (localStorage.getItem("pokemonData") == null) {
@@ -118,13 +105,10 @@ async function loadAllReaminingPokemon() {
     );
     pokemonData[index + firstAmountOfLoadingPokemon] = { ...promise };
     loadedPkmn ++;
-    loadingBarAnimation();
-    console.log("Counter");
-    
-    
+    loadingBarAnimation();    
   }
   buttonvisibility.add("visible");
-  searchbarvisibility.add("visible");
+  changeLoaderForSearch();
 }
 
 function loadingBarAnimation() {
@@ -133,6 +117,25 @@ function loadingBarAnimation() {
   document.documentElement.style.setProperty('--type5', loadingBarfiller + "%");
 
 }
+
+function changeLoaderForSearch() {
+  document.getElementById("header_input_search_id").innerHTML = renderSearchField();
+  checkInputSearchField();
+}
+
+function checkInputSearchField() {
+  const inputSearch = document.querySelector("form");
+
+inputSearch.addEventListener("submit", (event) => {
+  if (!inputSearch.checkValidity()) {
+    return;
+  }
+  event.preventDefault();
+  searchPokemonFromInputField();
+});
+
+}
+
 
 function renderMorePokemon() {
   let endRenderIndex;

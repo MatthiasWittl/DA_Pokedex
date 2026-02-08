@@ -24,6 +24,8 @@ let singleViewCount = 0;
 
 let loadedPkmn = firstAmountOfLoadingPokemon;
 
+let maxpercentage = 100;
+
 
 
 const typeColors = {
