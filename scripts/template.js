@@ -70,12 +70,12 @@ function renderBattleStatsContainer() {
     `
 }
 
-function renderBattleStats(index, iStats) {
+function renderBattleStats(index, iStats, statusBarFill) {
     return `
     <div class="pokemon_base_stats">
         <dt>${pokemonData[index].stats[iStats].stat.name}: </dt>
         <dd class="status_bar_container">
-            <div class="status_bar" style="--type3: ${pokemonData[index].stats[iStats].base_stat}px;">
+            <div class="status_bar" style="--type3: ${statusBarFill}%;">
                 <span>${pokemonData[index].stats[iStats].base_stat}</span>
             </div>
         </dd>

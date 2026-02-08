@@ -3,6 +3,7 @@ const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").
 const pokedexMainContainer = document.getElementById("main_container").classList;
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
+let userscreenView;
 let singleViewPkmnIndex;
 let swapContainerClasses;
 let swapContainerHeader;
@@ -124,12 +125,13 @@ function changeLoaderForSearch() {
 }
 
 function checkInputSearchField() {
-  const inputSearch = document.querySelector("form");
+const inputSearch = document.querySelector("form");
 
 inputSearch.addEventListener("submit", (event) => {
   if (!inputSearch.checkValidity()) {
     return;
   }
+  userscreenView = window.scrollY  
   event.preventDefault();
   searchPokemonFromInputField();
 });
@@ -187,6 +189,7 @@ function backToMainSite() {
   }
   pokedexMainContainer.remove("justify_center");
   buttonvisibility.add("visible");
+  window.scroll({top: userscreenView, behavior: "smooth"});
 }
 
 async function openDialogBox(index, colorOne, colorTwo) {
@@ -245,7 +248,8 @@ async function getPokemonMoves(index) {
 function showBattleStats(index) {
   document.getElementById("swap_container").innerHTML += renderBattleStatsContainer();
   for (let iStats = 0; iStats < pokemonData[index].stats.length; iStats++) {
-    document.getElementById("battle_stats_datalist").innerHTML += renderBattleStats(index, iStats);
+    let statusBarFill = maxpercentage/highestPkmnStat*pokemonData[index].stats[iStats].base_stat
+    document.getElementById("battle_stats_datalist").innerHTML += renderBattleStats(index, iStats, statusBarFill);
   }
 }
 

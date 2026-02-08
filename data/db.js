@@ -12,7 +12,7 @@ let pokemonEvolutionChain;
 
 let firstAmountOfLoadingPokemon = 12; 
 
-let remainingPokemonDataToLoad = 30; /* 139 max Loading Pokemon 151 - firstAmountOfLoadingPokemon 12 */
+let remainingPokemonDataToLoad = 42; /* 139 max Loading Pokemon 151 - firstAmountOfLoadingPokemon 12 */
 
 let moreAmountOfLoadingPokemon = 12;
 
@@ -25,6 +25,8 @@ let singleViewCount = 0;
 let loadedPkmn = firstAmountOfLoadingPokemon;
 
 let maxpercentage = 100;
+
+let highestPkmnStat = 250;
 
 
 
