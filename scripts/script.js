@@ -1,5 +1,6 @@
 const buttonvisibility = document.getElementById("open_more_Pokemon_id").classList;
 const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").classList;
+const scrollToBottomButtonvisibility = document.getElementById("scroll_to_bottom_id").classList;
 const pokedexMainContainer = document.getElementById("main_container").classList;
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
@@ -31,9 +32,11 @@ const maxModulesSingleView = Object.keys(singleViewSections).length - 1;
 window.addEventListener("scroll", () => {
   if (window.scrollY < 10) {
     scrollToTopButtonvisibility.remove("visible");
+    scrollToBottomButtonvisibility.add("visible");
   } else if (window.scrollY > 80) {
     scrollToTopButtonvisibility.add("visible");
-  }
+    scrollToBottomButtonvisibility.remove("visible");
+  } 
 });
 
 function checkForLocalStorageData() {

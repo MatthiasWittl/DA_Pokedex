@@ -34,7 +34,7 @@
 }
 
 .visible {
-    visibility: unset;
+    visibility: unset !important;
 }
 
 

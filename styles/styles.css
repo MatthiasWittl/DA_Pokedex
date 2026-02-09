@@ -179,22 +179,28 @@ footer {
 
 }
 
-.scroll_to_top {
+.side_scroll_btn_container {
     position: fixed;
     top: 50vh;
     right: 8px;
     bottom: 24px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.side_scroll_btn_container button {
     width: 44px;
     height: 44px;
     border-radius: 5px;
-    visibility: hidden;
     background-color: transparent;
     border: 2px white solid;
     color: white;
     font-size: 20px;
+    visibility: hidden;
 }
 
-.scroll_to_top:hover {
+.side_scroll_btn_container button:hover {
     background-color: #334155;
     cursor: pointer;
 }
@@ -387,7 +393,7 @@ footer img {
 /* Pokedex Loading screen End */
 
 @media (min-width: 1538px) {
-    .scroll_to_top {
+    .side_scroll_btn_container {
         right: calc((100vw - 1532px) / 2);
     }
 }
