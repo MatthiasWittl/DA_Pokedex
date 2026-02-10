@@ -29,15 +29,33 @@ const singleViewSections = {
 
 const maxModulesSingleView = Object.keys(singleViewSections).length - 1;
 
-window.addEventListener("scroll", () => {
+/*window.addEventListener("scroll", () => {
   if (window.scrollY < 10) {
     scrollToTopButtonvisibility.remove("visible");
-    scrollToBottomButtonvisibility.add("visible");
   } else if (window.scrollY > 80) {
     scrollToTopButtonvisibility.add("visible");
+    scrollToBottomButtonvisibility.add("visible");
+  } else if (window.scrollY > 95%)  {
     scrollToBottomButtonvisibility.remove("visible");
-  } 
+  }
+});*/
+
+
+
+let observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      scrollToTopButtonvisibility.remove("visible");
+    } else if (!entry.isIntersecting) {
+      scrollToTopButtonvisibility.add("visible");
+    }
+  });
 });
+
+let target1 = document.querySelector('footer');
+observer.observe(target1);
+let target2 = document.getElementById('main:_container').firstChild;
+observer.observe(target2);
 
 function checkForLocalStorageData() {
   if (localStorage.getItem("pokemonData") == null) {
