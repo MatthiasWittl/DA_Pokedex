@@ -5,6 +5,8 @@ const pokedexMainContainer = document.getElementById("main_container").classList
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 const backToMainBtn = document.getElementById("back_to_main_btn").classList;
+const pkmnBoxSection = document.getElementById("main_container");
+
 let userscreenView;
 let singleViewPkmnIndex;
 let swapContainerClasses;
@@ -42,20 +44,7 @@ const maxModulesSingleView = Object.keys(singleViewSections).length - 1;
 
 
 
-let observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      scrollToTopButtonvisibility.remove("visible");
-    } else if (!entry.isIntersecting) {
-      scrollToTopButtonvisibility.add("visible");
-    }
-  });
-});
 
-let target1 = document.querySelector('footer');
-observer.observe(target1);
-let target2 = document.getElementById('main:_container').firstChild;
-observer.observe(target2);
 
 function checkForLocalStorageData() {
   if (localStorage.getItem("pokemonData") == null) {
@@ -398,3 +387,26 @@ pokemonBoxDialog.addEventListener("click", (e) => {
 });
 
 /* Switch between Sections End */
+
+let observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && entry.target === target1) {
+      scrollToBottomButtonvisibility.remove("visible");
+    } else if (!entry.isIntersecting && entry.target === target1) {
+      scrollToBottomButtonvisibility.add("visible");
+    } else if (entry.isIntersecting && entry.target === target2) {
+      scrollToTopButtonvisibility.remove("visible");
+    } else if (!entry.isIntersecting && entry.target === target2) {
+      scrollToTopButtonvisibility.add("visible");
+    }
+  });
+});
+
+
+
+let target1 = document.querySelector("footer");
+observer.observe(target1);
+let target2 = document.querySelector(".pokedex_loader_container");
+observer.observe(target2);
+
+
