@@ -158,8 +158,7 @@ function renderMorePokemon() {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
   for (let index = renderdPokemonBoxes; index < endRenderIndex; index++) {
-    document.getElementById("main_container").innerHTML += renderPokemonBox(index);
-    renderdPokemonBoxes++;
+    document.getElementById("main_container").insertAdjacentHTML("beforeend", renderPokemonBox(index));
   }
   let viewpoint = document.querySelector(".only_view:last-child");
   viewpoint.scrollIntoView({ behavior: "smooth" });
