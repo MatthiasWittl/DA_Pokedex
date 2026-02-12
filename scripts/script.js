@@ -6,7 +6,7 @@ const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 const backToMainBtn = document.getElementById("back_to_main_btn").classList;
 const pkmnBoxSection = document.getElementById("main_container");
-
+let observer;
 let userscreenView;
 let singleViewPkmnIndex;
 let swapContainerClasses;
@@ -103,6 +103,7 @@ function startrender() {
     renderdPokemonBoxes++;
   }
   pokedexLoading.add("display_none");
+  startobeserver();
 }
 
 async function loadAllReaminingPokemon() {
@@ -189,6 +190,9 @@ function changeViewForOneBox() {
   pokedexMainContainer.add("justify_center");
   buttonvisibility.remove("visible");
   backToMainBtn.add("button_highlight");
+  observer.disconnect();
+  scrollToBottomButtonvisibility.remove("visible");
+  scrollToTopButtonvisibility.remove("visible");
 }
 
 function backToMainSite() {
@@ -200,6 +204,7 @@ function backToMainSite() {
   buttonvisibility.add("visible");
   window.scroll({ top: userscreenView, behavior: "smooth" });
   backToMainBtn.remove("button_highlight");
+  startobeserver();
 }
 
 async function openDialogBox(index, colorOne, colorTwo) {
@@ -388,25 +393,25 @@ pokemonBoxDialog.addEventListener("click", (e) => {
 
 /* Switch between Sections End */
 
-let observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting && entry.target === target1) {
-      scrollToBottomButtonvisibility.remove("visible");
-    } else if (!entry.isIntersecting && entry.target === target1) {
-      scrollToBottomButtonvisibility.add("visible");
-    } else if (entry.isIntersecting && entry.target === target2) {
-      scrollToTopButtonvisibility.remove("visible");
-    } else if (!entry.isIntersecting && entry.target === target2) {
-      scrollToTopButtonvisibility.add("visible");
-    }
-  });
-});
 
 
 
+function startobeserver() {
 let target1 = document.querySelector("footer");
-observer.observe(target1);
-let target2 = document.querySelector(".pokedex_loader_container");
-observer.observe(target2);
-
-
+let target2 = document.querySelector(".pokedex_container").firstElementChild;
+observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.target === target1) {
+        scrollToBottomButtonvisibility.remove("visible");
+      } else if (!entry.isIntersecting && entry.target === target1) {
+        scrollToBottomButtonvisibility.add("visible");
+      } else if (entry.isIntersecting && entry.target === target2) {
+        scrollToTopButtonvisibility.remove("visible");
+      } else if (!entry.isIntersecting && entry.target === target2) {
+        scrollToTopButtonvisibility.add("visible");
+      }
+    });
+  });
+  observer.observe(target1);
+  observer.observe(target2);
+}
