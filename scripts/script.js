@@ -167,7 +167,10 @@ function renderMorePokemon() {
 
 function scrollToTop() {
   document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
-  document.body.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function scrollToBottom() {
+  document.documentElement.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
 }
 
 function searchPokemonFromInputField() {
@@ -401,17 +404,19 @@ let target1 = document.querySelector("footer");
 let target2 = document.querySelector(".pokedex_container").firstElementChild;
 observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting && entry.target === target1) {
+      if (entry.target === target1) {
+        if (entry.isIntersecting) {
         scrollToBottomButtonvisibility.remove("visible");
-      } else if (!entry.isIntersecting && entry.target === target1) {
-        scrollToBottomButtonvisibility.add("visible");
-      } else if (entry.isIntersecting && entry.target === target2) {
-        scrollToTopButtonvisibility.remove("visible");
-      } else if (!entry.isIntersecting && entry.target === target2) {
-        scrollToTopButtonvisibility.add("visible");
-      }
-    });
-  });
+        } else {
+          scrollToBottomButtonvisibility.add("visible");
+        }
+       } else {
+        if (entry.isIntersecting) {
+          scrollToTopButtonvisibility.remove("visible");
+       } else {
+          scrollToTopButtonvisibility.add("visible");
+        }};
+    })});
   observer.observe(target1);
   observer.observe(target2);
-}
+};
