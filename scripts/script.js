@@ -31,21 +31,6 @@ const singleViewSections = {
 
 const maxModulesSingleView = Object.keys(singleViewSections).length - 1;
 
-/*window.addEventListener("scroll", () => {
-  if (window.scrollY < 10) {
-    scrollToTopButtonvisibility.remove("visible");
-  } else if (window.scrollY > 80) {
-    scrollToTopButtonvisibility.add("visible");
-    scrollToBottomButtonvisibility.add("visible");
-  } else if (window.scrollY > 95%)  {
-    scrollToBottomButtonvisibility.remove("visible");
-  }
-});*/
-
-
-
-
-
 function checkForLocalStorageData() {
   if (localStorage.getItem("pokemonData") == null) {
     getFirstPokemonData();
@@ -159,6 +144,7 @@ function renderMorePokemon() {
   }
   for (let index = renderdPokemonBoxes; index < endRenderIndex; index++) {
     document.getElementById("main_container").insertAdjacentHTML("beforeend", renderPokemonBox(index));
+    renderdPokemonBoxes++;
   }
   let viewpoint = document.querySelector(".only_view:last-child");
   viewpoint.scrollIntoView({ behavior: "smooth" });
