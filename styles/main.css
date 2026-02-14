@@ -25,8 +25,8 @@
     grid-area: 1/1;
 }
 
-.background_color_by_type_one {
-    background-color: var(--type1, white);
+.background_color_by_type {
+    background-color: var(--type-color, white);
 }
 
 .background_color_by_type_two {
