@@ -46,6 +46,7 @@ header {
 }
 
 .header_input button {
+    font-size: 24px;
     position: absolute;
     right: 10px;
     top: 50%;
@@ -402,8 +403,13 @@ footer img {
     .pokedex_container {
         justify-content: center;
     }
-}
 
-.header_input {
-    width: 180px;
+    .header_input {
+        width: 200px;
+    }
+
+    .header_container {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
 }

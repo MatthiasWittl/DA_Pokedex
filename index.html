@@ -4,24 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pokedex" >
     <title>Pokedex</title>
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="/styles/main.css">
-
-
-
-
 </head>
 
 <body onload="checkForLocalStorageData()">
     <!--Loading Screen-->
     <div id="pokedex_loader_id" class="pokedex_loader_container">
-        <img class="pokedex_image" src="/assets/images/pokedex.png" alt="pokedex">
+        <img class="pokedex_image" src="/assets/images/pokedex.webp" alt="pokedex">
     </div>
     <!---->
     <header>
         <div class="header_container">
-            <button class="site_header" id="back_to_main_btn" onclick="backToMainSite()">Pokedex</button>
+            <button aria-label="Back To Main Site" class="site_header" id="back_to_main_btn" onclick="backToMainSite()">Pokedex</button>
             <div class="header_input" id="header_input_search_id">
                 <div class="loading_container">
                     <div class="loading_status_bar">
@@ -36,19 +33,19 @@
         <section id="main_container" class="pokedex_container">
 
         </section>
-        <button onclick="renderMorePokemon()" class="open_more_Pokemon" id="open_more_Pokemon_id"><img
-                src="/assets/images/open_pokeball.png" alt=""></button>
+        <button aria-label="Show More Pokemon" onclick="renderMorePokemon()" class="open_more_Pokemon" id="open_more_Pokemon_id"><img
+                src="/assets/images/open_pokeball.webp" alt=""></button>
     </main>
     <div class="side_scroll_btn_container" id="side_scroll_btn_container_id">
-        <button class="scroll_to_top" id="scroll_to_top_id"  aria-label="Scroll to Top"
+        <button aria-label="Scroll to Top" class="scroll_to_top" id="scroll_to_top_id"  aria-label="Scroll to Top"
         onclick="scrollToTop()">&#8593;</button>
-        <button class="scroll_to_bottom" id="scroll_to_bottom_id" aria-label="Scroll to Bottom" onclick="scrollToBottom()">
+        <button aria-label="Scroll to Bottom" class="scroll_to_bottom" id="scroll_to_bottom_id" aria-label="Scroll to Bottom" onclick="scrollToBottom()">
             &#8595
         </button>
     </div>
     
     <footer>
-        <img src="assets/images/MW.png" alt="Publisher Logo">
+        <img src="assets/images/MW.webp" alt="Publisher Logo">
     </footer>
     <dialog id="single_view_Pokemon_Dialog_Box_id" class="single_view_Pokemon_Dialog_Box">
 

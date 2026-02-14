@@ -273,7 +273,7 @@ function movesTypeColorFilter() {
         let colorTypeMove = movesData[i].type.name;
         let movesColor = typeColors[colorTypeMove];
         item.style.setProperty("--move_type_color", movesColor);
-        imgSource.src = "assets/moves_images/" + movesData[i].type.name + ".png";
+        imgSource.src = "assets/moves_images/" + movesData[i].type.name + ".webp";
       }
     }
   });
