@@ -195,17 +195,26 @@ function backToMainSite() {
   startobeserver();
 }
 
-async function openDialogBox(index, colorOne, colorTwo) {
+async function openDialogBox(index, color) {
+  let colors = color.split(",");
+  let colorOne = typeColors[colors[0]];
+  if (colors[1]) {
+    colorTwo = typeColors[colors[1]];
+  }
   singleViewPkmnIndex = index;
   await getPokemonMoves(index);
   await getPokemonEvolutionChain(index);
   pokemonBoxDialog.showModal();
   pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
+  pokemonBoxUtilities(index);
+  pokemonBoxDialog.focus();
+}
+
+function pokemonBoxUtilities(index) {
   showBattleStats(index);
   soundsByOpening(index);
   swapContainerClasses = document.getElementById("swap_container").classList;
   document.body.classList.add("overflow_hidden");
-  pokemonBoxDialog.focus();
 }
 
 function closeDialog() {
@@ -381,27 +390,26 @@ pokemonBoxDialog.addEventListener("click", (e) => {
 
 /* Switch between Sections End */
 
-
-
-
 function startobeserver() {
-let target1 = document.querySelector("footer");
-let target2 = document.querySelector(".pokedex_container").firstElementChild;
-observer = new IntersectionObserver((entries) => {
+  let target1 = document.querySelector("footer");
+  let target2 = document.querySelector(".pokedex_container").firstElementChild;
+  observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.target === target1) {
         if (entry.isIntersecting) {
-        scrollToBottomButtonvisibility.remove("visible");
+          scrollToBottomButtonvisibility.remove("visible");
         } else {
           scrollToBottomButtonvisibility.add("visible");
         }
-       } else {
+      } else {
         if (entry.isIntersecting) {
           scrollToTopButtonvisibility.remove("visible");
-       } else {
+        } else {
           scrollToTopButtonvisibility.add("visible");
-        }};
-    })});
+        }
+      }
+    });
+  });
   observer.observe(target1);
   observer.observe(target2);
-};
+}

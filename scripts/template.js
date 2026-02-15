@@ -10,10 +10,8 @@ function renderPokemonBox(index) {
                   ${name}
                 </p>`;
       }).join("");
-
-   /*if (pokemonData[index].types.length == 1) {*/
     return `
-    <button class="only_view" onclick="openDialogBox(${index}, '${typeColors[pokemonData[index].types[0].type.name]}', '${typeColors[pokemonData[index].types[0].type.name]}')">
+    <button class="only_view" onclick="openDialogBox(${index}, '${pkmnTypes}')">
      <section class="pokemon_box" style= "${styleVars};">
             <h2 class="pokemon_box_title_glow" id="pokemon_name" >${pokemon.name} #${pokemon.id}</h2>
             <div class="pokemon_box_img_container pkmn_box_color">
@@ -22,36 +20,12 @@ function renderPokemonBox(index) {
             </div>
             <div class="pokemon_box_type_container">
                ${typesHTML}
-            </div>
-                   
+            </div>       
         </section>
     </button>
     `;
     
-  } /* else {
-    let pokemonTypeOne = pokemonData[index].types[0].type.name;
-    let pokemonTypeColor = typeColors[pokemonTypeOne];
-    let pokemonTypeTwo = pokemonData[index].types[1].type.name;
-    let pokemonTypeColorTwo = typeColors[pokemonTypeTwo];
-    return `
-    <button class="only_view" onclick="openDialogBox(${index}, '${pokemonTypeColor}', '${pokemonTypeColorTwo}')">
-        <section class="pokemon_box" style= "--type1: ${pokemonTypeColor}; --type2: ${pokemonTypeColorTwo};">
-            <h2 class="pokemon_box_title_glow" >${pokemonData[index].name} #${pokemonData[index].id}</h2>
-            <div class="pokemon_box_img_container pkmn_box_color grid_area"> 
-                <img 
-                    class="pokemon_box_img" 
-                    src="${pokemonData[index].sprites.other["official-artwork"].front_default}" alt="">
-            </div>
-            <div class="pokemon_box_type_container">
-                <p class="pokemon_box_type_container background_color_by_type_one">${pokemonData[index].types[0].type.name}</p>
-                <p class="pokemon_box_type_container background_color_by_type_two">${pokemonData[index].types[1].type.name}</p>                
-            </div>
-        </section>
-    </button>
-        `;
-  }
-}
-  */
+  } 
 
 function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
   return `
