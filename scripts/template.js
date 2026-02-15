@@ -98,4 +98,3 @@ function renderSearchField() {
 `;
 }
 
-/* <p class="pokemon_box_type_container background_color_by_type_one">${pokemon.types[0].type.name}</p>*/

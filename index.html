@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pokedex" >
+    <meta name="description" content="Pokedex">
     <title>Pokedex</title>
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="/styles/main.css">
 </head>
@@ -18,7 +23,8 @@
     <!---->
     <header>
         <div class="header_container">
-            <button aria-label="Back To Main Site" class="site_header" id="back_to_main_btn" onclick="backToMainSite()">Pokedex</button>
+            <button aria-label="Back To Main Site" class="site_header" id="back_to_main_btn"
+                onclick="backToMainSite()">Pokedex</button>
             <div class="header_input" id="header_input_search_id">
                 <div class="loading_container">
                     <div class="loading_status_bar">
@@ -33,17 +39,18 @@
         <section id="main_container" class="pokedex_container">
 
         </section>
-        <button aria-label="Show More Pokemon" onclick="renderMorePokemon()" class="open_more_Pokemon" id="open_more_Pokemon_id"><img
-                src="/assets/images/open_pokeball.webp" alt=""></button>
+        <button aria-label="Show More Pokemon" onclick="renderMorePokemon()" class="open_more_Pokemon"
+            id="open_more_Pokemon_id"><img src="/assets/images/open_pokeball.webp" alt=""></button>
     </main>
     <div class="side_scroll_btn_container" id="side_scroll_btn_container_id">
-        <button aria-label="Scroll to Top" class="scroll_to_top" id="scroll_to_top_id"  aria-label="Scroll to Top"
-        onclick="scrollToTop()">&#8593;</button>
-        <button aria-label="Scroll to Bottom" class="scroll_to_bottom" id="scroll_to_bottom_id" aria-label="Scroll to Bottom" onclick="scrollToBottom()">
+        <button aria-label="Scroll to Top" class="scroll_to_top" id="scroll_to_top_id" aria-label="Scroll to Top"
+            onclick="scrollToTop()">&#8593;</button>
+        <button aria-label="Scroll to Bottom" class="scroll_to_bottom" id="scroll_to_bottom_id"
+            aria-label="Scroll to Bottom" onclick="scrollToBottom()">
             &#8595
         </button>
     </div>
-    
+
     <footer>
         <img src="assets/images/MW.webp" alt="Publisher Logo">
     </footer>
