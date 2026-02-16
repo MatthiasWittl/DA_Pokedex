@@ -200,6 +200,8 @@ async function openDialogBox(index, color) {
   let colorOne = typeColors[colors[0]];
   if (colors[1]) {
     colorTwo = typeColors[colors[1]];
+  } else {
+    colorTwo = "unset";
   }
   singleViewPkmnIndex = index;
   await getPokemonMoves(index);
