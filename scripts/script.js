@@ -5,12 +5,12 @@ const pokedexMainContainer = document.getElementById("main_container").classList
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 const backToMainBtn = document.getElementById("back_to_main_btn").classList;
-const pkmnBoxSection = document.getElementById("main_container");
+/*const pkmnBoxSection = document.getElementById("main_container");*/
 let observer;
 let userscreenView;
 let singleViewPkmnIndex;
 let swapContainerClasses;
-let swapContainerHeader;
+/*let swapContainerHeader;*/
 let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
@@ -184,6 +184,7 @@ function changeViewForOneBox() {
 }
 
 function backToMainSite() {
+  observer.disconnect();
   document.getElementById("main_container").innerHTML = "";
   for (let index = 0; index < renderdPokemonBoxes; index++) {
     document.getElementById("main_container").innerHTML += renderPokemonBox(index);
