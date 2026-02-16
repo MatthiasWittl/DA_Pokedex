@@ -65,13 +65,10 @@ function getFirstPokemonData() {
     promises.push(promise);
   }
   Promise.allSettled(promises).then((results) => {
-    console.log(
-      "Alle Daten sind geladen",
       (pokemonData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value)),
       storageLocalFirstPokemonData(),
       loadAllReaminingPokemon(),
       startrender()
-    );
   });
 }
 
