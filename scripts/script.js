@@ -78,16 +78,6 @@ function storageLocalFirstPokemonData() {
   localStorage.setItem("pokemonData", JSON.stringify(pokemonData));
 }
 
-function startrender() {
-  document.getElementById("main_container").innerHTML = "";
-  for (let index = 0; index < Object.keys(pokemonData).length; index++) {
-    document.getElementById("main_container").innerHTML += renderPokemonBox(index);
-    renderdPokemonBoxes++;
-  }
-  pokedexLoading.add("display_none");
-  startobeserver();
-}
-
 async function loadAllReaminingPokemon() {
   for (let index = 0; index < remainingPokemonDataToLoad; index++) {
     let promise = await fetch("https://pokeapi.co/api/v2/pokemon/" + (index + 1 + firstAmountOfLoadingPokemon)).then(
@@ -106,6 +96,18 @@ async function loadAllReaminingPokemon() {
   changeLoaderForSearch();
 }
 
+function startrender() {
+  document.getElementById("main_container").innerHTML = "";
+  for (let index = 0; index < Object.keys(pokemonData).length; index++) {
+    document.getElementById("main_container").innerHTML += renderPokemonBox(index);
+    renderdPokemonBoxes++;
+  }
+  pokedexLoading.add("display_none");
+  startobeserver();
+}
+
+
+
 function loadingBarAnimation() {
   document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + maxEvoChainShow;
   let loadingBarfiller = (maxpercentage / maxEvoChainShow) * loadedPkmn;
@@ -119,7 +121,6 @@ function changeLoaderForSearch() {
 
 function checkInputSearchField() {
   const inputSearch = document.querySelector("form");
-
   inputSearch.addEventListener("submit", (event) => {
     if (!inputSearch.checkValidity()) {
       return;
@@ -128,6 +129,30 @@ function checkInputSearchField() {
     event.preventDefault();
     searchPokemonFromInputField();
   });
+}
+
+function searchPokemonFromInputField() {
+  let input = document.getElementById("header_input_search_field").value.toLowerCase();
+  for (let index = 0; index < Object.keys(pokemonData).length; index++) {
+    if (input === pokemonData[index].name) {
+      document.getElementById("main_container").innerHTML = "";
+      document.getElementById("main_container").innerHTML += renderPokemonBox(index);
+      changeViewForOneBox();
+      break;
+    } else if (index === Object.keys(pokemonData).length - 1) {
+      alert("Pokémon nicht gefunden. Bitte überprüfe die Eingabe.");
+    }
+  }
+  document.getElementById("header_input_search_field").value = "";
+}
+
+function changeViewForOneBox() {
+  observer.disconnect();
+  scrollToBottomButtonvisibility.remove("visible");
+  scrollToTopButtonvisibility.remove("visible");
+  pokedexMainContainer.add("justify_center");
+  buttonvisibility.remove("visible");
+  backToMainBtn.add("button_highlight");
 }
 
 function renderMorePokemon() {
@@ -155,31 +180,6 @@ function scrollToBottom() {
   document.documentElement.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
 }
 
-function searchPokemonFromInputField() {
-  let input = document.getElementById("header_input_search_field").value.toLowerCase();
-
-  for (let index = 0; index < Object.keys(pokemonData).length; index++) {
-    if (input === pokemonData[index].name) {
-      document.getElementById("main_container").innerHTML = "";
-      document.getElementById("main_container").innerHTML += renderPokemonBox(index);
-      changeViewForOneBox();
-      break;
-    } else if (index === Object.keys(pokemonData).length - 1) {
-      alert("Pokémon nicht gefunden. Bitte überprüfe die Eingabe.");
-    }
-  }
-  document.getElementById("header_input_search_field").value = "";
-}
-
-function changeViewForOneBox() {
-  pokedexMainContainer.add("justify_center");
-  buttonvisibility.remove("visible");
-  backToMainBtn.add("button_highlight");
-  observer.disconnect();
-  scrollToBottomButtonvisibility.remove("visible");
-  scrollToTopButtonvisibility.remove("visible");
-}
-
 function backToMainSite() {
   observer.disconnect();
   document.getElementById("main_container").innerHTML = "";
@@ -188,8 +188,8 @@ function backToMainSite() {
   }
   pokedexMainContainer.remove("justify_center");
   buttonvisibility.add("visible");
-  window.scroll({ top: userscreenView, behavior: "smooth" });
   backToMainBtn.remove("button_highlight");
+  window.scroll({ top: userscreenView, behavior: "smooth" });
   startobeserver();
 }
 
@@ -208,18 +208,6 @@ async function openDialogBox(index, color) {
   pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
   pokemonBoxUtilities(index);
   pokemonBoxDialog.focus();
-}
-
-function pokemonBoxUtilities(index) {
-  showBattleStats(index);
-  soundsByOpening(index);
-  swapContainerClasses = document.getElementById("swap_container").classList;
-  document.body.classList.add("overflow_hidden");
-}
-
-function closeDialog() {
-  pokemonBoxDialog.close();
-  document.body.classList.remove("overflow_hidden");
 }
 
 async function getPokemonMoves(index) {
@@ -259,12 +247,25 @@ async function getPokemonMoves(index) {
   return true;
 }
 
+function pokemonBoxUtilities(index) {
+  showBattleStats(index);
+  soundsByOpening(index);
+  swapContainerClasses = document.getElementById("swap_container").classList;
+  document.body.classList.add("overflow_hidden");
+}
+
 function showBattleStats(index) {
   document.getElementById("swap_container").innerHTML += renderBattleStatsContainer();
   for (let iStats = 0; iStats < pokemonData[index].stats.length; iStats++) {
     let statusBarFill = (maxpercentage / highestPkmnStat) * pokemonData[index].stats[iStats].base_stat;
     document.getElementById("battle_stats_datalist").innerHTML += renderBattleStats(index, iStats, statusBarFill);
   }
+}
+
+function soundsByOpening(index) {
+  let audio = new Audio(pokemonData[index].cries.legacy);
+  audio.volume = 0.1;
+  audio.play();
 }
 
 function showPkmnMoves(index) {
@@ -343,16 +344,6 @@ function indexFinder(evolutionName) {
 
 /* Evolution Chain Functions End */
 
-/* Sounds by opening Dialog */
-
-function soundsByOpening(index) {
-  let audio = new Audio(pokemonData[index].cries.legacy);
-  audio.volume = 0.1;
-  audio.play();
-}
-
-/* End Sounds by opening */
-
 /* Switch between Sections */
 
 function sectionSwitch(way, pkmnIndex) {
@@ -412,4 +403,9 @@ function startobeserver() {
   });
   observer.observe(target1);
   observer.observe(target2);
+}
+
+function closeDialog() {
+  pokemonBoxDialog.close();
+  document.body.classList.remove("overflow_hidden");
 }
