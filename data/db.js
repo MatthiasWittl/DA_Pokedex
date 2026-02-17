@@ -12,11 +12,11 @@ let pokemonEvolutionChain;
 
 let firstAmountOfLoadingPokemon = 12;
 
-let remainingPokemonDataToLoad = 42; /* 139 max Loading Pokemon 151 - firstAmountOfLoadingPokemon 12 */
+let remainingPokemonDataToLoad = 42; /* 139 max Loading Pokemon (151 - firstAmountOfLoadingPokemon 12) */
 
 let moreAmountOfLoadingPokemon = 12;
 
-let maxAmountofPokemonFromAPI = 150; /* Anzahl Pokemon Standard Edition 151, Liste startet bei 0 deshalb 150*/
+let maxAmountofPokemonFromAPI = 150; /* Number of Pokemon Standard Edition: 151, list starts at 0, therefore 150*/
 
 let maxEvoChainShow = 151; /* max Amount of Pokemon who are related for standard Version */
 

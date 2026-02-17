@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "Bangers";
+    src: url("/assets/fonts/Bangers-Regular.woff2") format("woff2"),
+         url("/assets/fonts/Bangers-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
 header {
     display: flex;
     justify-content: space-between;
@@ -13,9 +22,11 @@ header {
 .site_header {
     background-color: transparent;
     border: none;
-    color: black;
-    font-size: 28px;
+    color: white;
+    font-size: 35px;
     cursor: pointer;
+    font-family: "Bangers", cursive;
+    font-weight: 400;
 }
 
 .header_input {
@@ -335,7 +346,7 @@ footer img {
     border-radius: 50%;
 }
 
-/* Pokedex loading screen start */
+/* Pokédex loading screen start */
 
 .pokedex_loader_container {
     position: fixed;
@@ -379,7 +390,7 @@ footer img {
     position: relative;
 }
 
-/* Pokedex Loading screen End */
+/* Pokédex Loading screen End */
 
 @media (min-width: 1538px) {
     .side_scroll_btn_container {
@@ -388,6 +399,9 @@ footer img {
 }
 
 @media (max-width: 475px) {
+    .site_header {
+        font-size: 28px;
+    }
     .pokedex_container {
         justify-content: center;
     }
