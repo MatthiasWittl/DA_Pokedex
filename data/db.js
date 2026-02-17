@@ -10,6 +10,8 @@ let pokemonSpecies = {};
 
 let pokemonEvolutionChain;
 
+let maxAmountMoves = 4;
+
 let firstAmountOfLoadingPokemon = 12;
 
 let remainingPokemonDataToLoad = 139; /* 139 max Loading Pokemon (151 - firstAmountOfLoadingPokemon 12) */

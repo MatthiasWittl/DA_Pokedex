@@ -209,7 +209,7 @@ async function openDialogBox(index, color) {
 
 async function getPokemonMoves(index) {
   if (!movesData.length == 0) {
-    for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
+    for (let moveIndex = 0; moveIndex < maxAmountMoves && moveIndex < pokemonData[index].moves.length; moveIndex++) {
       let moveURL = pokemonData[index].moves[moveIndex].move.url;
       let moveName = pokemonData[index].moves[moveIndex].move.name;
       for (let index = 0; index < Object.keys(movesData).length; index++) {
@@ -228,7 +228,7 @@ async function getPokemonMoves(index) {
     }
     return true;
   } else {
-    for (let moveIndex = 0; moveIndex < 4; moveIndex++) {
+    for (let moveIndex = 0; moveIndex < maxAmountMoves && moveIndex < pokemonData[index].moves.length; moveIndex++) {
       let moveURL = pokemonData[index].moves[moveIndex].move.url;
       let promise = fetch(moveURL).then((response) => {
         if (!response.ok) {

@@ -77,13 +77,15 @@ function renderEvolutionChainImg(index) {
 }
 
 function renderMoves(index) {
+  let itemsHTML = "";
+for (let iMove = 0; iMove < pokemonData[index].moves.length && iMove < maxAmountMoves; iMove++) {
+  itemsHTML += 
+  `<li  ><img src="" class="move_icon">${pokemonData[index].moves[iMove].move.name}</li>`
+}
   return `
     <section class="pokemon_single_view_moves_section">
         <ul class="move_backgr_color">
-            <li  ><img src="" class="move_icon">${pokemonData[index].moves[0].move.name}</li>
-            <li  ><img src="" class="move_icon">${pokemonData[index].moves[1].move.name}</li>
-            <li  ><img src="" class="move_icon">${pokemonData[index].moves[2].move.name}</li>
-            <li  ><img src="" class="move_icon">${pokemonData[index].moves[3].move.name}</li>
+            ${itemsHTML}
         </ul>
     </section>
 `;
@@ -99,3 +101,10 @@ function renderSearchField() {
     </form>
 `;
 }
+
+/* old version Pokemon Moves
+<li  ><img src="" class="move_icon">${pokemonData[index].moves[0].move.name}</li>
+<li  ><img src="" class="move_icon">${pokemonData[index].moves[1].move.name}</li>
+<li  ><img src="" class="move_icon">${pokemonData[index].moves[2].move.name}</li>
+<li  ><img src="" class="move_icon">${pokemonData[index].moves[3].move.name}</li>
+*/
