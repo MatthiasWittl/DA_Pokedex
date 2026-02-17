@@ -235,7 +235,7 @@ footer {
 
 .closing_Button_dialog_Box {
     position: absolute;
-    left: 271px;
+    left: 272px;
     border: 0.5px solid white;
     width: 35px;
     height: 35px;
@@ -243,7 +243,7 @@ footer {
     font-size: 30px;
     color: var(--type1, red);
     background-color: transparent;
-    top: 4px;
+    top: 2px;
 }
 
 .closing_Button_dialog_Box:hover {
