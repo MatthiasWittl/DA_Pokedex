@@ -5,15 +5,14 @@ const pokedexMainContainer = document.getElementById("main_container").classList
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 const backToMainBtn = document.getElementById("back_to_main_btn").classList;
-/*const pkmnBoxSection = document.getElementById("main_container");*/
 let observer;
 let userscreenView;
 let singleViewPkmnIndex;
 let swapContainerClasses;
-/*let swapContainerHeader;*/
 let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
+
 const singleViewSections = {
   0: {
     header: "Battle Stats",
@@ -65,10 +64,10 @@ function getFirstPokemonData() {
     promises.push(promise);
   }
   Promise.allSettled(promises).then((results) => {
-      (pokemonData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value)),
+    (pokemonData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value)),
       storageLocalFirstPokemonData(),
       loadAllReaminingPokemon(),
-      startrender()
+      startrender();
   });
 }
 
@@ -105,8 +104,6 @@ function startrender() {
   pokedexLoading.add("display_none");
   startobeserver();
 }
-
-
 
 function loadingBarAnimation() {
   document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + maxEvoChainShow;

@@ -1,58 +1,60 @@
 function renderPokemonBox(index) {
-    let pokemon = pokemonData[index];
-    let pkmnTypes = pokemon.types.map(t => t.type.name);
-    let styleVars = `--type1: ${typeColors[pokemonData[index].types[0].type.name]};`;
-    if (pokemon.types[1]) {
-      styleVars += ` --type2: ${typeColors[pokemonData[index].types[1].type.name]};`;
-    }
-    let typesHTML = pkmnTypes.map((name, i) => {
-        return `<p class="pokemon_box_type_container background_color_by_type" style="--type-color: ${typeColors[name]};">
-                  ${name}
-                </p>`;
-      }).join("");
-    return `
+  let pokemon = pokemonData[index];
+  let pkmnTypes = pokemon.types.map((t) => t.type.name);
+  let styleVarSet = `--type1: ${typeColors[pokemonData[index].types[0].type.name]};`;
+  if (pokemon.types[1]) {
+    styleVarSet += ` --type2: ${typeColors[pokemonData[index].types[1].type.name]};`;
+  }
+  let typesHTML = pkmnTypes
+    .map((name, i) => {
+      return `
+        <p class="pokemon_box_type_container background_color_by_type" style="--type-color: ${typeColors[name]};">
+            ${name}
+        </p>`;
+    })
+    .join("");
+  return `
     <button class="only_view" onclick="openDialogBox(${index}, '${pkmnTypes}')">
-     <section class="pokemon_box" style= "${styleVars};">
-            <h2 class="pokemon_box_title_glow" id="pokemon_name" >${pokemon.name} #${pokemon.id}</h2>
-            <div class="pokemon_box_img_container pkmn_box_color">
-                <img class="pokemon_box_img" 
-                src="${pokemon.sprites.other["official-artwork"].front_default}" alt="">
-            </div>
-            <div class="pokemon_box_type_container">
+    <section class="pokemon_box" style= "${styleVarSet};">
+        <h2 class="pokemon_box_title_glow" id="pokemon_name" >${pokemon.name} #${pokemon.id}</h2>
+        <div class="pokemon_box_img_container pkmn_box_color">
+            <img class="pokemon_box_img" 
+                src="${pokemon.sprites.other["official-artwork"].front_default}" alt="">        
+        </div>
+        <div class="pokemon_box_type_container">
                ${typesHTML}
-            </div>       
-        </section>
+        </div>       
+    </section>
     </button>
-    `;
-    
-  } 
+`;
+}
 
 function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
   return `
-  <button onclick="closeDialog()" style="--type1: ${colorOne}" class="closing_Button_dialog_Box">X</button>
-<section class="single_view_Pokemon_Box" style="--type1: ${colorOne}; --type2: ${colorTwo};">
-    <h2 class="pokemon_box_title_glow">${pokemonData[index].name} #${pokemonData[index].id}</h2>
-    <div class="pokemon_box_img_container pkmn_box_color">
-        <img class="pokemon_box_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}"
+    <button onclick="closeDialog()" style="--type1: ${colorOne}" class="closing_Button_dialog_Box">X</button>
+    <section class="single_view_Pokemon_Box" style="--type1: ${colorOne}; --type2: ${colorTwo};">
+        <h2 class="pokemon_box_title_glow">${pokemonData[index].name} #${pokemonData[index].id}</h2>
+        <div class="pokemon_box_img_container pkmn_box_color">
+            <img class="pokemon_box_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}"
             alt="">
-    </div>
-    <h3 class="pkmn_box_details" id="swap_container_header">Battle Stats</h3>
-    <section class="pokemon_single_view_data">
-        <button onclick="sectionSwitch('previous', ${index})" >&#8592</button>
-        <section id="swap_container">
+        </div>
+        <h3 class="pkmn_box_details" id="swap_container_header">Battle Stats</h3>
+        <section class="pokemon_single_view_data">
+            <button onclick="sectionSwitch('previous', ${index})" >&#8592</button>
+            <section id="swap_container">
             <dl id="battle_stats_datalist">
             </dl>
-        </section>
-        <button onclick="sectionSwitch('next', ${index})">&#8594</button>
+            </section>
+            <button onclick="sectionSwitch('next', ${index})">&#8594</button>
     </section>
-    `;
+`;
 }
 
 function renderBattleStatsContainer() {
   return `
     <dl id="battle_stats_datalist">
     </dl>
-    `;
+`;
 }
 
 function renderBattleStats(index, iStats, statusBarFill) {
@@ -83,7 +85,7 @@ function renderMoves(index) {
             <li  ><img src="" class="move_icon">${pokemonData[index].moves[2].move.name}</li>
             <li  ><img src="" class="move_icon">${pokemonData[index].moves[3].move.name}</li>
         </ul>
-        </section>
+    </section>
 `;
 }
 
@@ -97,4 +99,3 @@ function renderSearchField() {
     </form>
 `;
 }
-

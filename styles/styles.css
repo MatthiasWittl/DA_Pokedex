@@ -2,10 +2,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to bottom,
-            #334155,
-            #1E293B);
-    border-bottom: 1px solid #1E293B;
+    background: linear-gradient(to bottom, #334155, #1e293b);
+    border-bottom: 1px solid #1e293b;
     height: 60px;
     position: sticky;
     top: 0px;
@@ -77,10 +75,7 @@ header {
 }
 
 main {
-    background: linear-gradient(130deg,
-            #020617,
-            #1E293B,
-            #020617);
+    background: linear-gradient(130deg, #020617, #1e293b, #020617);
 }
 
 .pokedex_container {
@@ -111,7 +106,7 @@ main {
 
 .pokemon_box {
     width: 220px;
-    background-color: #1E293B;
+    background-color: #1e293b;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,7 +126,6 @@ main {
     width: 150px;
     aspect-ratio: 1/1;
     object-fit: contain;
-
 }
 
 .pokemon_box_type_container {
@@ -177,7 +171,6 @@ footer {
     width: 100%;
     height: 100%;
     cursor: pointer;
-
 }
 
 .side_scroll_btn_container {
@@ -222,11 +215,10 @@ footer {
 }
 
 .single_view_Pokemon_Box {
-    background-color: #1E293B;
+    background-color: #1e293b;
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .closing_Button_dialog_Box {
@@ -240,7 +232,6 @@ footer {
     color: var(--type1, red);
     background-color: transparent;
     top: 4px;
-
 }
 
 .closing_Button_dialog_Box:hover {
@@ -250,9 +241,8 @@ footer {
 .pkmn_box_details {
     font-size: 24px;
     margin-top: 4px;
-    color: #F8f8f8;
-    text-shadow:
-        0 0 6px color-mix(in srgb, var(--type1) 80%, white),
+    color: #f8f8f8;
+    text-shadow: 0 0 6px color-mix(in srgb, var(--type1) 80%, white),
         0 0 12px color-mix(in srgb, var(--type1) 80%, transparent);
 }
 
@@ -315,15 +305,14 @@ footer {
 .pokemon_single_view_moves_section h3 {
     font-size: 24px;
     text-align: center;
-    color: #F8f8f8;
-    text-shadow: 0 0 6px color-mix(in srgb, var(--type1) 80%, white), 0 0 12px color-mix(in srgb, var(--type1) 80%, transparent);
-
+    color: #f8f8f8;
+    text-shadow: 0 0 6px color-mix(in srgb, var(--type1) 80%, white),
+        0 0 12px color-mix(in srgb, var(--type1) 80%, transparent);
 }
 
 .move_icon {
     width: 25px;
     object-fit: cover;
-
 }
 
 .evolution_chain_img_container {
@@ -364,7 +353,7 @@ footer img {
     width: 320px;
     height: 320px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, rgb(97, 214, 246) 0%, rgba(255, 255, 255, 0.0) 80%);
+    background: radial-gradient(circle at center, rgb(97, 214, 246) 0%, rgba(255, 255, 255, 0) 80%);
     animation: pulseWhite 4s ease-in-out infinite;
     z-index: 5;
 }
@@ -378,7 +367,7 @@ footer img {
     }
 
     50% {
-        transform: scale(1.10);
+        transform: scale(1.1);
         opacity: 0.9;
     }
 }
@@ -389,7 +378,6 @@ footer img {
     z-index: 10;
     position: relative;
 }
-
 
 /* Pokedex Loading screen End */
 

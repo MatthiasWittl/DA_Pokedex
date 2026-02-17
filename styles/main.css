@@ -1,78 +1,74 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
 .pkmn_box_color {
-    background: linear-gradient(135deg, var(--type1), var(--type2, var(--type1)));
+  background: linear-gradient(135deg, var(--type1), var(--type2, var(--type1)));
 }
 
 .pokemon_box_title_glow {
-    font-size: 28px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    text-transform: capitalize;
-    color: #F8f8f8;
-    text-shadow:
-        0 0 6px color-mix(in srgb, var(--type1) 80%, white),
-        0 0 12px color-mix(in srgb, var(--type1) 80%, transparent);
-
+  font-size: 28px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-transform: capitalize;
+  color: #f8f8f8;
+  text-shadow: 0 0 6px color-mix(in srgb, var(--type1) 80%, white),
+    0 0 12px color-mix(in srgb, var(--type1) 80%, transparent);
 }
 
-.grid_area>* {
-    grid-area: 1/1;
+.grid_area > * {
+  grid-area: 1/1;
 }
 
 .background_color_by_type {
-    background-color: var(--type-color, white);
+  background-color: var(--type-color, white);
 }
 
 .background_color_by_type_two {
-    background-color: var(--type2, white);
+  background-color: var(--type2, white);
 }
 
 .visible {
-    visibility: unset !important;
+  visibility: unset !important;
 }
 
-
 .sr_only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .justify_center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .move_backgr_color li {
-    background-color: var(--move_type_color, white);
-    list-style: none;
-    align-items: center;
-    display: flex;
-    padding: 8px;
-    border-radius: 10px;
+  background-color: var(--move_type_color, white);
+  list-style: none;
+  align-items: center;
+  display: flex;
+  padding: 8px;
+  border-radius: 10px;
 }
 
 .display_none {
-    display: none;
+  display: none;
 }
 
 .button_highlight {
-    border: 2px solid transparent;
-    padding: 8px;
-    border-radius: 12px;
-    background-color: #0EA5E9;
+  border: 2px solid transparent;
+  padding: 8px;
+  border-radius: 12px;
+  background-color: #0ea5e9;
 }
 
 .overflow_hidden {
-    overflow: hidden;
+  overflow: hidden;
 }
