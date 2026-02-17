@@ -230,6 +230,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 310px;
 }
 
 .closing_Button_dialog_Box {
@@ -259,7 +260,7 @@ footer {
 
 .pokemon_base_stats {
     display: grid;
-    grid-template-columns: 126px 1fr;
+    grid-template-columns: 132px 1fr;
     grid-template-rows: 27px;
     align-items: center;
     gap: 0.75px;
@@ -279,7 +280,7 @@ footer {
 .pokemon_single_view_data {
     display: flex;
     justify-content: space-between;
-    width: 310px;
+    width: 100%;
     text-transform: capitalize;
     padding: 4px;
 }
