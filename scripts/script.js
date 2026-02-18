@@ -154,9 +154,9 @@ function changeViewForOneBox() {
 
 function renderMorePokemon() {
   let endRenderIndex;
-  if (renderdPokemonBoxes >= 145) {
+  if (renderdPokemonBoxes > calcLimitForMaxLoad) {
     return;
-  } else if (renderdPokemonBoxes == 144) {
+  } else if (renderdPokemonBoxes == calcLimitForMaxLoad) {
     endRenderIndex = maxPokemonOnSite;
     buttonvisibility.remove("visible");
   } else {
@@ -168,7 +168,6 @@ function renderMorePokemon() {
   }
   let viewpoint = document.querySelector(".only_view:last-child");
   viewpoint.scrollIntoView({ behavior: "smooth" });
-  
 }
 
 function scrollToTop() {
@@ -348,7 +347,6 @@ function indexFinder(evolutionName) {
 function sectionSwitch(way, pkmnIndex) {
   document.getElementById("swap_container").innerHTML = "";
   swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
-
   if (way == "previous" && singleViewCount == 0) {
     singleViewCount = maxModulesSingleView;
   } else if (way == "next" && singleViewCount == maxModulesSingleView) {
@@ -407,4 +405,5 @@ function startobeserver() {
 function closeDialog() {
   pokemonBoxDialog.close();
   document.body.classList.remove("overflow_hidden");
+  singleViewCount = initialsingleViewCount;
 }

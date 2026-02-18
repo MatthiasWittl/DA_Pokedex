@@ -24,11 +24,15 @@ let maxAmountofPokemonFromAPI = 150; /* Number of Pokemon Standard Edition: 151,
 
 let singleViewCount = 0;
 
+const initialsingleViewCount = 0;
+
 let loadedPkmn = firstAmountOfLoadingPokemon;
 
 let maxpercentage = 100;
 
 let highestPkmnStat = 250;
+
+let calcLimitForMaxLoad = Math.floor(maxPokemonOnSite / moreAmountOfLoadingPokemon) * moreAmountOfLoadingPokemon; 
 
 const typeColors = {
   bug: "#A8B820",
