@@ -106,8 +106,8 @@ function startrender() {
 }
 
 function loadingBarAnimation() {
-  document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + maxEvoChainShow;
-  let loadingBarfiller = (maxpercentage / maxEvoChainShow) * loadedPkmn;
+  document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + maxPokemonOnSite;
+  let loadingBarfiller = (maxpercentage / maxPokemonOnSite) * loadedPkmn;
   document.documentElement.style.setProperty("--type5", loadingBarfiller + "%");
 }
 
@@ -157,7 +157,8 @@ function renderMorePokemon() {
   if (renderdPokemonBoxes >= 145) {
     return;
   } else if (renderdPokemonBoxes == 144) {
-    endRenderIndex = 151;
+    endRenderIndex = maxPokemonOnSite;
+    buttonvisibility.remove("visible");
   } else {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
@@ -167,6 +168,7 @@ function renderMorePokemon() {
   }
   let viewpoint = document.querySelector(".only_view:last-child");
   viewpoint.scrollIntoView({ behavior: "smooth" });
+  
 }
 
 function scrollToTop() {
@@ -315,7 +317,7 @@ async function getPokemonSpecies(index) {
 function parseEvolutionTree(chain, list = []) {
   let pkmnNumberURL = chain.species.url.split("/").filter(Boolean);
   pkmnNumberURL = Number(pkmnNumberURL[pkmnNumberURL.length - 1]);
-  if (pkmnNumberURL <= maxEvoChainShow) {
+  if (pkmnNumberURL <= maxPokemonOnSite) {
     list.push(chain.species.name);
   }
   chain.evolves_to.forEach((child) => {
