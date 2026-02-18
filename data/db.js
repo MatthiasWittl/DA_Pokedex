@@ -16,7 +16,8 @@ let firstAmountOfLoadingPokemon = 12;
 
 let maxPokemonOnSite = 151; /* max Amount of Pokemon who are related for standard Version */
 
-let remainingPokemonDataToLoad = maxPokemonOnSite - firstAmountOfLoadingPokemon; /* 139 max Loading Pokemon (151 - firstAmountOfLoadingPokemon 12) */
+let remainingPokemonDataToLoad =
+  maxPokemonOnSite - firstAmountOfLoadingPokemon; /* 139 max Loading Pokemon (151 - firstAmountOfLoadingPokemon 12) */
 
 let moreAmountOfLoadingPokemon = 12;
 
@@ -32,7 +33,7 @@ let maxpercentage = 100;
 
 let highestPkmnStat = 250;
 
-let calcLimitForMaxLoad = Math.floor(maxPokemonOnSite / moreAmountOfLoadingPokemon) * moreAmountOfLoadingPokemon; 
+let calcLimitForMaxLoad = Math.floor(maxPokemonOnSite / moreAmountOfLoadingPokemon) * moreAmountOfLoadingPokemon;
 
 const typeColors = {
   bug: "#A8B820",

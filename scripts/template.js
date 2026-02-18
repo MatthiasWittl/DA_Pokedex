@@ -102,9 +102,3 @@ function renderSearchField() {
 `;
 }
 
-/* old version Pokemon Moves
-<li  ><img src="" class="move_icon">${pokemonData[index].moves[0].move.name}</li>
-<li  ><img src="" class="move_icon">${pokemonData[index].moves[1].move.name}</li>
-<li  ><img src="" class="move_icon">${pokemonData[index].moves[2].move.name}</li>
-<li  ><img src="" class="move_icon">${pokemonData[index].moves[3].move.name}</li>
-*/
