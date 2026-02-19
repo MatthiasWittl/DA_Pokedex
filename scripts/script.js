@@ -210,38 +210,48 @@ async function openDialogBox(index, color) {
 
 async function getPokemonMoves(index) {
   if (!movesData.length == 0) {
-    for (let moveIndex = 0; moveIndex < maxAmountMoves && moveIndex < pokemonData[index].moves.length; moveIndex++) {
-      let moveURL = pokemonData[index].moves[moveIndex].move.url;
-      let moveName = pokemonData[index].moves[moveIndex].move.name;
-      for (let index = 0; index < Object.keys(movesData).length; index++) {
-        if (moveName === movesData[index].name) {
-          break;
-        } else if (index === Object.keys(movesData).length - 1) {
-          let promise = await fetch(moveURL).then((response) => {
-            if (!response.ok) {
-              retryFetch(moveURL);
-            }
-            return response.json();
-          });
-          movesData[Object.keys(movesData).length] = { ...promise };
-        }
-      }
-    }
+      await movesFromStorage(index);
     return true;
   } else {
-    for (let moveIndex = 0; moveIndex < maxAmountMoves && moveIndex < pokemonData[index].moves.length; moveIndex++) {
-      let moveURL = pokemonData[index].moves[moveIndex].move.url;
-      let promise = fetch(moveURL).then((response) => {
-        if (!response.ok) {
-          retryFetch(moveURL);
-        }
-        return response.json();
-      });
-      promisesMoves.push(promise);
-    }
-    let results = await Promise.allSettled(promisesMoves);
-    movesData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value);
+    await getPkmnMovesFromAPI(index);
   }
+  return true;
+}
+
+async function movesFromStorage(index) {
+  for (let moveIndex = 0; moveIndex < maxAmountMoves && moveIndex < pokemonData[index].moves.length; moveIndex++) {
+    let moveURL = pokemonData[index].moves[moveIndex].move.url;
+    let moveName = pokemonData[index].moves[moveIndex].move.name;
+    for (let index = 0; index < Object.keys(movesData).length; index++) {
+      if (moveName === movesData[index].name) {
+        break;
+      } else if (index === Object.keys(movesData).length - 1) {
+        let promise = await fetch(moveURL).then((response) => {
+          if (!response.ok) {
+            retryFetch(moveURL);
+          }
+          return response.json();
+        });
+        movesData[Object.keys(movesData).length] = { ...promise };
+      }
+    }
+  }
+  return true;
+}
+
+async function getPkmnMovesFromAPI(index) {
+  for (let moveIndex = 0; moveIndex < maxAmountMoves && moveIndex < pokemonData[index].moves.length; moveIndex++) {
+    let moveURL = pokemonData[index].moves[moveIndex].move.url;
+    let promise = fetch(moveURL).then((response) => {
+      if (!response.ok) {
+        retryFetch(moveURL);
+      }
+      return response.json();
+    });
+    promisesMoves.push(promise);
+  }
+  let results = await Promise.allSettled(promisesMoves);
+  movesData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value);
   return true;
 }
 
