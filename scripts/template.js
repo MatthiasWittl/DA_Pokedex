@@ -38,15 +38,17 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
             <img class="pokemon_box_img" src="${pokemonData[index].sprites.other["official-artwork"].front_default}"
             alt="">
         </div>
-        <h3 class="pkmn_box_details" id="swap_container_header">Battle Stats</h3>
-        <section class="pokemon_single_view_data">
-            <button onclick="sectionSwitch('previous', ${index})" >&#8592</button>
+        <section class="pokemon_single_view_data_header">
+        <button onclick="" >Battle Stats</button>
+        <button onclick="" >Moves</button>
+        <button onclick="" >Evo Chain</button>
+        </section>
             <section id="swap_container">
             <dl id="battle_stats_datalist">
             </dl>
             </section>
-            <button onclick="sectionSwitch('next', ${index})">&#8594</button>
-    </section>
+            
+    
 `;
 }
 
@@ -101,4 +103,12 @@ function renderSearchField() {
     </form>
 `;
 }
+
+
+/* old render single view
+
+<button onclick="sectionSwitch('next', ${index})">&#8594</button>
+<button onclick="sectionSwitch('previous', ${index})" >&#8592</button>
+
+*/
 
