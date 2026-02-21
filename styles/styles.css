@@ -268,12 +268,40 @@ color-mix(in srgb, var(--type1) 80%, transparent);
 
 .pokemon_single_view_data_header button:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.08);
+}
+
+.swap_container {
+    width: 310px;
+    height: 165px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 6px;
+    align-items: center;
+}
+
+.single_view_switch_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.single_view_switch {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid var(--type1, white);
+    color: white;
+
 }
 
 .pokemon_base_stats {
   display: grid;
-  grid-template-columns: 132px 1fr;
+  grid-template-columns: 170px 1fr;
   grid-template-rows: 27px;
   align-items: center;
   gap: 0.75px;
@@ -302,6 +330,7 @@ color-mix(in srgb, var(--type1) 80%, transparent);
 
 .pokemon_single_view_moves_section ul {
   list-style-position: inside;
+  text-transform: capitalize;
 }
 
 .status_bar {
@@ -335,9 +364,6 @@ color-mix(in srgb, var(--type1) 80%, transparent);
 }
 
 .evolution_chain_img_container {
-  width: 238px;
-  max-height: 80px;
-  padding: 4px;
   border-radius: 15px;
   display: grid;
   align-items: center;

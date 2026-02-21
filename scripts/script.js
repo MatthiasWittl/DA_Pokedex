@@ -240,7 +240,7 @@ async function getPkmnMovesFromAPI(index) {
 
 function pokemonBoxUtilities(index) {
   soundsByOpening(index);
-  swapContainerClasses = document.getElementById("swap_container").classList;
+  swapContainerClasses = document.getElementById("swap_container_id").classList;
   showBattleStats(index);
   document.body.classList.add("overflow_hidden");
 }
@@ -248,8 +248,8 @@ function pokemonBoxUtilities(index) {
 function showBattleStats(index) {
   changeSingleViewBtnHighlight("battle_stats_btn");
   swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
-  document.getElementById("swap_container").innerHTML = "";
-  document.getElementById("swap_container").innerHTML += renderBattleStatsContainer();
+  document.getElementById("swap_container_id").innerHTML = "";
+  document.getElementById("swap_container_id").innerHTML += renderBattleStatsContainer();
   for (let iStats = 0; iStats < pokemonData[index].stats.length; iStats++) {
     let statusBarFill = (maxpercentage / highestPkmnStat) * pokemonData[index].stats[iStats].base_stat;
     document.getElementById("battle_stats_datalist").innerHTML += renderBattleStats(index, iStats, statusBarFill);
@@ -265,8 +265,8 @@ function soundsByOpening(index) {
 function showPkmnMoves(index) {
   changeSingleViewBtnHighlight("pkmn_moves_btn");
   swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
-  document.getElementById("swap_container").innerHTML = "";
-  document.getElementById("swap_container").innerHTML += renderMoves(index);
+  document.getElementById("swap_container_id").innerHTML = "";
+  document.getElementById("swap_container_id").innerHTML += renderMoves(index);
   movesTypeColorFilter();
 }
 
@@ -326,10 +326,10 @@ function parseEvolutionTree(chain, list = []) {
 
 function evoChainImgSet() {
   changeSingleViewBtnHighlight("evo_chain_btn");
-  document.getElementById("swap_container").innerHTML = "";
+  document.getElementById("swap_container_id").innerHTML = "";
   for (let i = 0; i < pokemonEvolutionChain.length; i++) {
     let nrPkmnImg = indexFinder(pokemonEvolutionChain[i]);
-    document.getElementById("swap_container").innerHTML += renderEvolutionChainImg(nrPkmnImg);
+    document.getElementById("swap_container_id").innerHTML += renderEvolutionChainImg(nrPkmnImg);
   }
   swapContainerClasses.add("evolution_chain_img_container", "pkmn_box_color");
 }
@@ -344,8 +344,9 @@ function indexFinder(evolutionName) {
 
 /* Switch between Sections */
 
+/*
 function sectionSwitch(way, pkmnIndex) {
-  document.getElementById("swap_container").innerHTML = "";
+  document.getElementById("swap_container_id").innerHTML = "";
   swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
   if (way == "previous" && singleViewCount == 0) {
     singleViewCount = maxModulesSingleView;
@@ -360,8 +361,8 @@ function sectionSwitch(way, pkmnIndex) {
   }
   singleViewSections[singleViewCount].render(pkmnIndex);
   document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
-}
-
+} */
+/* 
 pokemonBoxDialog.addEventListener("keydown", (e) => {
   if (e.key == "ArrowLeft") {
     sectionSwitch("previous", singleViewPkmnIndex);
@@ -374,7 +375,7 @@ pokemonBoxDialog.addEventListener("click", (e) => {
   if (e.target == pokemonBoxDialog) {
     closeDialog();
   }
-});
+}); /* 
 
 /* Switch between Sections End */
 

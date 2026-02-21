@@ -43,9 +43,13 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
         <button id="pkmn_moves_btn" onclick="showPkmnMoves(${index})" >Moves</button>
         <button id="evo_chain_btn" onclick="evoChainImgSet(${index})" >Evo Chain</button>
         </section>
-            <section id="swap_container">
+            <section id="swap_container_id" class="swap_container">
             <dl id="battle_stats_datalist">
             </dl>
+            </section>
+            <section class="single_view_switch_container">
+            <button class="single_view_switch" onclick="" >&#10094</button>
+              <button class="single_view_switch" onclick="">&#10095</button>
             </section>
             
     
@@ -107,8 +111,7 @@ function renderSearchField() {
 
 /* old render single view
 
-<button onclick="sectionSwitch('next', ${index})">&#8594</button>
-<button onclick="sectionSwitch('previous', ${index})" >&#8592</button>
+
 
 */
 

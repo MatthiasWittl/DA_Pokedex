@@ -76,4 +76,5 @@
 .single_view_button_highlight {
   background-color: #38bdf8 !important;
   color: #1e293b !important;
+  text-shadow: unset !important;
 }
