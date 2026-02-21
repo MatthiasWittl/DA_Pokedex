@@ -39,9 +39,9 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
             alt="">
         </div>
         <section class="pokemon_single_view_data_header">
-        <button onclick="" >Battle Stats</button>
-        <button onclick="" >Moves</button>
-        <button onclick="" >Evo Chain</button>
+        <button id="battle_stats_btn" onclick="showBattleStats(${index})" >Battle Stats</button>
+        <button id="pkmn_moves_btn" onclick="showPkmnMoves(${index})" >Moves</button>
+        <button id="evo_chain_btn" onclick="evoChainImgSet(${index})" >Evo Chain</button>
         </section>
             <section id="swap_container">
             <dl id="battle_stats_datalist">

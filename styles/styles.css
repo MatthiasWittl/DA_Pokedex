@@ -263,10 +263,12 @@ color-mix(in srgb, var(--type1) 80%, transparent);
     padding: 4px;
     border-radius: 10px;
     background-color: transparent;
+    transition: transform 0.3s ease;
 }
 
 .pokemon_single_view_data_header button:hover {
     cursor: pointer;
+    transform: scale(1.05);
 }
 
 .pokemon_base_stats {
@@ -280,6 +282,7 @@ color-mix(in srgb, var(--type1) 80%, transparent);
 .pokemon_base_stats dt {
   color: white;
   font-size: 18px;
+  text-transform: capitalize;
 }
 
 .status_bar_container {

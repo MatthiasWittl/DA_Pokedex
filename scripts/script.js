@@ -13,23 +13,6 @@ let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
 
-const singleViewSections = {
-  0: {
-    header: "Battle Stats",
-    render: showBattleStats,
-  },
-  1: {
-    header: "Moves",
-    render: showPkmnMoves,
-  },
-  2: {
-    header: "Evolution Chain",
-    render: evoChainImgSet,
-  },
-};
-
-const maxModulesSingleView = Object.keys(singleViewSections).length - 1;
-
 function checkForLocalStorageData() {
   if (localStorage.getItem("pokemonData") == null) {
     getFirstPokemonData();
@@ -256,13 +239,16 @@ async function getPkmnMovesFromAPI(index) {
 }
 
 function pokemonBoxUtilities(index) {
-  showBattleStats(index);
   soundsByOpening(index);
   swapContainerClasses = document.getElementById("swap_container").classList;
+  showBattleStats(index);
   document.body.classList.add("overflow_hidden");
 }
 
 function showBattleStats(index) {
+  changeSingleViewBtnHighlight("battle_stats_btn");
+  swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
+  document.getElementById("swap_container").innerHTML = "";
   document.getElementById("swap_container").innerHTML += renderBattleStatsContainer();
   for (let iStats = 0; iStats < pokemonData[index].stats.length; iStats++) {
     let statusBarFill = (maxpercentage / highestPkmnStat) * pokemonData[index].stats[iStats].base_stat;
@@ -277,6 +263,9 @@ function soundsByOpening(index) {
 }
 
 function showPkmnMoves(index) {
+  changeSingleViewBtnHighlight("pkmn_moves_btn");
+  swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
+  document.getElementById("swap_container").innerHTML = "";
   document.getElementById("swap_container").innerHTML += renderMoves(index);
   movesTypeColorFilter();
 }
@@ -336,6 +325,7 @@ function parseEvolutionTree(chain, list = []) {
 }
 
 function evoChainImgSet() {
+  changeSingleViewBtnHighlight("evo_chain_btn");
   document.getElementById("swap_container").innerHTML = "";
   for (let i = 0; i < pokemonEvolutionChain.length; i++) {
     let nrPkmnImg = indexFinder(pokemonEvolutionChain[i]);
@@ -417,3 +407,11 @@ function closeDialog() {
   document.body.classList.remove("overflow_hidden");
   singleViewCount = initialsingleViewCount;
 }
+
+function changeSingleViewBtnHighlight(button) {
+  document.querySelectorAll(".single_view_button_highlight").forEach((button) => {
+    button.classList.remove("single_view_button_highlight");
+  });
+  document.getElementById(button)?.classList.add("single_view_button_highlight");
+}
+
