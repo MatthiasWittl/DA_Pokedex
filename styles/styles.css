@@ -296,7 +296,14 @@ color-mix(in srgb, var(--type1) 80%, transparent);
     background-color: transparent;
     border: 1px solid var(--type1, white);
     color: white;
+    transition: transform 0.5s ease, background-color 0.5s ease;
 
+}
+
+.single_view_switch:hover {
+    background-color: var(--type1, white);
+    cursor: pointer;
+    transform: scale(1.08);
 }
 
 .pokemon_base_stats {
