@@ -359,6 +359,20 @@ function singleViewSwitch(direction, index) {
   openDialogBox(index, color)
 };
 
+pokemonBoxDialog.addEventListener("keydown", (e) => {
+  if (e.key == "ArrowLeft") {
+    singleViewSwitch("previous", singleViewPkmnIndex);
+  } else if (e.key == "ArrowRight") {
+    singleViewSwitch("next", singleViewPkmnIndex);
+  }
+});
+
+pokemonBoxDialog.addEventListener("click", (e) => {
+  if (e.target == pokemonBoxDialog) {
+    closeDialog();
+  }
+});
+
 /* Switch between Sections End */
 
 function startobeserver() {
