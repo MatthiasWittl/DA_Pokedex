@@ -342,40 +342,22 @@ function indexFinder(evolutionName) {
 
 /* Evolution Chain Functions End */
 
-/* Switch between Sections */
+/* Switch between Single View Pokemon */
 
-/*
-function sectionSwitch(way, pkmnIndex) {
-  document.getElementById("swap_container_id").innerHTML = "";
-  swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
-  if (way == "previous" && singleViewCount == 0) {
-    singleViewCount = maxModulesSingleView;
-  } else if (way == "next" && singleViewCount == maxModulesSingleView) {
-    singleViewCount = 0;
-  } else {
-    if (way == "next") {
-      singleViewCount++;
-    } else {
-      singleViewCount--;
-    }
+function singleViewSwitch(direction, index) {
+  if (direction === "next") {
+    index++;
+  } else if(direction === "previous" && index == 0) {
+    index = maxAmountofPokemonFromAPI;
+  } else if(direction === "next" && index == maxAmountofPokemonFromAPI) {
+    index = 0;
+  }else {
+    index--;
   }
-  singleViewSections[singleViewCount].render(pkmnIndex);
-  document.getElementById("swap_container_header").innerHTML = singleViewSections[singleViewCount].header;
-} */
-/* 
-pokemonBoxDialog.addEventListener("keydown", (e) => {
-  if (e.key == "ArrowLeft") {
-    sectionSwitch("previous", singleViewPkmnIndex);
-  } else if (e.key == "ArrowRight") {
-    sectionSwitch("next", singleViewPkmnIndex);
-  }
-});
-
-pokemonBoxDialog.addEventListener("click", (e) => {
-  if (e.target == pokemonBoxDialog) {
-    closeDialog();
-  }
-}); /* 
+  let pkmnColor = pokemonData[index].types.map((t) => t.type.name);
+  let color = pkmnColor.join(",");
+  openDialogBox(index, color)
+};
 
 /* Switch between Sections End */
 

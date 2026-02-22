@@ -48,8 +48,8 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
             </dl>
             </section>
             <section class="single_view_switch_container">
-            <button class="single_view_switch" onclick="" >&#10094</button>
-              <button class="single_view_switch" onclick="">&#10095</button>
+            <button class="single_view_switch" onclick="singleViewSwitch('previous', ${index})" >&#10094</button>
+            <button class="single_view_switch" onclick="singleViewSwitch('next', ${index})">&#10095</button>
             </section>
             
     
@@ -109,9 +109,4 @@ function renderSearchField() {
 }
 
 
-/* old render single view
-
-
-
-*/
 
