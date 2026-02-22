@@ -193,7 +193,7 @@ async function openDialogBox(index, color) {
 
 async function getPokemonMoves(index) {
   if (!movesData.length == 0) {
-      await movesFromStorage(index);
+    await movesFromStorage(index);
     return true;
   } else {
     await getPkmnMovesFromAPI(index);
@@ -347,17 +347,17 @@ function indexFinder(evolutionName) {
 function singleViewSwitch(direction, index) {
   if (direction === "next") {
     index++;
-  } else if(direction === "previous" && index == 0) {
+  } else if (direction === "previous" && index == 0) {
     index = maxAmountofPokemonFromAPI;
-  } else if(direction === "next" && index == maxAmountofPokemonFromAPI) {
+  } else if (direction === "next" && index == maxAmountofPokemonFromAPI) {
     index = 0;
-  }else {
+  } else {
     index--;
   }
   let pkmnColor = pokemonData[index].types.map((t) => t.type.name);
   let color = pkmnColor.join(",");
-  openDialogBox(index, color)
-};
+  openDialogBox(index, color);
+}
 
 pokemonBoxDialog.addEventListener("keydown", (e) => {
   if (e.key == "ArrowLeft") {
@@ -411,4 +411,3 @@ function changeSingleViewBtnHighlight(button) {
   });
   document.getElementById(button)?.classList.add("single_view_button_highlight");
 }
-
