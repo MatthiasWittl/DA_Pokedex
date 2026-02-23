@@ -116,7 +116,7 @@ function searchPokemonFromInputField() {
   let input = document.getElementById("header_input_search_field").value.toLowerCase();
   let inputLength = input.length;
   for (let index = 0; index < Object.keys(pokemonData).length; index++) {
-  let searchPkmn = pokemonData[index].name.slice(0, inputLength);
+    let searchPkmn = pokemonData[index].name.slice(0, inputLength);
     if (input === pokemonData[index].name || input === searchPkmn) {
       inputStorage.push(index);
     } else if (index === Object.keys(pokemonData).length - 1 && inputStorage.length == 0) {
@@ -125,7 +125,7 @@ function searchPokemonFromInputField() {
   }
   document.getElementById("header_input_search_field").value = "";
   if (inputStorage.length > 0) {
-  searchPokemonOutput(inputStorage);
+    searchPokemonOutput(inputStorage);
   }
 }
 
@@ -133,9 +133,8 @@ function searchPokemonOutput(inputStorage) {
   document.getElementById("main_container").innerHTML = "";
   changeViewForSearchResult(inputStorage);
   for (let index = 0; index < inputStorage.length; index++) {
-      document.getElementById("main_container").innerHTML += renderPokemonBox(inputStorage[index]);
+    document.getElementById("main_container").innerHTML += renderPokemonBox(inputStorage[index]);
   }
-
 }
 
 function changeViewForSearchResult(inputStorage) {

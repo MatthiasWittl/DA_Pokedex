@@ -31,7 +31,7 @@ function renderPokemonBox(index) {
 
 function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
   return `
-    <button onclick="closeDialog()" style="--type1: ${colorOne}" class="closing_Button_dialog_Box">X</button>
+    <button aria-label="Button to Open Dialog Box for Details" onclick="closeDialog()" style="--type1: ${colorOne}" class="closing_Button_dialog_Box">X</button>
     <section class="single_view_Pokemon_Box" style="--type1: ${colorOne}; --type2: ${colorTwo};">
         <h2 class="pokemon_box_title_glow">${pokemonData[index].name} #${pokemonData[index].id}</h2>
         <div class="pokemon_box_img_container pkmn_box_color">
@@ -48,8 +48,8 @@ function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
             </dl>
             </section>
             <section class="single_view_switch_container">
-            <button class="single_view_switch" onclick="singleViewSwitch('previous', ${index})" >&#10094</button>
-            <button class="single_view_switch" onclick="singleViewSwitch('next', ${index})">&#10095</button>
+            <button aria-label="Button to previous Pokemon" class="single_view_switch" onclick="singleViewSwitch('previous', ${index})" >&#10094</button>
+            <button aria-label="Button to next Pokemon" class="single_view_switch" onclick="singleViewSwitch('next', ${index})">&#10095</button>
             </section>
             
     
@@ -84,10 +84,9 @@ function renderEvolutionChainImg(index) {
 
 function renderMoves(index) {
   let itemsHTML = "";
-for (let iMove = 0; iMove < pokemonData[index].moves.length && iMove < maxAmountMoves; iMove++) {
-  itemsHTML += 
-  `<li  ><img src="" class="move_icon">${pokemonData[index].moves[iMove].move.name}</li>`
-}
+  for (let iMove = 0; iMove < pokemonData[index].moves.length && iMove < maxAmountMoves; iMove++) {
+    itemsHTML += `<li  ><img src="" class="move_icon">${pokemonData[index].moves[iMove].move.name}</li>`;
+  }
   return `
     <section class="pokemon_single_view_moves_section">
         <ul class="move_backgr_color">
@@ -107,6 +106,3 @@ function renderSearchField() {
     </form>
 `;
 }
-
-
-

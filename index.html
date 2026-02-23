@@ -12,8 +12,6 @@
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/main.css" />
-    
-
   </head>
 
   <body onload="checkForLocalStorageData()">
@@ -25,7 +23,7 @@
     <header>
       <div class="header_container">
         <button
-          aria-label="Back To Main Site Pokédex"
+          aria-label="Pokedex - Back to Main Site"
           class="site_header"
           id="back_to_main_btn"
           onclick="backToMainSite()"
@@ -52,20 +50,24 @@
         <img src="/assets/images/open_pokeball.webp" alt="" />
       </button>
     </main>
-    <div class="side_scroll_btn_container" id="side_scroll_btn_container_id">
+    <div role="region" aria-label="Page controls" class="side_scroll_btn_container" id="side_scroll_btn_container_id">
       <button
+        type="button"
         aria-label="Scroll to Top"
         class="scroll_to_top"
         id="scroll_to_top_id"
         aria-label="Scroll to Top"
-        onclick="scrollToTop()">
+        onclick="scrollToTop()"
+      >
         &#8593;
       </button>
       <button
+        type="button"
         aria-label="Scroll to Bottom"
         class="scroll_to_bottom"
         id="scroll_to_bottom_id"
-        onclick="scrollToBottom()">
+        onclick="scrollToBottom()"
+      >
         &#8595;
       </button>
     </div>
@@ -80,5 +82,3 @@
     <script src="data/db.js"></script>
   </body>
 </html>
-
-
