@@ -12,6 +12,7 @@ let swapContainerClasses;
 let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
+let allLoadedPkmn = "false";
 
 function checkForLocalStorageData() {
   if (localStorage.getItem("pokemonData") == null) {
@@ -97,6 +98,7 @@ function loadingBarAnimation() {
 function changeLoaderForSearch() {
   document.getElementById("header_input_search_id").innerHTML = renderSearchField();
   checkInputSearchField();
+  allLoadedPkmn = "true";
 }
 
 function checkInputSearchField() {
@@ -358,18 +360,21 @@ function indexFinder(evolutionName) {
 /* Switch between Single View Pokemon */
 
 function singleViewSwitch(direction, index) {
-  if (direction === "next") {
-    index++;
-  } else if (direction === "previous" && index == 0) {
-    index = maxAmountofPokemonFromAPI;
-  } else if (direction === "next" && index == maxAmountofPokemonFromAPI) {
-    index = 0;
-  } else {
-    index--;
+  if (allLoadedPkmn == "true") {
+    if (direction === "next" && index == maxAmountofPokemonFromAPI) {
+      index = 0;
+    } else if (direction === "previous" && index == 0) {
+      index = maxAmountofPokemonFromAPI;
+    } else if (direction === "next") {
+      index++;
+    } else {
+      index--;
+    }
+
+    let pkmnColor = pokemonData[index].types.map((t) => t.type.name);
+    let color = pkmnColor.join(",");
+    openDialogBox(index, color);
   }
-  let pkmnColor = pokemonData[index].types.map((t) => t.type.name);
-  let color = pkmnColor.join(",");
-  openDialogBox(index, color);
 }
 
 pokemonBoxDialog.addEventListener("keydown", (e) => {
