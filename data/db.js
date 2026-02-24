@@ -14,7 +14,7 @@ let maxAmountMoves = 4;
 
 let firstAmountOfLoadingPokemon = 12;
 
-let maxPokemonOnSite = 151; /* max Amount of Pokemon who are related for standard Version */
+let maxPokemonOnSite = 24; /* max Amount of Pokemon who are related for standard Version */
 
 let remainingPokemonDataToLoad =
   maxPokemonOnSite - firstAmountOfLoadingPokemon; /* 139 max Loading Pokemon (151 - firstAmountOfLoadingPokemon 12) */
