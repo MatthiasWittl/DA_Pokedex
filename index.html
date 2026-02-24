@@ -41,14 +41,17 @@
     </header>
     <main>
       <section id="main_container" class="pokedex_container"></section>
-      <button
+      <section>
+        <button
         aria-label="Show More Pokemon"
         onclick="renderMorePokemon()"
         class="open_more_Pokemon"
-        id="open_more_Pokemon_id"
-      >
+        id="open_more_Pokemon_id">
         <img src="/assets/images/open_pokeball.webp" alt="" />Load More
       </button>
+      <button id="back_btn_single_view_id" class="back_btn_single_view_cls" onclick="backToMainSite()">Back</button>
+      </section>
+    
     </main>
     <div role="region" aria-label="Page controls" class="side_scroll_btn_container" id="side_scroll_btn_container_id">
       <button

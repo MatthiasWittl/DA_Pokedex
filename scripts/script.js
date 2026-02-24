@@ -1,10 +1,11 @@
-const buttonvisibility = document.getElementById("open_more_Pokemon_id").classList;
+const openMorePkmnBtn = document.getElementById("open_more_Pokemon_id").classList;
 const scrollToTopButtonvisibility = document.getElementById("scroll_to_top_id").classList;
 const scrollToBottomButtonvisibility = document.getElementById("scroll_to_bottom_id").classList;
 const pokedexMainContainer = document.getElementById("main_container").classList;
 const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box_id");
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 const backToMainBtn = document.getElementById("back_to_main_btn").classList;
+const backBtnSingleView = document.getElementById("back_btn_single_view_id").classList;
 let observer;
 let userscreenView;
 let singleViewPkmnIndex;
@@ -75,7 +76,7 @@ async function loadAllReaminingPokemon() {
     loadedPkmn++;
     loadingBarAnimation();
   }
-  buttonvisibility.add("visible");
+  openMorePkmnBtn.add("visible");
   changeLoaderForSearch();
 }
 
@@ -143,8 +144,9 @@ function changeViewForSearchResult(inputStorage) {
   observer.disconnect();
   scrollToBottomButtonvisibility.remove("visible");
   scrollToTopButtonvisibility.remove("visible");
-  buttonvisibility.remove("visible");
+  openMorePkmnBtn.add("display_none");
   backToMainBtn.add("button_highlight");
+  backBtnSingleView.add("display_unset");
   if (inputStorage.length == 1) {
     pokedexMainContainer.add("justify_center");
   }
@@ -156,7 +158,7 @@ function renderMorePokemon() {
     return;
   } else if (renderdPokemonBoxes == calcLimitForMaxLoad) {
     endRenderIndex = maxPokemonOnSite;
-    buttonvisibility.remove("visible");
+    openMorePkmnBtn.remove("visible");
   } else {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
@@ -183,8 +185,9 @@ function backToMainSite() {
     document.getElementById("main_container").innerHTML += renderPokemonBox(index);
   }
   pokedexMainContainer.remove("justify_center");
-  buttonvisibility.add("visible");
+  openMorePkmnBtn.remove("display_none");
   backToMainBtn.remove("button_highlight");
+  backBtnSingleView.remove("display_unset");
   window.scroll({ top: userscreenView, behavior: "smooth" });
   startobeserver();
 }

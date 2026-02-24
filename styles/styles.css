@@ -192,6 +192,27 @@ footer {
   cursor: pointer;
 }
 
+.back_btn_single_view_cls {
+      display: none;
+      position: sticky;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      background-color: #0ea5e9;
+      align-items: center;
+      color: white;
+      font-size: 27px;
+      border-radius: 50%;
+      margin: 10px;
+}
+
+.back_btn_single_view_cls:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
 .side_scroll_btn_container {
   position: fixed;
   top: 50vh;
