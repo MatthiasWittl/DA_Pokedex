@@ -103,11 +103,10 @@ function changeLoaderForSearch() {
 }
 
 function checkInputSearchField() {
+  let inputField = document.getElementById("header_input_search_field");
   const inputSearch = document.querySelector("form");
   inputSearch.addEventListener("submit", (event) => {
-    if (!inputSearch.checkValidity()) {
-      return;
-    }
+    inputField.setCustomValidity("");
     userscreenView = window.scrollY;
     event.preventDefault();
     searchPokemonFromInputField();
@@ -116,20 +115,25 @@ function checkInputSearchField() {
 
 function searchPokemonFromInputField() {
   let inputStorage = [];
+  let inputField = document.getElementById("header_input_search_field");
   let input = document.getElementById("header_input_search_field").value.toLowerCase();
   let inputLength = input.length;
   for (let index = 0; index < Object.keys(pokemonData).length; index++) {
     let searchPkmn = pokemonData[index].name.slice(0, inputLength);
     if (input === pokemonData[index].name || input === searchPkmn) {
       inputStorage.push(index);
-    } else if (index === Object.keys(pokemonData).length - 1 && inputStorage.length == 0) {
-      alert("Pokémon nicht gefunden. Bitte überprüfe die Eingabe.");
     }
   }
-  document.getElementById("header_input_search_field").value = "";
-  if (inputStorage.length > 0) {
-    searchPokemonOutput(inputStorage);
+  if (inputStorage.length == 0) {
+    inputField.setCustomValidity("Pokémon nicht gefunden. Bitte überprüfe die Eingabe.");
+    inputField.reportValidity();
+    inputField.setCustomValidity("");
+    return;
+    /*
+    alert("Pokémon nicht gefunden. Bitte überprüfe die Eingabe.");*/
   }
+    searchPokemonOutput(inputStorage);
+    document.getElementById("header_input_search_field").value = "";
 }
 
 function searchPokemonOutput(inputStorage) {

@@ -101,7 +101,7 @@ function renderSearchField() {
     <form role="search">
     <label for="header_input_search_field" class="sr_only">Search Pokemon</label>
     <input id="header_input_search_field" placeholder="Search Pokemon" type="text" maxlength="12"
-        inputmode="search" minlength="3" pattern="[A-Za-z]+" title="Min three Letters" required />
+        inputmode="search" minlength="3" pattern="[A-Za-z]+" title="Pokemon nicht gefunden" required />
     <button type="submit" id="header_input_search_button" aria-label="Suchen">&#128269</button>
     </form>
 `;
