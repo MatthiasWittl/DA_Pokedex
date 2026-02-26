@@ -1,18 +1,12 @@
-function renderPokemonBox(index) {
-  let pokemon = pokemonData[index];
-  let pkmnTypes = pokemon.types.map((t) => t.type.name);
-  let styleVarSet = `--type1: ${typeColors[pokemonData[index].types[0].type.name]};`;
-  if (pokemon.types[1]) {
-    styleVarSet += ` --type2: ${typeColors[pokemonData[index].types[1].type.name]};`;
-  }
+function renderPokemonBoxes(index, pokemon, pkmnTypes, styleVarSet) {
   let typesHTML = pkmnTypes
-    .map((name, i) => {
-      return `
-        <p class="pokemon_box_type_container background_color_by_type" style="--type-color: ${typeColors[name]};">
-            ${name}
-        </p>`;
-    })
-    .join("");
+  .map((name, i) => {
+    return `
+      <p class="pokemon_box_type_container background_color_by_type" style="--type-color: ${typeColors[name]};">
+          ${name}
+      </p>`;
+  })
+  .join("");
   return `
     <button class="only_view" onclick="openDialogBox(${index}, '${pkmnTypes}')">
     <section class="pokemon_box" style= "${styleVarSet};">
@@ -22,12 +16,14 @@ function renderPokemonBox(index) {
                 src="${pokemon.sprites.other["official-artwork"].front_default}" alt="">        
         </div>
         <div class="pokemon_box_type_container">
-               ${typesHTML}
+        ${typesHTML}
+
         </div>       
     </section>
     </button>
 `;
 }
+
 
 function renderSingleViewPokemonBox(index, colorOne, colorTwo) {
   return `

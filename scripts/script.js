@@ -90,6 +90,17 @@ function startrender() {
   startobeserver();
 }
 
+function renderPokemonBox(index) {
+  let pokemon = pokemonData[index];
+  let pkmnTypes = pokemon.types.map((t) => t.type.name);
+  let styleVarSet = `--type1: ${typeColors[pokemonData[index].types[0].type.name]};`;
+  if (pokemon.types[1]) {
+    styleVarSet += ` --type2: ${typeColors[pokemonData[index].types[1].type.name]};`;
+  }
+  
+return renderPokemonBoxes(index, pokemon, pkmnTypes, styleVarSet);
+}
+
 function loadingBarAnimation() {
   document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + maxPokemonOnSite;
   let loadingBarfiller = (maxpercentage / maxPokemonOnSite) * loadedPkmn;
