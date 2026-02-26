@@ -171,10 +171,18 @@ function renderMorePokemon() {
   } else {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
+  addmorePokemonBoxes(endRenderIndex);
+  scrollToLastPkmnBox()
+}
+
+function addmorePokemonBoxes(endRenderIndex) {
   for (let index = renderdPokemonBoxes; index < endRenderIndex; index++) {
     document.getElementById("main_container").insertAdjacentHTML("beforeend", renderPokemonBox(index));
     renderdPokemonBoxes++;
   }
+}
+
+function scrollToLastPkmnBox() {
   let viewpoint = document.querySelector(".only_view:last-child");
   viewpoint.scrollIntoView({ behavior: "smooth" });
 }
