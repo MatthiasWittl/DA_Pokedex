@@ -54,6 +54,29 @@ header {
   white-space: nowrap;
 }
 
+.search_result_output_cls {
+  white-space: pre-line;
+  min-width: 315px;
+  top: 60px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1e293b;
+  color: #FACC15;
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  opacity: 0;
+  transition: 0.3s ease;
+  border: 2px solid red;
+  text-align: center;
+}
+
+.search_result_output_cls.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 .header_input button {
   font-size: 24px;
   position: absolute;
