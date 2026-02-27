@@ -53,14 +53,14 @@ function getFirstPokemonData() {
   }
   Promise.allSettled(promises).then((results) => {
     (pokemonData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value)),
-    firstLoadingChain();
+      firstLoadingChain();
   });
 }
 
 function firstLoadingChain() {
   storageLocalFirstPokemonData();
-      loadAllReaminingPokemon();
-      startrender();
+  loadAllReaminingPokemon();
+  startrender();
 }
 
 function storageLocalFirstPokemonData() {
@@ -77,12 +77,17 @@ async function loadAllReaminingPokemon() {
           retryFetch("https://pokeapi.co/api/v2/pokemon/" + (index + 1 + firstAmountOfLoadingPokemon));
         }
         return response.json();
-      });
+      }
+    );
     pokemonData[index + firstAmountOfLoadingPokemon] = { ...promise };
-    loadedPkmn++;
-    loadingBarAnimation();
+    loadingTicker();
   }
   changeLoaderForSearch();
+}
+
+function loadingTicker() {
+  loadedPkmn++;
+  loadingBarAnimation();
 }
 
 function startrender() {
@@ -103,18 +108,18 @@ function renderPokemonBox(index) {
     styleVarSet += ` --type2: ${typeColors[pokemonData[index].types[1].type.name]};`;
   }
   renderPkmnTypes(pkmnTypes);
-return renderPokemonBoxes(index, pokemon, pkmnTypes, styleVarSet);
+  return renderPokemonBoxes(index, pokemon, pkmnTypes, styleVarSet);
 }
 
 function renderPkmnTypes(pkmnTypes) {
   typesHTML = pkmnTypes
-  .map((name, i) => {
-    return `
+    .map((name, i) => {
+      return `
       <p class="pokemon_box_type_container background_color_by_type" style="--type-color: ${typeColors[name]};">
           ${name}
       </p>`;
-  })
-  .join("");
+    })
+    .join("");
 }
 
 function loadingBarAnimation() {
@@ -159,8 +164,8 @@ function checkIfNotFound(inputStorage, input) {
               ${input}`);
     return;
   }
-    searchPokemonOutput(inputStorage);
-    document.getElementById("header_input_search_field").value = "";
+  searchPokemonOutput(inputStorage);
+  document.getElementById("header_input_search_field").value = "";
 }
 
 function showToast(message, duration = 2500) {
@@ -204,7 +209,7 @@ function renderMorePokemon() {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
   addMorePokemonBoxes(endRenderIndex);
-  scrollToLastPkmnBox()
+  scrollToLastPkmnBox();
 }
 
 function addMorePokemonBoxes(endRenderIndex) {
@@ -276,25 +281,31 @@ async function movesFromStorage(index) {
   for (let moveIndex = 0; moveIndex < maxAmountMoves && moveIndex < pokemonData[index].moves.length; moveIndex++) {
     let moveURL = pokemonData[index].moves[moveIndex].move.url;
     let moveName = pokemonData[index].moves[moveIndex].move.name;
-    await getSingleMovesIfnotStored(moveURL, moveName);
-    }
+    await singleMovesStorageOrAPI(moveURL, moveName);
+  }
   return true;
 }
 
-async function getSingleMovesIfnotStored(moveURL, moveName) {
+async function singleMovesStorageOrAPI(moveURL, moveName) {
   for (let index = 0; index < Object.keys(movesData).length; index++) {
     if (moveName === movesData[index].name) {
       break;
     } else if (index === Object.keys(movesData).length - 1) {
-      let promise = await fetch(moveURL).then((response) => {
-        if (!response.ok) {
-          retryFetch(moveURL);
-        }
-        return response.json();
-      });
-      movesData[Object.keys(movesData).length] = { ...promise };
-    }}
-    return true;
+      await getSingleMovesFromAPI(moveURL);
+    }
+  }
+  return true;
+}
+
+async function getSingleMovesFromAPI(moveURL) {
+  let promise = await fetch(moveURL).then((response) => {
+    if (!response.ok) {
+      retryFetch(moveURL);
+    }
+    return response.json();
+  });
+  movesData[Object.keys(movesData).length] = { ...promise };
+  return true;
 }
 
 async function getPkmnMovesFromAPI(index) {
@@ -466,11 +477,11 @@ pokemonBoxDialog.addEventListener("click", (e) => {
 /* Switch between Sections End */
 
 function startobeserver() {
-  declareObserverTargets()
+  declareObserverTargets();
   observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       targetAndVisibilityHandler(entry);
-  });
+    });
   });
   startObserverTargets();
 }
@@ -488,7 +499,8 @@ function targetAndVisibilityHandler(entry) {
     } else {
       scrollToTopButtonvisibility.add("visible");
     }
-}}
+  }
+}
 
 function declareObserverTargets() {
   target1 = document.querySelector("footer");
