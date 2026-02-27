@@ -7,6 +7,7 @@ const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 const backToMainBtn = document.getElementById("back_to_main_btn").classList;
 const backBtnSingleView = document.getElementById("back_btn_single_view_id").classList;
 let observer;
+let typesHTML = "";
 let userscreenView;
 let singleViewPkmnIndex;
 let swapContainerClasses;
@@ -97,8 +98,19 @@ function renderPokemonBox(index) {
   if (pokemon.types[1]) {
     styleVarSet += ` --type2: ${typeColors[pokemonData[index].types[1].type.name]};`;
   }
-  
+  renderPkmnTypes(pkmnTypes);
 return renderPokemonBoxes(index, pokemon, pkmnTypes, styleVarSet);
+}
+
+function renderPkmnTypes(pkmnTypes) {
+  typesHTML = pkmnTypes
+  .map((name, i) => {
+    return `
+      <p class="pokemon_box_type_container background_color_by_type" style="--type-color: ${typeColors[name]};">
+          ${name}
+      </p>`;
+  })
+  .join("");
 }
 
 function loadingBarAnimation() {
@@ -182,11 +194,11 @@ function renderMorePokemon() {
   } else {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
-  addmorePokemonBoxes(endRenderIndex);
+  addMorePokemonBoxes(endRenderIndex);
   scrollToLastPkmnBox()
 }
 
-function addmorePokemonBoxes(endRenderIndex) {
+function addMorePokemonBoxes(endRenderIndex) {
   for (let index = renderdPokemonBoxes; index < endRenderIndex; index++) {
     document.getElementById("main_container").insertAdjacentHTML("beforeend", renderPokemonBox(index));
     renderdPokemonBoxes++;

@@ -1,12 +1,5 @@
 function renderPokemonBoxes(index, pokemon, pkmnTypes, styleVarSet) {
-  let typesHTML = pkmnTypes
-  .map((name, i) => {
-    return `
-      <p class="pokemon_box_type_container background_color_by_type" style="--type-color: ${typeColors[name]};">
-          ${name}
-      </p>`;
-  })
-  .join("");
+
   return `
     <button class="only_view" onclick="openDialogBox(${index}, '${pkmnTypes}')">
     <section class="pokemon_box" style= "${styleVarSet};">
