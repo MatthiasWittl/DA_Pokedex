@@ -276,19 +276,25 @@ async function movesFromStorage(index) {
   for (let moveIndex = 0; moveIndex < maxAmountMoves && moveIndex < pokemonData[index].moves.length; moveIndex++) {
     let moveURL = pokemonData[index].moves[moveIndex].move.url;
     let moveName = pokemonData[index].moves[moveIndex].move.name;
-    for (let index = 0; index < Object.keys(movesData).length; index++) {
-      if (moveName === movesData[index].name) {
-        break;
-      } else if (index === Object.keys(movesData).length - 1) {
-        let promise = await fetch(moveURL).then((response) => {
-          if (!response.ok) {
-            retryFetch(moveURL);
-          }
-          return response.json();
-        });
-        movesData[Object.keys(movesData).length] = { ...promise };
-      }}}
+    await getSingleMovesIfnotStored(moveURL, moveName);
+    }
   return true;
+}
+
+async function getSingleMovesIfnotStored(moveURL, moveName) {
+  for (let index = 0; index < Object.keys(movesData).length; index++) {
+    if (moveName === movesData[index].name) {
+      break;
+    } else if (index === Object.keys(movesData).length - 1) {
+      let promise = await fetch(moveURL).then((response) => {
+        if (!response.ok) {
+          retryFetch(moveURL);
+        }
+        return response.json();
+      });
+      movesData[Object.keys(movesData).length] = { ...promise };
+    }}
+    return true;
 }
 
 async function getPkmnMovesFromAPI(index) {
