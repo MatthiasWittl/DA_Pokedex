@@ -252,7 +252,6 @@ async function openDialogBox(index, color) {
   pokemonBoxDialog.showModal();
   pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
   pokemonBoxUtilities(index);
-  pokemonBoxDialog.focus();
 }
 
 async function getPokemonMoves(index) {
@@ -280,9 +279,7 @@ async function movesFromStorage(index) {
           return response.json();
         });
         movesData[Object.keys(movesData).length] = { ...promise };
-      }
-    }
-  }
+      }}}
   return true;
 }
 
@@ -307,6 +304,7 @@ function pokemonBoxUtilities(index) {
   swapContainerClasses = document.getElementById("swap_container_id").classList;
   showBattleStats(index);
   document.body.classList.add("overflow_hidden");
+  pokemonBoxDialog.focus();
 }
 
 function showBattleStats(index) {
@@ -330,8 +328,16 @@ function showPkmnMoves(index) {
   changeSingleViewBtnHighlight("pkmn_moves_btn");
   swapContainerClasses.remove("evolution_chain_img_container", "pkmn_box_color");
   document.getElementById("swap_container_id").innerHTML = "";
-  document.getElementById("swap_container_id").innerHTML += renderMoves(index);
+  document.getElementById("swap_container_id").innerHTML += pkmnMoves(index);
   movesTypeColorFilter();
+}
+
+function pkmnMoves(index) {
+  let itemsHTML = "";
+  for (let iMove = 0; iMove < pokemonData[index].moves.length && iMove < maxAmountMoves; iMove++) {
+    itemsHTML += `<li  ><img src="" class="move_icon">${pokemonData[index].moves[iMove].move.name}</li>`;
+  }
+  return renderMoves(itemsHTML);
 }
 
 function movesTypeColorFilter() {

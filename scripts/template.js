@@ -71,11 +71,7 @@ function renderEvolutionChainImg(index) {
 `;
 }
 
-function renderMoves(index) {
-  let itemsHTML = "";
-  for (let iMove = 0; iMove < pokemonData[index].moves.length && iMove < maxAmountMoves; iMove++) {
-    itemsHTML += `<li  ><img src="" class="move_icon">${pokemonData[index].moves[iMove].move.name}</li>`;
-  }
+function renderMoves(itemsHTML) {
   return `
     <section class="pokemon_single_view_moves_section">
         <ul class="move_backgr_color">
