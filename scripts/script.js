@@ -77,13 +77,11 @@ async function loadAllReaminingPokemon() {
           retryFetch("https://pokeapi.co/api/v2/pokemon/" + (index + 1 + firstAmountOfLoadingPokemon));
         }
         return response.json();
-      }
-    );
+      });
     pokemonData[index + firstAmountOfLoadingPokemon] = { ...promise };
     loadedPkmn++;
     loadingBarAnimation();
   }
-  openMorePkmnBtn.add("visible");
   changeLoaderForSearch();
 }
 
@@ -126,6 +124,7 @@ function loadingBarAnimation() {
 }
 
 function changeLoaderForSearch() {
+  openMorePkmnBtn.add("visible");
   document.getElementById("header_input_search_id").innerHTML = renderSearchField();
   checkInputSearchField();
   allLoadedPkmn = "true";
@@ -243,6 +242,16 @@ function backToMainSite() {
 }
 
 async function openDialogBox(index, color) {
+  let { colorOne, colorTwo } = dialogBoxColorSet(color);
+  singleViewPkmnIndex = index;
+  await getPokemonMoves(index);
+  await getPokemonEvolutionChain(index);
+  pokemonBoxDialog.showModal();
+  pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
+  pokemonBoxUtilities(index);
+}
+
+function dialogBoxColorSet(color) {
   let colors = color.split(",");
   let colorOne = typeColors[colors[0]];
   if (colors[1]) {
@@ -250,12 +259,7 @@ async function openDialogBox(index, color) {
   } else {
     colorTwo = "unset";
   }
-  singleViewPkmnIndex = index;
-  await getPokemonMoves(index);
-  await getPokemonEvolutionChain(index);
-  pokemonBoxDialog.showModal();
-  pokemonBoxDialog.innerHTML = renderSingleViewPokemonBox(index, colorOne, colorTwo);
-  pokemonBoxUtilities(index);
+  return { colorOne, colorTwo };
 }
 
 async function getPokemonMoves(index) {
