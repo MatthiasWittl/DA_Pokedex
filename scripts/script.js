@@ -439,10 +439,14 @@ function singleViewSwitch(direction, index) {
     } else {
       index--;
     }
-    let pkmnColor = pokemonData[index].types.map((t) => t.type.name);
-    let color = pkmnColor.join(",");
-    openDialogBox(index, color);
   }
+  openDialogAfterSwitch(index);
+}
+
+function openDialogAfterSwitch(index) {
+  let pkmnColor = pokemonData[index].types.map((t) => t.type.name);
+  let color = pkmnColor.join(",");
+  openDialogBox(index, color);
 }
 
 pokemonBoxDialog.addEventListener("keydown", (e) => {
