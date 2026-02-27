@@ -75,8 +75,8 @@
 
 .button_highlight:hover {
   cursor: pointer;
-background-color: white;
-color: black;
+  background-color: white;
+  color: black;
 }
 
 .overflow_hidden {

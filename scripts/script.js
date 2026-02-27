@@ -381,8 +381,6 @@ function movesTypeColorFilter() {
   });
 }
 
-/* Evolution Chain Functions Start */
-
 async function getPokemonEvolutionChain(index) {
   await getPokemonSpecies(index);
   let promise = await fetch(pokemonSpecies.evolution_chain.url).then((response) => {
@@ -435,10 +433,6 @@ function indexFinder(evolutionName) {
   }
 }
 
-/* Evolution Chain Functions End */
-
-/* Switch between Single View Pokemon */
-
 function singleViewSwitch(direction, index) {
   if (allLoadedPkmn == "true") {
     if (direction === "next" && index == maxAmountofPokemonFromAPI) {
@@ -473,8 +467,6 @@ pokemonBoxDialog.addEventListener("click", (e) => {
     closeDialog();
   }
 });
-
-/* Switch between Sections End */
 
 function startobeserver() {
   declareObserverTargets();
