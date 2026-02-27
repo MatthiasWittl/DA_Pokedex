@@ -15,6 +15,8 @@ let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
 let allLoadedPkmn = "false";
+let target1;
+let target2;
 
 function checkForLocalStorageData() {
   if (localStorage.getItem("pokemonData") == null) {
@@ -144,6 +146,10 @@ function searchPokemonFromInputField() {
       inputStorage.push(index);
     }
   }
+  checkIfNotFound(inputStorage, input);
+}
+
+function checkIfNotFound(inputStorage, input) {
   if (inputStorage.length == 0) {
     showToast(`Pokémon nicht gefunden.
               Bitte überprüfe deine Eingabe:
@@ -413,7 +419,6 @@ function singleViewSwitch(direction, index) {
     } else {
       index--;
     }
-
     let pkmnColor = pokemonData[index].types.map((t) => t.type.name);
     let color = pkmnColor.join(",");
     openDialogBox(index, color);
@@ -437,25 +442,36 @@ pokemonBoxDialog.addEventListener("click", (e) => {
 /* Switch between Sections End */
 
 function startobeserver() {
-  let target1 = document.querySelector("footer");
-  let target2 = document.querySelector(".pokedex_container").firstElementChild;
+  declareObserverTargets()
   observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.target === target1) {
-        if (entry.isIntersecting) {
-          scrollToBottomButtonvisibility.remove("visible");
-        } else {
-          scrollToBottomButtonvisibility.add("visible");
-        }
-      } else {
-        if (entry.isIntersecting) {
-          scrollToTopButtonvisibility.remove("visible");
-        } else {
-          scrollToTopButtonvisibility.add("visible");
-        }
-      }
-    });
+      targetAndVisibilityHandler(entry);
   });
+  });
+  startObserverTargets();
+}
+
+function targetAndVisibilityHandler(entry) {
+  if (entry.isIntersecting) {
+    if (entry.target === target1) {
+      scrollToBottomButtonvisibility.remove("visible");
+    } else {
+      scrollToTopButtonvisibility.remove("visible");
+    }
+  } else {
+    if (entry.target === target1) {
+      scrollToBottomButtonvisibility.add("visible");
+    } else {
+      scrollToTopButtonvisibility.add("visible");
+    }
+}}
+
+function declareObserverTargets() {
+  target1 = document.querySelector("footer");
+  target2 = document.querySelector(".pokedex_container").firstElementChild;
+}
+
+function startObserverTargets() {
   observer.observe(target1);
   observer.observe(target2);
 }
