@@ -53,10 +53,14 @@ function getFirstPokemonData() {
   }
   Promise.allSettled(promises).then((results) => {
     (pokemonData = results.filter(({ status }) => status === "fulfilled").map(({ value }) => value)),
-      storageLocalFirstPokemonData(),
-      loadAllReaminingPokemon(),
-      startrender();
+    firstLoadingChain();
   });
+}
+
+function firstLoadingChain() {
+  storageLocalFirstPokemonData();
+      loadAllReaminingPokemon();
+      startrender();
 }
 
 function storageLocalFirstPokemonData() {
