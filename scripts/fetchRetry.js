@@ -1,12 +1,8 @@
 async function retryFetch(url, retries = 3) {
   try {
     const response = await fetch(url);
-
     if (!response.ok) {
-      if (response.status >= 500 && retries > 0) {
-        return retryFetch(url, retries - 1);
-      }
-      throw new Error(`HTTP error! status: ${response.status}`);
+      return checkErrorResponse(response, url, retries);
     }
     return await response.json();
   } catch (error) {
@@ -15,4 +11,11 @@ async function retryFetch(url, retries = 3) {
     }
     throw error;
   }
+}
+
+async function checkErrorResponse(response, url, retries) {
+  if (response.status >= 500 && retries > 0) {
+    return retryFetch(url, retries - 1);
+  }
+  throw new Error(`HTTP error! status: ${response.status}`);
 }
