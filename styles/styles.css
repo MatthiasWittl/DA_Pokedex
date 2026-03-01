@@ -149,7 +149,7 @@ main {
 }
 
 .pokemon_box_img_container {
-  width: 100%;
+  width: calc(100% - 16px);
   display: flex;
   justify-content: center;
   padding: 8px;
@@ -167,9 +167,10 @@ main {
   justify-content: space-evenly;
   align-items: center;
   text-transform: capitalize;
-  width: 200px;
-  margin-bottom: 4px;
-  margin-top: 4px;
+  width: calc(100% - 16px);
+  margin-bottom: 8px;
+  margin-top: 8px;
+  gap: 8px;
 }
 
 .pokemon_box_type_container p {
@@ -178,6 +179,8 @@ main {
   border-radius: 10px;
   font-size: 18px;
   color: black;
+  width: 100%;
+  font-weight: 600;
 }
 
 footer {
@@ -267,7 +270,7 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 312px;
+  width: 312px;
   border: 0.5px solid white;
   border-radius: 15px;
 }
@@ -282,20 +285,21 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 310px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .closing_Button_dialog_Box {
   position: absolute;
-  left: 272px;
+  left: 267px;
   border: 0.5px solid white;
-  width: 35px;
-  height: 35px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   font-size: 30px;
   color: var(--type1, red);
   background-color: transparent;
-  top: 2px;
+  top: 4px;
 }
 
 .closing_Button_dialog_Box:hover {
@@ -304,8 +308,6 @@ footer {
 
 .pokemon_single_view_data_header button {
   font-size: 20px;
-  margin-top: 4px;
-  margin-bottom: 4px;
   color: #f8f8f8;
   text-shadow: 0 0 6px color-mix(in srgb, var(--type1) 80%, white),
     0 0 12px color-mix(in srgb, var(--type1) 80%, transparent);
@@ -322,11 +324,10 @@ footer {
 }
 
 .swap_container {
-  width: 310px;
-  height: 165px;
+  width: 294px;
+  height: 180px;
   display: flex;
   justify-content: center;
-  padding-bottom: 6px;
   align-items: center;
 }
 
@@ -334,8 +335,8 @@ footer {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 4px;
-  margin-top: 4px;
+  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 .single_view_switch {
@@ -358,9 +359,8 @@ footer {
 .pokemon_base_stats {
   display: grid;
   grid-template-columns: 170px 1fr;
-  grid-template-rows: 27px;
+  grid-template-rows: 30px;
   align-items: center;
-  gap: 0.75px;
 }
 
 .pokemon_base_stats dt {
@@ -380,7 +380,8 @@ footer {
   justify-content: space-around;
   width: 100%;
   text-transform: capitalize;
-  padding: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .pokemon_single_view_moves_section ul {
@@ -422,8 +423,6 @@ footer {
   border-radius: 15px;
   display: grid;
   align-items: center;
-  margin-left: 4px;
-  margin-right: 4px;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
 }

@@ -115,7 +115,7 @@ function renderPkmnTypes(pkmnTypes) {
   typesHTML = pkmnTypes
     .map((name, i) => {
       return `
-      <p class="pokemon_box_type_container background_color_by_type" style="--type-color: ${typeColors[name]};">
+      <p class="background_color_by_type" style="--type-color: ${typeColors[name]};">
           ${name}
       </p>`;
     })
