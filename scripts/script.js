@@ -237,16 +237,22 @@ function soundsByOpening(index) {
 }
 
 function singleViewSwitch(direction, index) {
-    if (direction === "next" && index == renderdPokemonBoxes -1) {
+  let highestNrPkmnBox = calcHighestNrPkmnBox();
+    if (direction === "next" && index == highestNrPkmnBox) {
       index = 0;
     } else if (direction === "previous" && index == 0) {
-      index = renderdPokemonBoxes -1;
+      index = highestNrPkmnBox;
     } else if (direction === "next") {
       index++;
     } else {
       index--;
     }
   openDialogAfterSwitch(index);
+}
+
+function calcHighestNrPkmnBox() {
+  lastPkmnBoxNr = Object.keys(pokemonData).length - 1;
+  return lastPkmnBoxNr;
 }
 
 function openDialogAfterSwitch(index) {
