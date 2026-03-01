@@ -34,6 +34,10 @@
   visibility: unset !important;
 }
 
+.visible_hidden {
+  visibility: hidden !important;
+}
+
 .sr_only {
   position: absolute;
   width: 1px;
@@ -57,6 +61,8 @@
   padding: 8px;
   border-radius: 10px;
   margin-top: 4px;
+  gap: 8px;
+  font-size: 20px;
 }
 
 .display_none {

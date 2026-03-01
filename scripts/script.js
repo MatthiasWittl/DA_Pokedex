@@ -6,6 +6,7 @@ const pokemonBoxDialog = document.getElementById("single_view_Pokemon_Dialog_Box
 const pokedexLoading = document.getElementById("pokedex_loader_id").classList;
 const backToMainBtn = document.getElementById("back_to_main_btn").classList;
 const backBtnSingleView = document.getElementById("back_btn_single_view_id").classList;
+let endRenderIndex;
 let observer;
 let typesHTML = "";
 let userscreenView;
@@ -27,7 +28,7 @@ function checkForLocalStorageData() {
       getFirstPokemonData();
     } else {
       pokemonData = JSON.parse(localStorage.getItem("pokemonData"));
-      loadAllReaminingPokemon();
+      /* loadAllReaminingPokemon(); */ 
       startrender();
     }
   }
@@ -59,7 +60,7 @@ function getFirstPokemonData() {
 
 function firstLoadingChain() {
   storageLocalFirstPokemonData();
-  loadAllReaminingPokemon();
+  /* loadAllReaminingPokemon(); */
   startrender();
 }
 
@@ -70,19 +71,19 @@ function storageLocalFirstPokemonData() {
 }
 
 async function loadAllReaminingPokemon() {
-  for (let index = 0; index < remainingPokemonDataToLoad; index++) {
-    let promise = await fetch("https://pokeapi.co/api/v2/pokemon/" + (index + 1 + firstAmountOfLoadingPokemon)).then(
+  changeSearchForLoader();
+  for (let index = renderdPokemonBoxes + 1; index <= endRenderIndex; index++) {
+    let promise = await fetch("https://pokeapi.co/api/v2/pokemon/" + (index)).then(
       (response) => {
         if (!response.ok) {
-          retryFetch("https://pokeapi.co/api/v2/pokemon/" + (index + 1 + firstAmountOfLoadingPokemon));
+          retryFetch("https://pokeapi.co/api/v2/pokemon/" + (index));
         }
         return response.json();
       }
     );
-    pokemonData[index + firstAmountOfLoadingPokemon] = { ...promise };
+    pokemonData[index - 1] = { ...promise };
     loadingTicker();
   }
-  changeLoaderForSearch();
 }
 
 function loadingTicker() {
@@ -123,33 +124,41 @@ function renderPkmnTypes(pkmnTypes) {
 }
 
 function loadingBarAnimation() {
-  document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + maxPokemonOnSite;
-  let loadingBarfiller = (maxpercentage / maxPokemonOnSite) * loadedPkmn;
+  document.getElementById("loading_counter").innerHTML = loadedPkmn + " / " + endRenderIndex;
+  let loadingBarfiller = (maxpercentage / endRenderIndex) * loadedPkmn;
   document.documentElement.style.setProperty("--type5", loadingBarfiller + "%");
 }
 
 function changeLoaderForSearch() {
-  openMorePkmnBtn.add("visible");
+  if (endRenderIndex < maxPokemonOnSite) {
+    openMorePkmnBtn.remove("visible_hidden");
+  }
   document.getElementById("header_input_search_id").innerHTML = renderSearchField();
   checkInputSearchField();
   allLoadedPkmn = "true";
 }
 
-function renderMorePokemon() {
-  let endRenderIndex;
+function changeSearchForLoader() {
+  openMorePkmnBtn.add("visible_hidden");
+  document.getElementById("header_input_search_id").innerHTML = renderLoadingBar();
+}
+
+async function renderMorePokemon() {
   if (renderdPokemonBoxes > calcLimitForMaxLoad) {
     return;
   } else if (renderdPokemonBoxes == calcLimitForMaxLoad) {
     endRenderIndex = maxPokemonOnSite;
-    openMorePkmnBtn.remove("visible");
+    
   } else {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
-  addMorePokemonBoxes(endRenderIndex);
+  await loadAllReaminingPokemon();
+  addMorePokemonBoxes();
   scrollToLastPkmnBox();
+  changeLoaderForSearch();
 }
 
-function addMorePokemonBoxes(endRenderIndex) {
+function addMorePokemonBoxes() {
   for (let index = renderdPokemonBoxes; index < endRenderIndex; index++) {
     document.getElementById("main_container").insertAdjacentHTML("beforeend", renderPokemonBox(index));
     renderdPokemonBoxes++;

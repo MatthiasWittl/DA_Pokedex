@@ -88,3 +88,13 @@ function renderSearchField() {
     </form>
 `;
 }
+
+function renderLoadingBar() {
+  return `
+    <div class="loading_container">
+      <div class="loading_status_bar">
+        <span id="loading_counter"></span>
+      </div>
+    </div>
+  `
+}

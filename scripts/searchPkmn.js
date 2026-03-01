@@ -22,9 +22,12 @@ function searchPokemonFromInputField() {
 
 function checkIfNotFound(inputStorage, input) {
   if (inputStorage.length == 0) {
-    showToast(`Pokémon nicht gefunden.
-                Bitte überprüfe deine Eingabe:
-                ${input}`);
+    showToast(`Pokémon was not found.
+                Please check your spelling:
+                 "<b>${input}</b>"
+                and try again.
+                You can only search for Pkmn you see in the Pokedex.
+               `);
     return;
   }
   searchPokemonOutput(inputStorage);
@@ -33,7 +36,7 @@ function checkIfNotFound(inputStorage, input) {
 
 function showToast(message, duration = 2500) {
   const toast = document.getElementById("search_result_output_id");
-  toast.textContent = message;
+  toast.innerHTML = message;
   toast.classList.add("show");
 
   setTimeout(() => {
