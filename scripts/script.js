@@ -15,7 +15,6 @@ let swapContainerClasses;
 let renderdPokemonBoxes = 0;
 let promises = [];
 let promisesMoves = [];
-let allLoadedPkmn = "false";
 let target1;
 let target2;
 
@@ -135,7 +134,6 @@ function changeLoaderForSearch() {
   }
   document.getElementById("header_input_search_id").innerHTML = renderSearchField();
   checkInputSearchField();
-  allLoadedPkmn = "true";
 }
 
 function changeSearchForLoader() {
@@ -239,17 +237,15 @@ function soundsByOpening(index) {
 }
 
 function singleViewSwitch(direction, index) {
-  if (allLoadedPkmn == "true") {
-    if (direction === "next" && index == maxAmountofPokemonFromAPI) {
+    if (direction === "next" && index == renderdPokemonBoxes -1) {
       index = 0;
     } else if (direction === "previous" && index == 0) {
-      index = maxAmountofPokemonFromAPI;
+      index = renderdPokemonBoxes -1;
     } else if (direction === "next") {
       index++;
     } else {
       index--;
     }
-  }
   openDialogAfterSwitch(index);
 }
 
