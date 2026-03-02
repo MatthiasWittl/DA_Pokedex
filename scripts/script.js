@@ -70,14 +70,12 @@ function storageLocalFirstPokemonData() {
 async function loadMorePokemon() {
   changeSearchForLoader();
   for (let index = renderdPokemonBoxes + 1; index <= endRenderIndex; index++) {
-    let promise = await fetch("https://pokeapi.co/api/v2/pokemon/" + (index)).then(
-      (response) => {
-        if (!response.ok) {
-          retryFetch("https://pokeapi.co/api/v2/pokemon/" + (index));
-        }
-        return response.json();
+    let promise = await fetch("https://pokeapi.co/api/v2/pokemon/" + index).then((response) => {
+      if (!response.ok) {
+        retryFetch("https://pokeapi.co/api/v2/pokemon/" + index);
       }
-    );
+      return response.json();
+    });
     pokemonData[index - 1] = { ...promise };
     loadingTicker();
   }
@@ -145,7 +143,6 @@ async function renderMorePokemon() {
     return;
   } else if (renderdPokemonBoxes == calcLimitForMaxLoad) {
     endRenderIndex = maxPokemonOnSite;
-    
   } else {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
@@ -237,15 +234,15 @@ function soundsByOpening(index) {
 
 function singleViewSwitch(direction, index) {
   let highestNrPkmnBox = calcHighestNrPkmnBox();
-    if (direction === "next" && index == highestNrPkmnBox) {
-      index = 0;
-    } else if (direction === "previous" && index == 0) {
-      index = highestNrPkmnBox;
-    } else if (direction === "next") {
-      index++;
-    } else {
-      index--;
-    }
+  if (direction === "next" && index == highestNrPkmnBox) {
+    index = 0;
+  } else if (direction === "previous" && index == 0) {
+    index = highestNrPkmnBox;
+  } else if (direction === "next") {
+    index++;
+  } else {
+    index--;
+  }
   openDialogAfterSwitch(index);
 }
 

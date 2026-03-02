@@ -12,6 +12,13 @@
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/main.css" />
+    <script src="scripts/fetchRetry.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/pkmnEvoChain.js" defer></script>
+    <script src="scripts/pkmnMoves.js" defer></script>
+    <script src="scripts/searchPkmn.js" defer></script>
+    <script src="scripts/template.js" defer></script>
+    <script src="data/db.js" defer></script>
   </head>
 
   <body onload="checkForLocalStorageData()">
@@ -32,12 +39,21 @@
         </button>
         <output id="search_result_output_id" class="search_result_output_cls"></output>
         <div class="header_input" id="header_input_search_id">
-            <form role="search">
-                <label for="header_input_search_field" class="sr_only">Search Pokemon</label>
-                <input id="header_input_search_field" placeholder="Search Pokemon" type="text" maxlength="12"
-                  inputmode="search" minlength="3" pattern="[A-Za-z]+" title="Only Letters" required />
-                <button type="submit" id="header_input_search_button" aria-label="Suchen">&#128269</button>
-              </form>
+          <form role="search">
+            <label for="header_input_search_field" class="sr_only">Search Pokemon</label>
+            <input
+              id="header_input_search_field"
+              placeholder="Search Pokemon"
+              type="text"
+              maxlength="12"
+              inputmode="search"
+              minlength="3"
+              pattern="[A-Za-z]+"
+              title="Only Letters"
+              required
+            />
+            <button type="submit" id="header_input_search_button" aria-label="Suchen">&#128269;</button>
+          </form>
         </div>
       </div>
     </header>
@@ -81,12 +97,5 @@
       <img src="assets/images/MW.webp" alt="Publisher Logo" />
     </footer>
     <dialog id="single_view_Pokemon_Dialog_Box_id" class="single_view_Pokemon_Dialog_Box"></dialog>
-    <script src="scripts/fetchRetry.js"></script>
-    <script src="scripts/script.js"></script>
-    <script src="scripts/pkmnEvoChain.js" ></script>
-    <script src="scripts/pkmnMoves.js" ></script>
-    <script src="scripts/searchPkmn.js" ></script>
-    <script src="scripts/template.js"></script>
-    <script src="data/db.js"></script>
   </body>
 </html>

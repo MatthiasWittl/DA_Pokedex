@@ -75,7 +75,7 @@
 
 .button_highlight {
   border: 2px solid transparent;
-  padding: 8px;
+  padding: 4px 8px 4px 8px;
   border-radius: 12px;
   background-color: #0ea5e9;
 }

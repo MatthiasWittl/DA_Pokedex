@@ -16,8 +16,6 @@ let firstAmountOfLoadingPokemon = 12;
 
 let maxPokemonOnSite = 151; /* max Amount (151) of Pokemon who are related for standard Version */
 
-/*let remainingPokemonDataToLoad = moreAmountOfLoadingPokemon + loadedPkmn; /* Amount of Pokemon who are not loaded at the beginning, but will be loaded when the user clicks on "Load more Pokemon" Button */
-
 let moreAmountOfLoadingPokemon = 12;
 
 let maxAmountofPokemonFromAPI = 150; /* Number of Pokemon Standard Edition: 151, list starts at 0, therefore 150*/
