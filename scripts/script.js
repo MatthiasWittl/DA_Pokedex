@@ -27,7 +27,6 @@ function checkForLocalStorageData() {
       getFirstPokemonData();
     } else {
       pokemonData = JSON.parse(localStorage.getItem("pokemonData"));
-      /* loadAllReaminingPokemon(); */ 
       startrender();
     }
   }
@@ -59,7 +58,6 @@ function getFirstPokemonData() {
 
 function firstLoadingChain() {
   storageLocalFirstPokemonData();
-  /* loadAllReaminingPokemon(); */
   startrender();
 }
 
@@ -69,7 +67,7 @@ function storageLocalFirstPokemonData() {
   localStorage.setItem("pokemonData", JSON.stringify(pokemonData));
 }
 
-async function loadAllReaminingPokemon() {
+async function loadMorePokemon() {
   changeSearchForLoader();
   for (let index = renderdPokemonBoxes + 1; index <= endRenderIndex; index++) {
     let promise = await fetch("https://pokeapi.co/api/v2/pokemon/" + (index)).then(
@@ -97,6 +95,7 @@ function startrender() {
     renderdPokemonBoxes++;
   }
   pokedexLoading.add("display_none");
+  checkInputSearchField();
   startobeserver();
 }
 
@@ -150,7 +149,7 @@ async function renderMorePokemon() {
   } else {
     endRenderIndex = renderdPokemonBoxes + moreAmountOfLoadingPokemon;
   }
-  await loadAllReaminingPokemon();
+  await loadMorePokemon();
   addMorePokemonBoxes();
   scrollToLastPkmnBox();
   changeLoaderForSearch();
