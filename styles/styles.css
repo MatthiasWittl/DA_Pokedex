@@ -276,6 +276,7 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 312px;
+  max-width: 312px;
   border: 0.5px solid white;
   border-radius: 15px;
 }
